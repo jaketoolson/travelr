@@ -2,7 +2,7 @@
 
 namespace Orion\Travelr\Http\Controllers;
 
-use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -11,7 +11,7 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(): Response
+    public function index(): View
     {
         return view('home');
     }

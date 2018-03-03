@@ -5,38 +5,29 @@ namespace Orion\Travelr\Http\Controllers\Auth;
 use Orion\Travelr\User;
 use Orion\Travelr\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use \Illuminate\Contracts\Validation\Validator;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Contracts\Validation\Factory as ValidatorFactory;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
     protected $redirectTo = '/home';
 
-    public function __construct()
+    /**
+     * @var ValidatorFactory
+     */
+    protected $validatorFactory;
+
+    public function __construct(ValidatorFactory $validator)
     {
         $this->middleware('guest');
+        $this->validatorFactory = $validator;
     }
 
     protected function validator(array $data): Validator
     {
-        return Validator::make($data, [
+        return $this->validatorFactory->make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
