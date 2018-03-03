@@ -7,7 +7,8 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected $namespace = 'Orion\Travelr\Http\Controllers';
+    protected $apiNamespace = 'Orion\Travelr\Http\Controllers\Api';
+    protected $webNamespace = 'Orion\Travelr\Http\Controllers\Web';
 
     public function map(): void
     {
@@ -19,7 +20,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes(): void
     {
         Route::middleware('web')
-             ->namespace($this->namespace)
+             ->namespace($this->webNamespace)
              ->group(base_path('routes/web.php'));
     }
 
@@ -27,7 +28,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('api')
              ->middleware('api')
-             ->namespace($this->namespace)
+             ->namespace($this->apiNamespace)
              ->group(base_path('routes/api.php'));
     }
 }

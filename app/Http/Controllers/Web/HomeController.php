@@ -1,6 +1,6 @@
 <?php
 
-namespace Orion\Travelr\Http\Controllers;
+namespace Orion\Travelr\Http\Controllers\Web;
 
 use Illuminate\View\View;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Orion\Travelr\Http\Controllers\Auth;
+namespace Orion\Travelr\Http\Controllers\Web\Auth;
 
 use Orion\Travelr\User;
-use Orion\Travelr\Http\Controllers\Controller;
+use Orion\Travelr\Http\Controllers\Web\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Contracts\Validation\Factory as ValidatorFactory;
