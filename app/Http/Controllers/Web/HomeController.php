@@ -3,6 +3,7 @@
 namespace Orion\Travelr\Http\Controllers\Web;
 
 use Illuminate\View\View;
+use Orion\Travelr\Repositories\PlanetInterface;
 
 class HomeController extends Controller
 {
@@ -11,8 +12,9 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(): View
+    public function index(PlanetInterface $repo): View
     {
+        dd($repo->getById(1));
         return view('home');
     }
 }

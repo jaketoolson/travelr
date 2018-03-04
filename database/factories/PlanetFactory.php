@@ -13,6 +13,7 @@ $factory->define(Planet::class, function (Faker $faker) {
         'name' => $faker->name,
         'description' => $faker->sentence,
         'diameter' => 0,
+        'climate' => 'hot',
         'rotation_period_hours' => random_int(1, 24),
         'population' => random_int(100, 30000000000),
     ];

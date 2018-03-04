@@ -1,6 +1,6 @@
 <?php
 
-namespace Orion\Travels\Tests;
+namespace Orion\Travelr\Tests;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Console\Kernel;
