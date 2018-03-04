@@ -10,15 +10,26 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+/**
+ * @property int id
+ * @property string name
+ * @property string email
+ * @property string password
+ * @property string remember_token
+ */
 class User extends BaseModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-    use Notifiable, Authenticatable, CanResetPassword, Authorizable;
+    use HasUuid, Notifiable, Authenticatable, CanResetPassword, Authorizable;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'uuid',
+        'name',
+        'email',
+        'password',
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 }
