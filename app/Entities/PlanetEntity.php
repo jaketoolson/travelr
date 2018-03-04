@@ -38,12 +38,13 @@ final class PlanetEntity
         $this->rotationPeriodHours = $rotationPeriodHours;
         $this->population = $population;
 
-        $this->terrains = collect();
+        $this->terrains = new Collection();
     }
 
     public function addTerrain(TerrainEntity $terrain): void
     {
         if (!$this->terrains->contains($terrain)) {
+            $terrain->addPlanet($this);
             $this->terrains->push($terrain);
         }
     }

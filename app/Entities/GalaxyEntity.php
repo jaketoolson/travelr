@@ -7,6 +7,7 @@ final class GalaxyEntity
     private $id;
     private $uuid;
     private $name;
+    private $planet;
 
     public function __construct(int $id, string $uuid, string $name)
     {
@@ -28,5 +29,15 @@ final class GalaxyEntity
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function addPlanet(PlanetEntity $planet): void
+    {
+        $this->planet = $planet;
+    }
+
+    public function getPlanet(): PlanetEntity
+    {
+        return $this->planet;
     }
 }
