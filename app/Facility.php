@@ -21,9 +21,4 @@ class Facility extends BaseModel
         'description',
         'is_active',
     ];
-
-    public function isActive(): bool
-    {
-        return $this->is_active === 1;
-    }
 }
