@@ -20,7 +20,7 @@ class Galaxy extends BaseModel
         'name',
     ];
 
-    public function transformToEntity()
+    public function transformModelToEntity()
     {
         return new GalaxyEntity(
             $this->id,

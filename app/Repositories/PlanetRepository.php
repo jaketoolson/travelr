@@ -2,13 +2,15 @@
 
 namespace Orion\Travelr\Repositories;
 
-use Orion\Travelr\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Orion\Travelr\Entities\PlanetEntity;
 use Orion\Travelr\Planet;
 
 class PlanetRepository implements PlanetInterface
 {
+    /**
+     * @var Planet
+     */
     private $model;
 
     public function __construct(Planet $planet)
@@ -16,18 +18,13 @@ class PlanetRepository implements PlanetInterface
         $this->model = $planet;
     }
 
-    public function query(): Builder
-    {
-        return $this->model::query();
-    }
-
     public function getById(int $id): PlanetEntity
     {
-        return $this->query()->findOrFail($id)->transformToEntity();
+        return $this->model->findOrFail($id)->transformModelToEntity();
     }
 
     public function getAll(): Collection
     {
-        return $this->query()->transformToEntities($this->model->get());
+        return $this->model->transformModelsToEntities($this->model->get());
     }
 }

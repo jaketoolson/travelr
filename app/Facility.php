@@ -21,4 +21,9 @@ class Facility extends BaseModel
         'description',
         'is_active',
     ];
+
+    public function transformModelToEntity()
+    {
+
+    }
 }

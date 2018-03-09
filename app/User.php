@@ -32,4 +32,9 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
         'password',
         'remember_token',
     ];
+
+    public function transformModelToEntity()
+    {
+
+    }
 }

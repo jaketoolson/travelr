@@ -12,7 +12,7 @@ use Orion\Travelr\Entities\TerrainEntity;
  * @property string name
  * @property null|string description
  *
- * @property Collection planets
+ * @property Collection|Planet[] planets
  */
 class Terrain extends BaseModel
 {
@@ -26,7 +26,7 @@ class Terrain extends BaseModel
         'description',
     ];
 
-    public function transformToEntity()
+    public function transformModelToEntity()
     {
         $terrain = new TerrainEntity(
             $this->id,
@@ -37,7 +37,7 @@ class Terrain extends BaseModel
         if ($planets = $this->planets) {
             /** @var Planet $planet */
             foreach ($planets as $planet) {
-                $terrain->addPlanet($planet->transformToEntity());
+                $terrain->addPlanet($planet->transformModelToEntity());
             }
         }
 

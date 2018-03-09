@@ -18,7 +18,8 @@ use Orion\Travelr\Entities\PlanetEntity;
  * @property int rotation_period_hours
  * @property null|int population
  *
- * @property Collection terrains
+ * @property Collection|Terrain[] terrains
+ * @property Collection|Facility[] facilities
  * @property Galaxy galaxy
  */
 class Planet extends BaseModel
@@ -43,12 +44,12 @@ class Planet extends BaseModel
         'population',
     ];
 
-    public function transformToEntity()
+    public function transformModelToEntity()
     {
         $entity = new PlanetEntity(
             $this->id,
             $this->uuid,
-            $this->galaxy->transformToEntity(),
+            $this->galaxy->transformModelToEntity(),
             $this->name,
             $this->description,
             $this->diameter,
@@ -60,7 +61,7 @@ class Planet extends BaseModel
         if ($terrains = $this->terrains) {
             /** @var Terrain $terrain */
             foreach ($terrains as $terrain) {
-                $entity->addTerrain($terrain->transformToEntity());
+                $entity->addTerrain($terrain->transformModelToEntity());
             }
         }
 
