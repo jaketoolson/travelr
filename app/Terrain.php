@@ -35,7 +35,6 @@ class Terrain extends BaseModel
         );
 
         if ($planets = $this->planets) {
-            /** @var Planet $planet */
             foreach ($planets as $planet) {
                 $terrain->addPlanet($planet->transformModelToEntity());
             }

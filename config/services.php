@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Orion\Travels\User::class,
+        'model' => Orion\Travelr\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

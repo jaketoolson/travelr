@@ -770,7 +770,7 @@ Headers:		'Varela Round', sans-serif;
     line-height: 1.1;
 }
 .hero:after {
-    background-image: url(/build/img/hero-overlay-4fc124e907e33305970e86188d13876c.png);
+    background-image: url(/build/img/hero-overlay.png);
     background-size: contain;
     background-position: bottom center;
     background-repeat: no-repeat;
@@ -1485,7 +1485,7 @@ Headers:		'Varela Round', sans-serif;
     width: 100%;
 }
 .map .infobox-wrapper:after {
-    background-image: url(/build/img/infobox-arrow-c1c2ba14a8c87835f22931426319efb7.png);
+    background-image: url(/build/img/infobox-arrow.png);
     content: "";
     display: block;
     width: 100%;
@@ -1503,7 +1503,7 @@ Headers:		'Varela Round', sans-serif;
     margin-bottom: 5rem;
 }
 .map#map-contact:before {
-    background-image: url(/build/img/footer-overlay-97b90fd977c385ebbe416f2ac630bfaa.png);
+    background-image: url(/build/img/footer-overlay.png);
     background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;
@@ -1571,7 +1571,7 @@ Headers:		'Varela Round', sans-serif;
     opacity: 1;
 }
 .owl-carousel.full-width-carousel:before {
-    background-image: url(/build/img/footer-overlay-97b90fd977c385ebbe416f2ac630bfaa.png);
+    background-image: url(/build/img/footer-overlay.png);
     background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;
@@ -1651,7 +1651,7 @@ Headers:		'Varela Round', sans-serif;
     z-index: 1;
 }
 .page >.content:after {
-    background-image: url(/build/img/footer-overlay-97b90fd977c385ebbe416f2ac630bfaa.png);
+    background-image: url(/build/img/footer-overlay.png);
     background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;

@@ -18,9 +18,9 @@ use Orion\Travelr\Entities\PlanetEntity;
  * @property int rotation_period_hours
  * @property null|int population
  *
- * @property Collection|Terrain[] terrains
  * @property Collection|Facility[] facilities
  * @property Galaxy galaxy
+ * @property Collection|Terrain[] terrains
  */
 class Planet extends BaseModel
 {
@@ -59,7 +59,6 @@ class Planet extends BaseModel
         );
 
         if ($terrains = $this->terrains) {
-            /** @var Terrain $terrain */
             foreach ($terrains as $terrain) {
                 $entity->addTerrain($terrain->transformModelToEntity());
             }
@@ -68,14 +67,14 @@ class Planet extends BaseModel
         return $entity;
     }
 
-    public function galaxy(): BelongsTo
-    {
-        return $this->belongsTo(Galaxy::class, 'galaxy_id');
-    }
-
     public function facilities(): BelongsToMany
     {
         return $this->belongsToMany(Facility::class, 'facility_planet', 'planet_id', 'facility_id');
+    }
+
+    public function galaxy(): BelongsTo
+    {
+        return $this->belongsTo(Galaxy::class, 'galaxy_id');
     }
 
     public function terrains(): BelongsToMany

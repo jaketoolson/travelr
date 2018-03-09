@@ -12,6 +12,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 /**
  * @property int id
+ * @property string uuid
  * @property string name
  * @property string email
  * @property string password
