@@ -2,6 +2,7 @@
 
 namespace Orion\Travelr\Tests\Feature\Http\Api;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Mockery\MockInterface;
 use Orion\Travelr\Planet;
@@ -22,6 +23,22 @@ class PlanetApiControllerTest extends TestCase
         $this->planetRepositoryMock = $this->mockAndBind(PlanetRepository::class);
     }
 
+    public function testIndexMethodReturnsExpectedData(): void
+    {
+        $repo = $this->planetRepositoryMock;
+
+        $planets = $this->createPlanets([], 4);
+
+        $repo->shouldReceive('getAll')
+            ->once()
+            ->andReturn($collection = new Collection($planets));
+
+        $response = $this->get(route('api.planet.index'));
+
+        $response->assertStatus(200);
+        $response->assertExactJson($collection->toArray());
+    }
+
     public function testShowMethodThrowsExceptionWithInvalidId(): void
     {
         $repo = $this->planetRepositoryMock;
@@ -31,24 +48,30 @@ class PlanetApiControllerTest extends TestCase
             ->once()
             ->andThrows(ModelNotFoundException::class);
 
-        $response = $this->get('/api/planet/999');
+        $response = $this->get(route('api.planet.show', [999]));
 
         $response->assertStatus(404);
     }
 
-    public function testShowMethodReturnsExpectedResult(): void
+    public function testShowMethodReturnsExpectedData(): void
     {
         $repo = $this->planetRepositoryMock;
-        /** @var Planet $planet */
-        $planet = factory(Planet::class)->create();
+
+        $planet = $this->createPlanets()->first();
 
         $repo->shouldReceive('getById')
             ->with($planet->id)
             ->once()
-            ->andReturn($this->mock($planet->transformModelToEntity()));
+            ->andReturn($entity = $planet->transformModelToEntity());
 
-        $response = $this->get('/api/planet/'.$planet->id);
+        $response = $this->get(route('api.planet.show', [$planet->id]));
 
         $response->assertStatus(200);
+        $response->assertExactJson($entity->toArray());
+    }
+
+    private function createPlanets(array $args = [], int $amount = 1): Collection
+    {
+        return factory(Planet::class)->times($amount)->create($args);
     }
 }

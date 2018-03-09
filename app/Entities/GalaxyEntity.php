@@ -2,12 +2,11 @@
 
 namespace Orion\Travelr\Entities;
 
-final class GalaxyEntity
+class GalaxyEntity extends BaseEntity
 {
     private $id;
     private $uuid;
     private $name;
-    private $planet;
 
     public function __construct(int $id, string $uuid, string $name)
     {
@@ -31,13 +30,12 @@ final class GalaxyEntity
         return $this->name;
     }
 
-    public function addPlanet(PlanetEntity $planet): void
+    public function toArray(): array
     {
-        $this->planet = $planet;
-    }
-
-    public function getPlanet(): PlanetEntity
-    {
-        return $this->planet;
+        return [
+            'id' => $this->getId(),
+            'uuid' => $this->getUuid(),
+            'name' => $this->getName(),
+        ];
     }
 }

@@ -23,10 +23,15 @@ class PlanetRepositoryTest extends TestCase
 
     public function testGetByIdReturnsEntity(): void
     {
-        $planet = factory(Planet::class)->create();
+        $planet = $this->createPlanet();
 
         $result = $this->repo->getById($planet->id);
 
         $this->assertInstanceOf(PlanetEntity::class, $result);
+    }
+
+    private function createPlanet(array $args = []): Planet
+    {
+        return factory(Planet::class)->create($args);
     }
 }

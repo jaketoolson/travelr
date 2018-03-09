@@ -18,10 +18,17 @@ class PlanetApiController extends Controller
         $this->planetRepository = $planetRepository;
     }
 
+    public function index()
+    {
+        $planets = $this->planetRepository->getAll();
+
+        return $this->jsonResponse($planets->toArray());
+    }
+
     public function show(int $planetId): JsonResponse
     {
-        $data = $this->planetRepository->getById($planetId);
+        $planet = $this->planetRepository->getById($planetId);
 
-        return $this->jsonResponse($data);
+        return $this->jsonResponse($planet->toArray());
     }
 }

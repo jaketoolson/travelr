@@ -4,7 +4,7 @@ namespace Orion\Travelr\Entities;
 
 use Illuminate\Support\Collection;
 
-final class TerrainEntity
+class TerrainEntity extends BaseEntity
 {
     private $id;
     private $uuid;
@@ -45,5 +45,15 @@ final class TerrainEntity
     public function getPlanets(): Collection
     {
         return $this->planets;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'uuid' => $this->getUuid(),
+            'name' => $this->getName(),
+            'planets' => $this->getPlanets()->toArray(),
+        ];
     }
 }
