@@ -2,7 +2,8 @@
 
 namespace Orion\Travelr\Repositories;
 
-use Illuminate\Support\Collection;
+use Orion\Travelr\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Orion\Travelr\Entities\PlanetEntity;
 use Orion\Travelr\Planet;
 
@@ -15,13 +16,18 @@ class PlanetRepository implements PlanetInterface
         $this->model = $planet;
     }
 
+    public function query(): Builder
+    {
+        return $this->model::query();
+    }
+
     public function getById(int $id): PlanetEntity
     {
-        return $this->model->findOrFail($id)->transformToEntity();
+        return $this->query()->findOrFail($id)->transformToEntity();
     }
 
     public function getAll(): Collection
     {
-        return $this->model->get();
+        return $this->query()->transformToEntities($this->model->get());
     }
 }

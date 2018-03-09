@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-         $this->call(Planets::class);
+        $this->call(Galaxies::class);
+        $this->call(Planets::class);
     }
 
     /**

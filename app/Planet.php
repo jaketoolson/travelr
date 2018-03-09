@@ -17,6 +17,7 @@ use Orion\Travelr\Entities\PlanetEntity;
  * @property string climate
  * @property int rotation_period_hours
  * @property null|int population
+ *
  * @property Collection terrains
  * @property Galaxy galaxy
  */

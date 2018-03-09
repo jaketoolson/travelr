@@ -1,5 +1,6 @@
 <?php
 
+use Orion\Travelr\Galaxy;
 use Orion\Travelr\Planet;
 use Orion\Travelr\Terrain;
 use Illuminate\Database\Seeder;
@@ -50,7 +51,7 @@ class Planets extends Seeder
     private function makePlanet(string $name, int $diameter = 0, string $climate, int $rotation = 0, int $pop = 0): Planet
     {
         return Planet::create([
-            'galaxy_id' => 1,
+            'galaxy_id' => $this->getRandomGalaxy()->id,
             'name' => $name,
             'description' => '',
             'diameter' => $diameter,
@@ -65,6 +66,11 @@ class Planets extends Seeder
         return Terrain::firstOrCreate([
             'name' => $name,
         ]);
+    }
+
+    private function getRandomGalaxy(): Galaxy
+    {
+        return Galaxy::all()->random(1)->first();
     }
 
     private function getPlanetsData(): array
