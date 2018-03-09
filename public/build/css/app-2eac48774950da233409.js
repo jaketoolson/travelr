@@ -60,28 +60,28 @@
 /******/ 	__webpack_require__.p = "public/build";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 41);
+/******/ 	return __webpack_require__(__webpack_require__.s = 54);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 41:
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(42);
-module.exports = __webpack_require__(43);
+__webpack_require__(55);
+module.exports = __webpack_require__(56);
 
 
 /***/ }),
 
-/***/ 42:
+/***/ 55:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 43:
+/***/ 56:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

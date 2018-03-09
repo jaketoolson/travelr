@@ -4,13 +4,13 @@ namespace Orion\Travelr\Tests\Unit\Repositories;
 
 use Orion\Travelr\Entities\PlanetEntity;
 use Orion\Travelr\Planet;
-use Orion\Travelr\Repositories\PlanetInterface;
+use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Tests\TestCase;
 
 class PlanetRepositoryTest extends TestCase
 {
     /**
-     * @var PlanetInterface
+     * @var PlanetRepository
      */
     private $repo;
 
@@ -18,7 +18,7 @@ class PlanetRepositoryTest extends TestCase
     {
         parent::setUp();
 
-        $this->repo = app(PlanetInterface::class);
+        $this->repo = app(PlanetRepository::class);
     }
 
     public function testGetByIdReturnsEntity(): void

@@ -9,11 +9,12 @@ module.exports = {
         'js/app' : [
             assetsDir + 'js/app.js'
         ],
-
+        'js/theme' : [
+            assetsDir + 'js/theme.js'
+        ],
         'css/vendor' : [
             __dirname + '/node_modules/bootstrap/dist/css/bootstrap.css',
         ],
-
         'css/app' : [
             assetsDir + 'css/style.css',
             assetsDir + 'css/owl.carousel.min.css'

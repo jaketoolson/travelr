@@ -1,10 +1,11 @@
 {
-  "css/app.css": "css/app-3e06d054a00cc1f9e4ae.css",
-  "css/app.js": "css/app-3e06d054a00cc1f9e4ae.js",
-  "css/vendor.css": "css/vendor-3e06d054a00cc1f9e4ae.css",
-  "css/vendor.js": "css/vendor-3e06d054a00cc1f9e4ae.js",
+  "css/app.css": "css/app-2eac48774950da233409.css",
+  "css/app.js": "css/app-2eac48774950da233409.js",
+  "css/vendor.css": "css/vendor-2eac48774950da233409.css",
+  "css/vendor.js": "css/vendor-2eac48774950da233409.js",
   "img/footer-overlay.png": "img/footer-overlay.png",
   "img/hero-overlay.png": "img/hero-overlay.png",
   "img/infobox-arrow.png": "img/infobox-arrow.png",
-  "js/app.js": "js/app-3e06d054a00cc1f9e4ae.js"
+  "js/app.js": "js/app-2eac48774950da233409.js",
+  "js/theme.js": "js/theme-2eac48774950da233409.js"
 }

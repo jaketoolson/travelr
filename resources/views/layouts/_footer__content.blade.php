@@ -70,15 +70,11 @@
                     <a href="contact.html" class="btn btn-primary text-caps btn-framed">Contact Us</a>
                 </address>
             </div>
-            <!--end col-md-4-->
         </div>
-        <!--end row-->
     </div>
     <div class="background">
         <div class="background-image original-size" style="background-image: url(&quot;assets/img/footer-background-icons.jpg&quot;);">
             <img src="assets/img/footer-background-icons.jpg" alt="">
         </div>
-        <!--end background-image-->
     </div>
-    <!--end background-->
 </div>
