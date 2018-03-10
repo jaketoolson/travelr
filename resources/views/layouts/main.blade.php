@@ -20,12 +20,10 @@
         </div>
     </header>
 
-    <section class="content">
+    <section class="content" id="content">
         <section class="block">
             <div class="container">
-                <div id="test">
-                    <test all_planets_endpoint="{{ route('api.planet.index') }}"></test>
-                </div>
+                @include('partials.planets.featured')
             </div>
         </section>
         {{--@yield('content')--}}

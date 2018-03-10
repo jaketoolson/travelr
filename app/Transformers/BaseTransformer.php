@@ -5,7 +5,7 @@ namespace Orion\Travelr\Transformers;
 use Illuminate\Support\Collection;
 use Orion\Travelr\BaseModel;
 
-class BaseTransformer
+abstract class BaseTransformer
 {
     public static function transformToArray($data): array
     {

@@ -13,4 +13,9 @@ interface PlanetRepository
      * @return Collection|Planet[]
      */
     public function getAll(): Collection;
+
+    /**
+     * @return Collection|Planet[]
+     */
+    public function getFeatured(int $limit = 4): Collection;
 }

@@ -23,11 +23,12 @@ class PlanetRepositoryTest extends TestCase
 
     public function testGetAllReturnsCollection(): void
     {
-        $planets = $this->createPlanets([], 5);
+        $expectedCount = 5;
+        $this->createPlanets([], $expectedCount);
 
         $result = $this->repo->getAll();
 
-        $this->assertEquals($planets->count(), $result->count());
+        $this->assertEquals($expectedCount, $result->count());
     }
 
     public function testGetByIdReturnsPlanet(): void
@@ -37,6 +38,16 @@ class PlanetRepositoryTest extends TestCase
         $result = $this->repo->getById($planet->id);
 
         $this->assertInstanceOf(Planet::class, $result);
+    }
+
+    public function testGetFeaturedReturnsCollection(): void
+    {
+        $expectedCount = 8;
+        $this->createPlanets([], $expectedCount);
+
+        $result = $this->repo->getFeatured($expectedCount);
+
+        $this->assertEquals($expectedCount, $result->count());
     }
 
     private function createPlanets(array $args = [], int $amount = 1): Collection

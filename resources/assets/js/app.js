@@ -8,11 +8,11 @@ require('masonry-layout');
 require('icheck');
 require('jquery-validation');
 
-import test from './components/PlanetsListings.vue';
+import planet_listings from './components/planet/PlanetsListings.vue';
 
 new Vue({
-    el: '#test',
+    el: '#content',
     components: {
-        'test': test
+        'planet-listings': planet_listings
     },
 });

@@ -24,6 +24,11 @@ class PlanetEloquentRepository implements PlanetRepository
 
     public function getAll(): Collection
     {
-        return $this->model->get();
+        return $this->model->orderBy('created_at', 'asc')->get();
+    }
+
+    public function getFeatured(int $limit = 4): Collection
+    {
+        return $this->model->inRandomOrder()->limit($limit)->get();
     }
 }

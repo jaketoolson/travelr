@@ -7,7 +7,7 @@ use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Http\Controllers\Controller;
 use Orion\Travelr\Transformers\PlanetTransformer;
 
-class PlanetApiController extends Controller
+class FeaturedPlanetApiController extends Controller
 {
     /**
      * @var PlanetRepository
@@ -19,17 +19,10 @@ class PlanetApiController extends Controller
         $this->planetRepository = $planetRepository;
     }
 
-    public function index(): JsonResponse
+    public function index(int $limit = 4): JsonResponse
     {
-        $planets = $this->planetRepository->getAll();
+        $planets = $this->planetRepository->getFeatured($limit);
 
         return $this->jsonResponse(PlanetTransformer::transformToArray($planets));
-    }
-
-    public function show(int $planetId): JsonResponse
-    {
-        $planet = $this->planetRepository->getById($planetId);
-
-        return $this->jsonResponse(PlanetTransformer::transformToArray($planet));
     }
 }

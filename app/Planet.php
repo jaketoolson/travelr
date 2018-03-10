@@ -5,6 +5,7 @@ namespace Orion\Travelr;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Orion\Travelr\Entities\PlanetEntity;
 
 /**
@@ -24,7 +25,7 @@ use Orion\Travelr\Entities\PlanetEntity;
  */
 class Planet extends BaseModel
 {
-    use HasUuid;
+    use HasUuid, SoftDeletes;
 
     protected $table = 'planets';
 
