@@ -1,4 +1,4 @@
-import {spinner} from "../../common/spinner";
+import spinner from "../../common/spinner";
 import PlanetListing from "./PlanetListing";
 
 export default {

@@ -12978,6 +12978,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _spinner = __webpack_require__(40);
 
+var _spinner2 = _interopRequireDefault(_spinner);
+
 var _PlanetListing = __webpack_require__(48);
 
 var _PlanetListing2 = _interopRequireDefault(_PlanetListing);
@@ -13007,7 +13009,7 @@ exports.default = {
         }
     },
     components: {
-        'spinner': _spinner.spinner,
+        'spinner': _spinner2.default,
         'planet-listing': _PlanetListing2.default
     }
 };
@@ -13022,7 +13024,6 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.spinner = undefined;
 
 var _BounceLoader = __webpack_require__(41);
 
@@ -13032,7 +13033,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // more defaults to come
 
-var spinner = exports.spinner = _BounceLoader2.default;
+exports.default = _BounceLoader2.default;
 
 /***/ }),
 /* 41 */
@@ -13658,10 +13659,20 @@ var staticRenderFns = [
       "a",
       {
         staticClass: "image-wrapper background-image",
-        staticStyle: { "background-image": "url('assets/img/image-02.jpg')" },
+        staticStyle: {
+          "background-image":
+            "url('http://themestarz.net/html/craigs/assets/img/image-03.jpg')"
+        },
         attrs: { href: "single-listing-1.html" }
       },
-      [_c("img", { attrs: { src: "assets/img/image-02.jpg", alt: "" } })]
+      [
+        _c("img", {
+          attrs: {
+            src: "http://themestarz.net/html/craigs/assets/img/image-03.jpg",
+            alt: ""
+          }
+        })
+      ]
     )
   },
   function() {

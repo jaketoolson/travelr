@@ -7,8 +7,8 @@
                     <a href="single-listing-1.html" class="title">Creative Course</a>
                     <span class="tag">Offer</span>
                 </h3>
-                <a href="single-listing-1.html" class="image-wrapper background-image" style="background-image: url('assets/img/image-02.jpg');">
-                    <img src="assets/img/image-02.jpg" alt="">
+                <a href="single-listing-1.html" class="image-wrapper background-image" style="background-image: url('http://themestarz.net/html/craigs/assets/img/image-03.jpg');">
+                    <img src="http://themestarz.net/html/craigs/assets/img/image-03.jpg" alt="">
                 </a>
             </div>
             <h4 class="location">

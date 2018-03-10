@@ -1,5 +1,5 @@
-import s from 'vue-spinner/src/BounceLoader';
+import spinner from 'vue-spinner/src/BounceLoader';
 
 // more defaults to come
 
-export const spinner = s;
+export default spinner;
