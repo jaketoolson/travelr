@@ -5,6 +5,7 @@ namespace Orion\Travelr\Http\Controllers\Api;
 use Illuminate\Http\JsonResponse;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Http\Controllers\Controller;
+use Orion\Travelr\Transformers\PlanetTransformer;
 
 class PlanetApiController extends Controller
 {
@@ -22,13 +23,13 @@ class PlanetApiController extends Controller
     {
         $planets = $this->planetRepository->getAll();
 
-        return $this->jsonResponse($planets->toArray());
+        return $this->jsonResponse(PlanetTransformer::transformToArray($planets));
     }
 
     public function show(int $planetId): JsonResponse
     {
         $planet = $this->planetRepository->getById($planetId);
 
-        return $this->jsonResponse($planet->toArray());
+        return $this->jsonResponse(PlanetTransformer::transformToArray($planet));
     }
 }

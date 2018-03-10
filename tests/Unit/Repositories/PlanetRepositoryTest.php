@@ -2,7 +2,7 @@
 
 namespace Orion\Travelr\Tests\Unit\Repositories;
 
-use Orion\Travelr\Entities\PlanetEntity;
+use Illuminate\Support\Collection;
 use Orion\Travelr\Planet;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Tests\TestCase;
@@ -21,17 +21,26 @@ class PlanetRepositoryTest extends TestCase
         $this->repo = app(PlanetRepository::class);
     }
 
-    public function testGetByIdReturnsEntity(): void
+    public function testGetAllReturnsCollection(): void
     {
-        $planet = $this->createPlanet();
+        $planets = $this->createPlanets([], 5);
+
+        $result = $this->repo->getAll();
+
+        $this->assertEquals($planets->count(), $result->count());
+    }
+
+    public function testGetByIdReturnsPlanet(): void
+    {
+        $planet = $this->createPlanets()->first();
 
         $result = $this->repo->getById($planet->id);
 
-        $this->assertInstanceOf(PlanetEntity::class, $result);
+        $this->assertInstanceOf(Planet::class, $result);
     }
 
-    private function createPlanet(array $args = []): Planet
+    private function createPlanets(array $args = [], int $amount = 1): Collection
     {
-        return factory(Planet::class)->create($args);
+        return factory(Planet::class)->times($amount)->create($args);
     }
 }

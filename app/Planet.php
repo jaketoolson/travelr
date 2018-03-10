@@ -44,28 +44,28 @@ class Planet extends BaseModel
         'population',
     ];
 
-    public function transformModelToEntity()
-    {
-        $entity = new PlanetEntity(
-            $this->id,
-            $this->uuid,
-            $this->galaxy->transformModelToEntity(),
-            $this->name,
-            $this->description,
-            $this->diameter,
-            $this->climate,
-            $this->rotation_period_hours,
-            $this->population
-        );
-
-        if ($terrains = $this->terrains) {
-            foreach ($terrains as $terrain) {
-                $entity->addTerrain($terrain->transformModelToEntity());
-            }
-        }
-
-        return $entity;
-    }
+//    public function transformModelToEntity()
+//    {
+//        $entity = new PlanetEntity(
+//            $this->id,
+//            $this->uuid,
+//            $this->galaxy->transformModelToEntity(),
+//            $this->name,
+//            $this->description,
+//            $this->diameter,
+//            $this->climate,
+//            $this->rotation_period_hours,
+//            $this->population
+//        );
+//
+//        if ($terrains = $this->terrains) {
+//            foreach ($terrains as $terrain) {
+//                $entity->addTerrain($terrain->transformModelToEntity());
+//            }
+//        }
+//
+//        return $entity;
+//    }
 
     public function facilities(): BelongsToMany
     {

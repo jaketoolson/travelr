@@ -3,7 +3,6 @@
 namespace Orion\Travelr\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
-use Orion\Travelr\Entities\PlanetEntity;
 use Orion\Travelr\Planet;
 
 class PlanetEloquentRepository implements PlanetRepository
@@ -18,13 +17,13 @@ class PlanetEloquentRepository implements PlanetRepository
         $this->model = $planet;
     }
 
-    public function getById(int $id): PlanetEntity
+    public function getById(int $id): Planet
     {
-        return $this->model->findOrFail($id)->transformModelToEntity();
+        return $this->model->findOrFail($id);
     }
 
     public function getAll(): Collection
     {
-        return $this->model->transformModelsToEntities($this->model->get());
+        return $this->model->get();
     }
 }

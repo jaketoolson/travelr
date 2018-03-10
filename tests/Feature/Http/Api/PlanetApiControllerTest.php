@@ -8,6 +8,7 @@ use Mockery\MockInterface;
 use Orion\Travelr\Planet;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Tests\TestCase;
+use Orion\Travelr\Transformers\PlanetTransformer;
 
 class PlanetApiControllerTest extends TestCase
 {
@@ -36,7 +37,7 @@ class PlanetApiControllerTest extends TestCase
         $response = $this->get(route('api.planet.index'));
 
         $response->assertStatus(200);
-        $response->assertExactJson($collection->toArray());
+        $response->assertExactJson(PlanetTransformer::transformToArray($collection));
     }
 
     public function testShowMethodThrowsExceptionWithInvalidId(): void
@@ -62,12 +63,12 @@ class PlanetApiControllerTest extends TestCase
         $repo->shouldReceive('getById')
             ->with($planet->id)
             ->once()
-            ->andReturn($entity = $planet->transformModelToEntity());
+            ->andReturn($planet);
 
         $response = $this->get(route('api.planet.show', [$planet->id]));
 
         $response->assertStatus(200);
-        $response->assertExactJson($entity->toArray());
+        $response->assertExactJson(PlanetTransformer::transformToArray($planet));
     }
 
     private function createPlanets(array $args = [], int $amount = 1): Collection

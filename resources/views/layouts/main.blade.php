@@ -21,6 +21,13 @@
     </header>
 
     <section class="content">
+        <section class="block">
+            <div class="container">
+                <div id="test">
+                    <test all_planets_endpoint="{{ route('api.planet.index') }}"></test>
+                </div>
+            </div>
+        </section>
         {{--@yield('content')--}}
     </section>
 
