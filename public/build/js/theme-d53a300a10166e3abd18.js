@@ -79,6 +79,10 @@ module.exports = __webpack_require__(70);
 "use strict";
 
 
+/*
+ * Copyright (c) Jake Toolson 2018.
+ */
+
 // theme js
 var automaticGeoLocation = false;
 var resizeId;

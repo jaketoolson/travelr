@@ -11404,6 +11404,10 @@ return getSize;
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -11828,6 +11832,10 @@ module.exports = Cancel;
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -11850,6 +11858,10 @@ module.exports = Cancel;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+/*
+ * Copyright (c) Jake Toolson 2018.
+ */
+
 var filters = exports.filters = {
     filters: {
         truncate: function truncate(text, stop, clamp) {
@@ -12000,6 +12012,10 @@ var _PlanetsListings2 = _interopRequireDefault(_PlanetsListings);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/*
+ * Copyright (c) Jake Toolson 2018.
+ */
+
 window._ = __webpack_require__(52);
 window.$ = window.jQuery = __webpack_require__(2);
 window.Vue = __webpack_require__(54);
@@ -12089,7 +12105,9 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var token = document.head.querySelector('meta[name="csrf-token"]');
+var token = document.head.querySelector('meta[name="csrf-token"]'); /*
+                                                                     * Copyright (c) Jake Toolson 2018.
+                                                                     */
 
 var http = exports.http = _axios2.default.create({
     headers: {
@@ -13038,7 +13056,9 @@ exports.default = {
         'spinner': _spinner2.default,
         'planet-listing': _PlanetListing2.default
     }
-};
+}; /*
+    * Copyright (c) Jake Toolson 2018.
+    */
 
 /***/ }),
 /* 41 */
@@ -13059,7 +13079,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // more defaults to come
 
-exports.default = _BounceLoader2.default;
+exports.default = _BounceLoader2.default; /*
+                                           * Copyright (c) Jake Toolson 2018.
+                                           */
 
 /***/ }),
 /* 42 */

@@ -7,5 +7,6 @@
 npm-debug.log
 yarn-error.log
 .DS_STORE
+.vagrant
 
 routes/local.php

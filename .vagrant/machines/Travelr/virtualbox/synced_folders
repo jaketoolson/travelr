@@ -1,1 +1,0 @@
-{"virtualbox":{"/var/www/":{"type":null,"mount_options":["uid=1000","gid=1000"],"guestpath":"/var/www","hostpath":"/Users/Jake-FER/www/orion/travels","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/Jake-FER/www/orion/travels","disabled":false,"__vagrantfile":true}}}
