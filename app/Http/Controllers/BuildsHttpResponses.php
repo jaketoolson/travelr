@@ -3,15 +3,16 @@
 namespace Orion\Travelr\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use is_object;
 
 trait BuildsHttpResponses
 {
-    private $data = [];
+    private $data = [
+        'items' => [],
+    ];
 
-    public function setData(array $data): void
+    public function setItems(array $items): void
     {
-        $this->data = $data;
+        $this->data['items'] = $items;
     }
 
     public function jsonResponse($data = null, int $status = 200, array $headers = []): JsonResponse

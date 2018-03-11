@@ -11,7 +11,7 @@ $factory->define(Planet::class, function (Faker $faker) {
         },
         'uuid' => $faker->uuid,
         'name' => $faker->name,
-        'description' => $faker->sentence,
+        'description' => implode(',' , $faker->paragraphs(3)),
         'diameter' => 0,
         'climate' => 'hot',
         'rotation_period_hours' => random_int(1, 24),

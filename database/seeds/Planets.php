@@ -48,12 +48,20 @@ class Planets extends Seeder
         });
     }
 
-    private function makePlanet(string $name, int $diameter = 0, string $climate, int $rotation = 0, int $pop = 0): Planet
-    {
+    private function makePlanet(
+        string $name,
+        int $diameter = 0,
+        string $climate,
+        int $rotation = 0,
+        int $pop = 0
+    ): Planet {
+
+        $faker = Faker\Factory::create();
+
         return Planet::create([
             'galaxy_id' => $this->getRandomGalaxy()->id,
             'name' => $name,
-            'description' => '',
+            'description' => implode(',' , $faker->paragraphs(3)),
             'diameter' => $diameter,
             'climate' => $climate,
             'rotation_period_hours' => $rotation,

@@ -18,6 +18,8 @@ use Orion\Travelr\Entities\PlanetEntity;
  * @property string climate
  * @property int rotation_period_hours
  * @property null|int population
+ * @property int price_cents
+ * @property float price_dollars
  *
  * @property Collection|Facility[] facilities
  * @property Galaxy galaxy
@@ -28,6 +30,10 @@ class Planet extends BaseModel
     use HasUuid, SoftDeletes;
 
     protected $table = 'planets';
+
+    protected $appends = [
+        'price_dollars',
+    ];
 
     protected $with = [
         'galaxy',
@@ -43,6 +49,7 @@ class Planet extends BaseModel
         'climate',
         'rotation_period_hours',
         'population',
+        'price_cents',
     ];
 
 //    public function transformModelToEntity()
@@ -67,6 +74,11 @@ class Planet extends BaseModel
 //
 //        return $entity;
 //    }
+
+    public function getPriceDollarsAttribute(): float
+    {
+        return round($this->price_cents/100, 2);
+    }
 
     public function facilities(): BelongsToMany
     {

@@ -2,23 +2,35 @@
 
 namespace Orion\Travelr\Transformers;
 
-use Orion\Travelr\BaseModel;
+use Orion\Travelr\Planet;
 
 class PlanetTransformer extends BaseTransformer
 {
-    public function toArray(BaseModel $planet): array
+    /**
+     * @param Planet $planet
+     * @return array
+     */
+    public function toArray($planet): array
     {
         return [
-            'id' => $planet->id,
+            'id' => (int) $planet->id,
             'uuid' => $planet->uuid,
-            'galaxy' => $planet->galaxy->toArray(),
             'name' => $planet->name,
             'description' => $planet->description,
-            'diameter' => $planet->diameter,
-            'climate' => $planet->climate,
-            'rotation_period_hours' => $planet->rotation_period_hours,
-            'population' => $planet->population,
-            'terrains' => $planet->terrains->toArray(),
+            'diameter' => (int) $planet->diameter,
+            'climate' => (int) $planet->climate,
+            'rotation_period_hours' => (int) $planet->rotation_period_hours,
+            'population' => (int) $planet->population,
+            'price_cents' => (int) $planet->price_cents,
+            'price_dollars' => (float) $planet->price_dollars,
+            'relationships' => [
+                'galaxy' => GalaxyTransformer::transformToArray($planet->galaxy),
+                'terrains' => TerrainTransformer::transformToArray($planet->terrains),
+            ],
+            'links' => [
+                'rel' => 'self',
+                'uri' => route('api.planet.show', [$planet->id]),
+            ]
         ];
     }
 }

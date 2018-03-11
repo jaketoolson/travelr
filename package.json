@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js --config webpack.config.js",
-    "build:prod": "npm run build -- -p"
+    "build:prod": "npm run build -- -p",
+    "watch": "npm run build -- --watch --watch-poll"
   },
   "dependencies": {
     "axios": "^0.17",

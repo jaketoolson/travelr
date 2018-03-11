@@ -20,9 +20,9 @@ class Galaxies extends Seeder
             'Comae Chronos',
             'Apus Kentaurus',
             'Gamma Orithyia',
-            'Astraeus Galaxy',
+            'Astraeus',
             'Aquarii Nebula',
-            'Vortex Galaxy',
+            'Vortex',
         ];
     }
 }

@@ -3,7 +3,6 @@
 namespace Orion\Travelr\Transformers;
 
 use Illuminate\Support\Collection;
-use Orion\Travelr\BaseModel;
 
 abstract class BaseTransformer
 {
@@ -17,7 +16,7 @@ abstract class BaseTransformer
         return $static->toArray($data);
     }
 
-    public function toArray(BaseModel $modelOrCollection): array
+    public function toArray($modelOrCollection): array
     {
         //
     }

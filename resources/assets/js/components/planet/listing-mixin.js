@@ -1,7 +1,11 @@
 import spinner from "../../common/spinner";
 import PlanetListing from "./PlanetListing";
+import {filters} from '../../common/mixins';
 
 export default {
+    mixins: [
+        filters,
+    ],
     props: {
         planets_endpoint: {
             type: String,
