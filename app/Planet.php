@@ -21,6 +21,7 @@ use Orion\Travelr\Entities\PlanetEntity;
  * @property int price_cents
  * @property float price_dollars
  *
+ * @property File photo
  * @property Collection|Facility[] facilities
  * @property Galaxy galaxy
  * @property Collection|Terrain[] terrains
@@ -37,7 +38,8 @@ class Planet extends BaseModel
 
     protected $with = [
         'galaxy',
-        'terrains'
+        'terrains',
+        'photo'
     ];
 
     protected $fillable = [
@@ -50,6 +52,7 @@ class Planet extends BaseModel
         'rotation_period_hours',
         'population',
         'price_cents',
+        'photo',
     ];
 
 //    public function transformModelToEntity()
@@ -78,6 +81,11 @@ class Planet extends BaseModel
     public function getPriceDollarsAttribute(): float
     {
         return round($this->price_cents/100, 2);
+    }
+
+    public function photo()
+    {
+        return $this->morphOne(File::class, 'fileable');
     }
 
     public function facilities(): BelongsToMany

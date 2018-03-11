@@ -16,5 +16,11 @@ Since Eloquent uses magic getters, I have added @property docblocks to all model
 ****Entities:****
 I created entities with aggregates because I prefer to keep the Eloquent ORM models to the data layers only.  
 
-Photo Credits:
-- Octavian Rosca on Unsplash
+# Photo Credits:
+- Octavian Rosca
+- Go Wild
+- Ales Krivec
+- Alberto Restifo
+- Sergei Akulich
+- Pablo García Saldaña
+- David Marcu

@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 0.0.1 on 2018-03-10 15:35:24.
+ * Generated for Laravel 5.6.7 on 2018-03-10 23:04:24.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2674,8 +2674,8 @@ namespace Illuminate\Support\Facades {
          * @param string $key The key of the item to store.
          * @param mixed $value The value of the item to store, must be serializable.
          * @param null|int|\DateInterval $ttl Optional. The TTL value of this item. If no value is sent and
-         *                                     the driver supports TTL then the library may set a default value
-         *                                     for it or let the driver take care of that.
+         *                                      the driver supports TTL then the library may set a default value
+         *                                      for it or let the driver take care of that.
          * @return bool True on success and false on failure.
          * @throws \Psr\SimpleCache\InvalidArgumentException
          *   MUST be thrown if the $key string is not a legal value.
@@ -2704,8 +2704,8 @@ namespace Illuminate\Support\Facades {
          *
          * @param \Psr\SimpleCache\iterable $values A list of key => value pairs for a multiple-set operation.
          * @param null|int|\DateInterval $ttl Optional. The TTL value of this item. If no value is sent and
-         *                                      the driver supports TTL then the library may set a default value
-         *                                      for it or let the driver take care of that.
+         *                                       the driver supports TTL then the library may set a default value
+         *                                       for it or let the driver take care of that.
          * @return bool True on success and false on failure.
          * @throws \Psr\SimpleCache\InvalidArgumentException
          *   MUST be thrown if $values is neither an array nor a Traversable,
@@ -12405,6 +12405,86 @@ namespace Illuminate\Support\Facades {
  
 }
 
+namespace Bkwld\Croppa { 
+
+    class Facade {
+        
+        /**
+         * Delete source image and all of it's crops
+         *
+         * @param string $url URL of src image
+         * @return void 
+         * @see Bkwld\Croppa\Storage::deleteSrc()
+         * @see Bkwld\Croppa\Storage::deleteCrops()
+         * @static 
+         */ 
+        public static function delete($url)
+        {
+            \Bkwld\Croppa\Helpers::delete($url);
+        }
+        
+        /**
+         * Delete just the crops, leave the source image
+         *
+         * @param string $url URL of src image
+         * @return void 
+         * @see Bkwld\Croppa\Storage::deleteCrops()
+         * @static 
+         */ 
+        public static function reset($url)
+        {
+            \Bkwld\Croppa\Helpers::reset($url);
+        }
+        
+        /**
+         * Create an image tag rather than just the URL.  Accepts the same params as url()
+         *
+         * @param string $url URL of an image that should be cropped
+         * @param integer $width Target width
+         * @param integer $height Target height
+         * @param array $options Additional Croppa options, passed as key/value pairs.  Like array('resize')
+         * @return string An HTML img tag for the new image
+         * @see Bkwld\Croppa\URL::generate()
+         * @static 
+         */ 
+        public static function tag($url, $width = null, $height = null, $options = null)
+        {
+            return \Bkwld\Croppa\Helpers::tag($url, $width, $height, $options);
+        }
+        
+        /**
+         * Pass through URL requests to URL->generate().
+         *
+         * @param string $url URL of an image that should be cropped
+         * @param integer $width Target width
+         * @param integer $height Target height
+         * @param array $options Additional Croppa options, passed as key/value pairs.  Like array('resize')
+         * @return string The new path to your thumbnail
+         * @see Bkwld\Croppa\URL::generate()
+         * @static 
+         */ 
+        public static function url($url, $width = null, $height = null, $options = null)
+        {
+            return \Bkwld\Croppa\Helpers::url($url, $width, $height, $options);
+        }
+        
+        /**
+         * Render image
+         *
+         * @param string $url URL of an image that should be rendered
+         * @return string The new path to your thumbnail
+         * @see Bkwld\Croppa\URL::generate()
+         * @static 
+         */ 
+        public static function render($url)
+        {
+            return \Bkwld\Croppa\Helpers::render($url);
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -14572,6 +14652,8 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class Croppa extends \Bkwld\Croppa\Facade {}
  
 }
 

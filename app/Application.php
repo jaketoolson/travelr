@@ -6,10 +6,10 @@ use Illuminate\Foundation\Application as BaseApplication;
 
 class Application extends BaseApplication
 {
-    public const VERSION = '0.0.1';
+    public const TRAVELR_VERSION = '0.0.1';
 
     public static function getAppVersion(): string
     {
-        return self::VERSION;
+        return self::TRAVELR_VERSION;
     }
 }

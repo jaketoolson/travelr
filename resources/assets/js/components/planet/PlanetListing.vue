@@ -7,8 +7,10 @@
                     <a :href="item.links.uri" class="title">{{ item.name }}</a>
                     <!--<span class="tag">Offer</span>-->
                 </h3>
-                <a :href="item.links.uri" class="image-wrapper background-image" style="background-image: url('http://themestarz.net/html/craigs/assets/img/image-03.jpg');">
-                    <img src="http://themestarz.net/html/craigs/assets/img/image-03.jpg" alt="">
+                <a :href="item.links.uri"
+                   class="image-wrapper background-image"
+                   :style="`background-image: url('${item.photo.links.thumb.uri}');`">
+                    <img :src="item.photo.links.thumb.uri" alt="">
                 </a>
             </div>
             <h4 class="location">
