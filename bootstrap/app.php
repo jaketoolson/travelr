@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) Jake Toolson 2018.
+ */
 
 $app = new Orion\Travelr\Application(
     realpath(__DIR__.'/../')

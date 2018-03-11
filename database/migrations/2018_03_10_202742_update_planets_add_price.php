@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) Jake Toolson 2018.
+ */
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;

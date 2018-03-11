@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) Jake Toolson 2018.
+ */
 
 use Orion\Travelr\Galaxy;
 use Illuminate\Database\Seeder;

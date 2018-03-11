@@ -1,3 +1,7 @@
+<!--
+  - Copyright (c) Jake Toolson 2018.
+  -->
+
 <template>
     <div :class="`items grid-xl-${display_per_row}-items grid-lg-${display_per_row-1}-items grid-md-2-items ${display_type}`">
         <spinner v-if="!ready"></spinner>

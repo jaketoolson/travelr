@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) Jake Toolson 2018.
+ */
 
 Route::get('/', function () {
     return view('welcome');

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) Jake Toolson 2018.
+ */
 
 use Faker\Generator as Faker;
 use Orion\Travelr\Galaxy;

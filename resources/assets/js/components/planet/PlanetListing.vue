@@ -1,3 +1,7 @@
+<!--
+  - Copyright (c) Jake Toolson 2018.
+  -->
+
 <template>
     <div v-if="item" class="item">
         <div class="wrapper">

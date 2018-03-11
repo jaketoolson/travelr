@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Jake Toolson 2018.
+ */
+
 // theme js
 var automaticGeoLocation = false;
 var resizeId;

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Jake Toolson 2018.
+ */
+
 import axios from 'axios';
 
 let token = document.head.querySelector('meta[name="csrf-token"]');

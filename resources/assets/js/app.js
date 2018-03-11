@@ -1,4 +1,8 @@
 
+/*
+ * Copyright (c) Jake Toolson 2018.
+ */
+
 window._ = require('lodash');
 window.$ = window.jQuery = require('jquery');
 window.Vue = require('vue');

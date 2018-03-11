@@ -1,3 +1,6 @@
+/*
+ * Copyright (c) Jake Toolson 2018.
+ */
 
 export const filters = {
     filters: {

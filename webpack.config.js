@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Jake Toolson 2018.
+ */
+
 const path = require('path');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
