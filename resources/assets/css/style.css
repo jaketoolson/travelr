@@ -2389,14 +2389,14 @@ h3 {
 }
 h4 {}
 h4.location {}
-h4.location:before {
-    font-family: 'fontawesome';
-    content: "\f041";
-    position: relative;
-    font-size: 1.3rem;
-    opacity: .6;
-    margin-right: .2rem;
-}
+/*h4.location:before {*/
+    /*font-family: 'fontawesome';*/
+    /*content: "\f041";*/
+    /*position: relative;*/
+    /*font-size: 1.3rem;*/
+    /*opacity: .6;*/
+    /*margin-right: .2rem;*/
+/*}*/
 hr {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -2600,7 +2600,7 @@ select.selectized {
     transition: .3s ease;
     border-radius: .3rem;
     font-weight: 500;
-    padding: 1.7rem;
+    padding: 1.55rem;
     height: auto;
     background-image: none;
     background-color: #fff;

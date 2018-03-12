@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Planets::class);
         $this->call(PlanetPrices::class);
         $this->call(PlanetPhotos::class);
+        $this->call(FeaturedPlanets::class);
     }
 
     /**

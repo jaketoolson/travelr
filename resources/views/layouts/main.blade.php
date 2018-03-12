@@ -1,14 +1,20 @@
 @include('layouts._htmlheader')
 
-<div class="page">
+<div class="page" id="content">
     <header class="hero has-dark-background">
         <div class="hero-wrapper">
-            @include('layouts._hero__secondary_nav')
             <div class="page-title">
                 <div class="container">
                     <h1 class="center">
                         Where do you want to travel?
                     </h1>
+                </div>
+            </div>
+            <div class="hero-form form">
+                <div class="container">
+                    <search-bar
+                            galaxies_endpoint="{{ route('api.galaxy.index') }}">
+                    </search-bar>
                 </div>
             </div>
             <div class="background">
@@ -20,7 +26,7 @@
         </div>
     </header>
 
-    <section class="content" id="content">
+    <section class="content">
         <section class="block">
             <div class="container">
                 @include('partials.planets.featured')

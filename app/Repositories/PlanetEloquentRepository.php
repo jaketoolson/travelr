@@ -32,6 +32,6 @@ class PlanetEloquentRepository implements PlanetRepository
 
     public function getFeatured(int $limit = 4): Collection
     {
-        return $this->model->inRandomOrder()->limit($limit)->get();
+        return $this->model->featured()->inRandomOrder()->limit($limit)->get();
     }
 }

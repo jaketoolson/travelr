@@ -4,6 +4,7 @@
 - [ ] Create base VUE components
 - [ ] Setup basic MVC structure
 - [ ] Write basic unit tests
+- [ ] Define basic frontend SPA setup
 
 # Next
 - [ ] Define common json api schemas : accept and response

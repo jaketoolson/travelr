@@ -7,6 +7,7 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const assetsDir = __dirname +'/resources/assets/';
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -17,11 +18,13 @@ module.exports = {
             assetsDir + 'js/theme.js'
         ],
         'css/vendor' : [
-            __dirname + '/node_modules/bootstrap/dist/css/bootstrap.css',
+            assetsDir + 'scss/vendor.scss',
+            __dirname + '/node_modules/vue-multiselect/dist/vue-multiselect.min.css'
         ],
         'css/app' : [
+            assetsDir + 'css/owl.carousel.min.css',
             assetsDir + 'css/style.css',
-            assetsDir + 'css/owl.carousel.min.css'
+            assetsDir + 'css/custom.css'
         ]
     },
     output: {
@@ -49,21 +52,25 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|jpeg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: 'img/[name].[ext]',
-                            publicPath: '/build/'
-                        }
-                    }
-                ]
+                loader: 'file-loader',
+                options: {
+                    name: 'img/[name].[ext]',
+                    publicPath: '/build/'
+                }
             },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
                     use: ['css-loader'],
+                    fallback: 'style-loader'
+                })
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                use: ExtractTextPlugin.extract({
+                    use: ['css-loader', 'sass-loader'],
+                    fallback: "style-loader"
                 })
             },
             {
@@ -73,6 +80,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new UglifyJSPlugin(),
         new WebpackAssetsManifest({
             output: 'rev-manifest.json',
         }),

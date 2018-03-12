@@ -19,6 +19,7 @@ class GalaxyTransformer extends BaseTransformer
             'id' => (int) $galaxy->id,
             'uuid' => $galaxy->uuid,
             'name' => $galaxy->name,
+            'planets_count' => $galaxy->planets->count(),
             'links' => [
                 'rel' => 'self',
                 'uri' => route('api.galaxy.show', [$galaxy->id]),

@@ -173,7 +173,7 @@ return [
          */
         Orion\Travelr\Providers\AppServiceProvider::class,
         Orion\Travelr\Providers\AuthServiceProvider::class,
-        Orion\Travelr\Providers\ModelRepositoryServiceProvider::class,
+        Orion\Travelr\Providers\DataRepositoryServiceProvider::class,
         // Orion\Travelr\Providers\BroadcastServiceProvider::class,
         Orion\Travelr\Providers\EventServiceProvider::class,
         Orion\Travelr\Providers\RouteServiceProvider::class,

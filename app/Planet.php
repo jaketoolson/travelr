@@ -5,10 +5,12 @@
 
 namespace Orion\Travelr;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 use Orion\Travelr\Entities\PlanetEntity;
 
 /**
@@ -23,6 +25,7 @@ use Orion\Travelr\Entities\PlanetEntity;
  * @property null|int population
  * @property int price_cents
  * @property float price_dollars
+ * @property Carbon|null featured
  *
  * @property File photo
  * @property Collection|Facility[] facilities
@@ -56,6 +59,7 @@ class Planet extends BaseModel
         'population',
         'price_cents',
         'photo',
+        'featured'
     ];
 
 //    public function transformModelToEntity()
@@ -84,6 +88,11 @@ class Planet extends BaseModel
     public function getPriceDollarsAttribute(): float
     {
         return round($this->price_cents/100, 2);
+    }
+
+    public function scopeFeatured(Builder $builder): Builder
+    {
+        return $builder->whereNotNull('featured');
     }
 
     public function photo()

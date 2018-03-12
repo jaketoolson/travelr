@@ -5,6 +5,7 @@
 
 namespace Orion\Travelr;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Orion\Travelr\Entities\GalaxyEntity;
 
 /**
@@ -30,5 +31,10 @@ class Galaxy extends BaseModel
             $this->uuid,
             $this->name
         );
+    }
+
+    public function planets(): HasMany
+    {
+        return $this->hasMany(Planet::class, 'galaxy_id');
     }
 }

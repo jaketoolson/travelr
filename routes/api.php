@@ -13,5 +13,5 @@ Route::get('/planet/featured/{limit?}', 'FeaturedPlanetApiController@index')->na
 Route::get('/planet', 'PlanetApiController@index')->name('api.planet.index');
 Route::get('/planet/{id}', 'PlanetApiController@show')->name('api.planet.show');
 
-
-Route::get('/galaxy/{id}', 'PlanetApiController@show')->name('api.galaxy.show');
+Route::get('/galaxy', 'GalaxyApiController@index')->name('api.galaxy.index');
+Route::get('/galaxy/{id}', 'GalaxyApiController@show')->name('api.galaxy.show');

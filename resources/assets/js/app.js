@@ -12,11 +12,13 @@ require('masonry-layout');
 require('icheck');
 require('jquery-validation');
 
-import planet_listings from './components/planet/PlanetsListings.vue';
+import planet_listings from './components/planet/PlanetsListings';
+import search_bar from './components/search/SearchBar';
 
 new Vue({
     el: '#content',
     components: {
-        'planet-listings': planet_listings
+        'planet-listings': planet_listings,
+        'search-bar': search_bar
     },
 });
