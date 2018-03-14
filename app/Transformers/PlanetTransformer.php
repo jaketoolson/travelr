@@ -26,7 +26,7 @@ class PlanetTransformer extends BaseTransformer
             'population' => (int) $planet->population,
             'price_cents' => (int) $planet->price_cents,
             'price_dollars' => (float) $planet->price_dollars,
-            'photo' => FileTransformer::transformToArray($planet->photo),
+            'photo' => $planet->photo ? FileTransformer::transformToArray($planet->photo) : null,
             'relationships' => [
                 'galaxy' => GalaxyTransformer::transformToArray($planet->galaxy),
                 'terrains' => TerrainTransformer::transformToArray($planet->terrains),

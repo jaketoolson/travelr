@@ -12,13 +12,13 @@
             <div class="float-right d-xs-none thumbnail-toggle">
                 <slot name="section_toggles" slot-scope="props">
                     <a href="javascript:void(0)"
-                       :class="[{ active: activeDisplayType === 'grid' }, ' change-class ']"
+                       :class="[{ active: active_display_type === 'grid' }, ' change-class ']"
                        @click.prevent="toggleDisplayType('grid')"
                     >
                         <i class="fa fa-th"></i>
                     </a>
                     <a href="javascript:void(0)"
-                       :class="[{ active: activeDisplayType === 'list' }, ' change-class ']"
+                       :class="[{ active: active_display_type === 'list' }, ' change-class ']"
                        @click.prevent="toggleDisplayType('list')"
                     >
                         <i class="fa fa-th-list"></i>
@@ -26,7 +26,7 @@
                 </slot>
             </div>
         </div>
-        <div :class="`items grid-xl-${display_per_row}-items grid-lg-${display_per_row-1}-items grid-md-2-items ${activeDisplayType}`">
+        <div :class="`items grid-xl-${display_per_row}-items grid-lg-${display_per_row-1}-items grid-md-2-items ${active_display_type}`">
             <div v-for="item in items" :key="item.id">
                 <planet-listing :item="item"></planet-listing>
             </div>
@@ -41,11 +41,16 @@
         mixins: [
             listing_mixin
         ],
+        props : {
+            planets_endpoint: {
+                type: String,
+                required: true
+            },
+        },
         data() {
             return {
                 ready : false,
                 items : [],
-                activeDisplayType : null,
             }
         },
         methods: {
@@ -65,7 +70,7 @@
                 if (_.indexOf(['list', 'grid'], displayType) === -1) {
                     displayType = 'list';
                 }
-                this.activeDisplayType = displayType;
+                this.active_display_type = displayType;
             },
         },
         updated() {

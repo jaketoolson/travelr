@@ -13,8 +13,9 @@
             <div class="hero-form form">
                 <div class="container">
                     <search-bar
-                            galaxies_endpoint="{{ route('api.galaxy.index') }}">
-                    </search-bar>
+                            galaxies_endpoint="{{ route('api.galaxy.index') }}"
+                            planets_search_endpoint="{{ route('api.planet.filter') }}"
+                    ></search-bar>
                 </div>
             </div>
             <div class="background">

@@ -28,13 +28,18 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-3">
-                <button type="submit" class="btn btn-primary width-100">Search</button>
+                <button
+                        type="button"
+                        @click.prevent="searchPlanets"
+                        class="btn btn-primary width-100">Search</button>
             </div>
         </div>
+        <search-result v-if="foundPlanets.length > 0" :items="foundPlanets"></search-result>
     </div>
 </template>
 
 <script>
+    import SearchResults from './SearchResults';
     import {http} from '../../common/axios';
     import Multiselect from 'vue-multiselect'
     export default {
@@ -43,10 +48,16 @@
                 type: String,
                 required: true
             },
+            planets_search_endpoint : {
+                type: String,
+                required: true
+            },
         },
         data() {
             return {
                 ready : false,
+                searching : false,
+                foundPlanets : {},
                 fields: {
                     galaxies : [],
                     galaxy : null,
@@ -64,13 +75,21 @@
                 }).catch(e => {
 
                 })
-            }
+            },
+            searchPlanets() {
+                http.get(this.planets_search_endpoint).then(response => {
+                    this.foundPlanets = response.data;
+                }).catch(e => {
+
+                })
+            },
         },
         mounted() {
             this.fetchGalaxies();
         },
         components: {
             Multiselect,
+            'search-result' : SearchResults
         },
     }
 </script>

@@ -22,4 +22,11 @@ interface PlanetRepository
      * @return Collection|Planet[]
      */
     public function getFeatured(int $limit = 4): Collection;
+
+    /**
+     * @param string|null $name
+     * @param int|null $galaxyId
+     * @return Collection|Planet[]
+     */
+    public function search(string $name = null, int $galaxyId = null): Collection;
 }
