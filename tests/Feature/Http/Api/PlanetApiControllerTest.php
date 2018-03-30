@@ -41,7 +41,7 @@ class PlanetApiControllerTest extends TestCase
         $expectedJson = PlanetTransformer::collection($collection);
 
         $response->assertStatus(200);
-        $response->assertExactJson(['data' => $expectedJson->jsonSerialize()]);
+        $this->assertJsonResponseEqualsArray($response, ['data' => $expectedJson->jsonSerialize()]);
     }
 
     public function testShowMethodThrowsExceptionWithInvalidId(): void
@@ -73,7 +73,7 @@ class PlanetApiControllerTest extends TestCase
         $expectedJson = new PlanetTransformer($planet);
 
         $response->assertStatus(201);
-        $response->assertExactJson(['data' => $expectedJson->jsonSerialize()]);
+        $this->assertJsonResponseEqualsArray($response, ['data' => $expectedJson->jsonSerialize()]);
     }
 
     private function createPlanets(array $args = [], int $amount = 1): Collection

@@ -9,6 +9,7 @@ use Mockery;
 use Mockery\MockInterface;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Foundation\Testing\TestResponse;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -26,5 +27,13 @@ abstract class TestCase extends BaseTestCase
     public function mock(string $class): MockInterface
     {
         return Mockery::mock($class);
+    }
+
+    public function assertJsonResponseEqualsArray(TestResponse $response, array $expected): void
+    {
+        $expected = json_decode(json_encode($expected), true);
+        $actual = json_decode($response->getContent(), true);
+
+        $this->assertEquals($expected, $actual);
     }
 }
