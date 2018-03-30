@@ -1,13 +1,12 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr;
+namespace Orion\Travelr\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Orion\Travelr\Entities\TerrainEntity;
 
 /**
  * @property int id
@@ -17,7 +16,7 @@ use Orion\Travelr\Entities\TerrainEntity;
  *
  * @property Collection|Planet[] planets
  */
-class Terrain extends BaseModel
+class Terrain extends BaseEloquentModel
 {
     use HasUuid;
 
@@ -28,23 +27,6 @@ class Terrain extends BaseModel
         'name',
         'description',
     ];
-
-    public function transformModelToEntity()
-    {
-        $terrain = new TerrainEntity(
-            $this->id,
-            $this->uuid,
-            $this->name
-        );
-
-        if ($planets = $this->planets) {
-            foreach ($planets as $planet) {
-                $terrain->addPlanet($planet->transformModelToEntity());
-            }
-        }
-
-        return $terrain;
-    }
 
     public function planets(): BelongsToMany
     {

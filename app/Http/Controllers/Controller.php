@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Http\Controllers;
@@ -12,5 +12,5 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, BuildsHttpResponses, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

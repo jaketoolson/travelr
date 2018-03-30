@@ -1,19 +1,21 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr;
+namespace Orion\Travelr\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Orion\Travelr\Entities\GalaxyEntity;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * @property int id
  * @property string uuid
  * @property string name
+ *
+ * @property Collection|Planet[] planets
  */
-class Galaxy extends BaseModel
+class Galaxy extends BaseEloquentModel
 {
     use HasUuid;
 
@@ -23,15 +25,6 @@ class Galaxy extends BaseModel
         'uuid',
         'name',
     ];
-
-    public function transformModelToEntity()
-    {
-        return new GalaxyEntity(
-            $this->id,
-            $this->uuid,
-            $this->name
-        );
-    }
 
     public function planets(): HasMany
     {

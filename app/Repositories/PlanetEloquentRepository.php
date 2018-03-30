@@ -1,23 +1,18 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
-use Orion\Travelr\Planet;
+use Orion\Travelr\Models\Planet;
 
-class PlanetEloquentRepository implements PlanetRepository
+class PlanetEloquentRepository extends BaseEloquentRepository implements PlanetRepository
 {
-    /**
-     * @var Planet
-     */
-    private $model;
-
-    public function __construct(Planet $planet)
+    public function model(): string
     {
-        $this->model = $planet;
+        return Planet::class;
     }
 
     public function getById(int $id): Planet

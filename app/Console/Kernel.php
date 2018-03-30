@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Console;

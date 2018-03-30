@@ -3,7 +3,7 @@
  * Copyright (c) Jake Toolson 2018.
  */
 
-$app = new Orion\Travelr\Application(
+$app = new Orion\Travelr\Foundation\Application(
     realpath(__DIR__.'/../')
 );
 
@@ -19,7 +19,7 @@ $app->singleton(
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    Orion\Travelr\Exceptions\Handler::class
+    Orion\Travelr\Foundation\Exceptions\Handler::class
 );
 
 return $app;

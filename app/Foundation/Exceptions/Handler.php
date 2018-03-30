@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr\Exceptions;
+namespace Orion\Travelr\Foundation\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

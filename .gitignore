@@ -9,4 +9,7 @@ yarn-error.log
 .DS_STORE
 .vagrant
 
+.phpstorm.meta.php
+_ide_helper.php
+
 routes/local.php

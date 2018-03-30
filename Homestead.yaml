@@ -8,13 +8,14 @@ keys:
     - ~/.ssh/id_rsa
 folders:
     -
-        map: ~/www/orion/travels
+        map: ~/www/orion/travelr
         to: /var/www/
 sites:
     -
         map: travelr.local
         to: /var/www/public
 databases:
-    - homestead
+    - travelr
+    - travelr_testing
 name: Travelr
 hostname: Travelr

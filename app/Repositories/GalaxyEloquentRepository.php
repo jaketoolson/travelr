@@ -1,23 +1,18 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
-use Orion\Travelr\Galaxy;
+use Orion\Travelr\Models\Galaxy;
 
-class GalaxyEloquentRepository implements GalaxyRepository
+class GalaxyEloquentRepository extends BaseEloquentRepository implements GalaxyRepository
 {
-    /**
-     * @var Galaxy
-     */
-    private $model;
-
-    public function __construct(Galaxy $galaxy)
+    public function model(): string
     {
-        $this->model = $galaxy;
+        return Galaxy::class;
     }
 
     public function getById(int $id): Galaxy

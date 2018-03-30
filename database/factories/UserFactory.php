@@ -4,7 +4,7 @@
  */
 
 use Faker\Generator as Faker;
-use Orion\Travelr\User;
+use Orion\Travelr\Models\User;
 
 $factory->define(User::class, function (Faker $faker) {
     return [

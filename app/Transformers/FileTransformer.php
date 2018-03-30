@@ -1,20 +1,19 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Transformers;
 
-use Orion\Travelr\File;
+use Orion\Travelr\Models\File;
 
-class FileTransformer extends BaseTransformer
+class FileTransformer extends BaseHttpResource
 {
-    /**
-     * @param File $file
-     * @return array
-     */
-    public function toArray($file): array
+    public function toArray($request): array
     {
+        /** @var File $file */
+        $file = $this->getResource();
+
         return [
             'id' => (int) $file->id,
             'uuid' => $file->uuid,

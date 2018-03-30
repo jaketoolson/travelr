@@ -4,8 +4,8 @@
  */
 
 use Faker\Generator as Faker;
-use Orion\Travelr\Planet;
-use Orion\Travelr\Galaxy;
+use Orion\Travelr\Models\Planet;
+use Orion\Travelr\Models\Galaxy;
 
 $factory->define(Planet::class, function (Faker $faker) {
     return [

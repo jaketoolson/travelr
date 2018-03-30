@@ -1,12 +1,12 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
-use Orion\Travelr\Planet;
+use Orion\Travelr\Models\Planet;
 
 interface PlanetRepository
 {

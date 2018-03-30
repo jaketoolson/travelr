@@ -5,8 +5,9 @@
 
 namespace Orion\Travelr\Tests\Unit\Repositories;
 
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
-use Orion\Travelr\Planet;
+use Orion\Travelr\Models\Planet;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Tests\TestCase;
 
@@ -46,7 +47,7 @@ class PlanetRepositoryTest extends TestCase
     public function testGetFeaturedReturnsCollection(): void
     {
         $expectedCount = 8;
-        $this->createPlanets([], $expectedCount);
+        $this->createPlanets(['featured' => Carbon::now()], $expectedCount);
 
         $result = $this->repo->getFeatured($expectedCount);
 

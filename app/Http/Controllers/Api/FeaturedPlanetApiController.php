@@ -1,11 +1,10 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Http\Controllers\Controller;
 use Orion\Travelr\Transformers\PlanetTransformer;
@@ -22,10 +21,10 @@ class FeaturedPlanetApiController extends Controller
         $this->planetRepository = $planetRepository;
     }
 
-    public function index(int $limit = 4): JsonResponse
+    public function index(int $limit = 4)
     {
         $planets = $this->planetRepository->getFeatured($limit);
 
-        return $this->jsonResponse(PlanetTransformer::transformToArray($planets));
+        return PlanetTransformer::collection($planets);
     }
 }

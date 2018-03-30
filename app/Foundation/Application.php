@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr;
+namespace Orion\Travelr\Foundation;
 
 use Illuminate\Foundation\Application as BaseApplication;
 

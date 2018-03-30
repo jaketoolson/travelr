@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr;
+namespace Orion\Travelr\Models;
 
 /**
  * @property int id
@@ -14,7 +14,7 @@ namespace Orion\Travelr;
  * @property string fileable_type
  * @property string thumbnail
  */
-class File extends BaseModel
+class File extends BaseEloquentModel
 {
     use HasUuid;
 

@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr;
+namespace Orion\Travelr\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
-use Orion\Travelr\Entities\PlanetEntity;
 
 /**
  * @property int id
@@ -32,7 +31,7 @@ use Orion\Travelr\Entities\PlanetEntity;
  * @property Galaxy galaxy
  * @property Collection|Terrain[] terrains
  */
-class Planet extends BaseModel
+class Planet extends BaseEloquentModel
 {
     use HasUuid, SoftDeletes;
 
@@ -61,29 +60,6 @@ class Planet extends BaseModel
         'photo',
         'featured'
     ];
-
-//    public function transformModelToEntity()
-//    {
-//        $entity = new PlanetEntity(
-//            $this->id,
-//            $this->uuid,
-//            $this->galaxy->transformModelToEntity(),
-//            $this->name,
-//            $this->description,
-//            $this->diameter,
-//            $this->climate,
-//            $this->rotation_period_hours,
-//            $this->population
-//        );
-//
-//        if ($terrains = $this->terrains) {
-//            foreach ($terrains as $terrain) {
-//                $entity->addTerrain($terrain->transformModelToEntity());
-//            }
-//        }
-//
-//        return $entity;
-//    }
 
     public function getPriceDollarsAttribute(): float
     {

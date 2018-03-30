@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr;
+namespace Orion\Travelr\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,7 +21,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
  * @property string password
  * @property string remember_token
  */
-class User extends BaseModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
+class User extends BaseEloquentModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
     use HasUuid, Notifiable, Authenticatable, CanResetPassword, Authorizable;
 
@@ -36,9 +36,4 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
         'password',
         'remember_token',
     ];
-
-    public function transformModelToEntity()
-    {
-
-    }
 }

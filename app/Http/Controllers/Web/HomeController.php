@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Http\Controllers\Web;
@@ -18,7 +18,6 @@ class HomeController extends Controller
 
     public function index(PlanetInterface $repo): View
     {
-        dd($repo->getById(1));
         return view('home');
     }
 }

@@ -171,12 +171,12 @@ return [
         /*
          * Application Service Providers...
          */
-        Orion\Travelr\Providers\AppServiceProvider::class,
-        Orion\Travelr\Providers\AuthServiceProvider::class,
-        Orion\Travelr\Providers\DataRepositoryServiceProvider::class,
+        Orion\Travelr\Foundation\Providers\AppServiceProvider::class,
+        Orion\Travelr\Foundation\Providers\AuthServiceProvider::class,
+        Orion\Travelr\Foundation\Providers\DataRepositoryServiceProvider::class,
         // Orion\Travelr\Providers\BroadcastServiceProvider::class,
-        Orion\Travelr\Providers\EventServiceProvider::class,
-        Orion\Travelr\Providers\RouteServiceProvider::class,
+        Orion\Travelr\Foundation\Providers\EventServiceProvider::class,
+        Orion\Travelr\Foundation\Providers\RouteServiceProvider::class,
 
     ],
 

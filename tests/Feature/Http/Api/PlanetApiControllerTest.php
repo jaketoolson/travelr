@@ -8,7 +8,7 @@ namespace Orion\Travelr\Tests\Feature\Http\Api;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Mockery\MockInterface;
-use Orion\Travelr\Planet;
+use Orion\Travelr\Models\Planet;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Tests\TestCase;
 use Orion\Travelr\Transformers\PlanetTransformer;
@@ -38,9 +38,10 @@ class PlanetApiControllerTest extends TestCase
             ->andReturn($collection = new Collection($planets));
 
         $response = $this->get(route('api.planet.index'));
+        $expectedJson = PlanetTransformer::collection($collection);
 
         $response->assertStatus(200);
-        $response->assertExactJson(PlanetTransformer::transformToArray($collection));
+        $response->assertExactJson(['data' => $expectedJson->jsonSerialize()]);
     }
 
     public function testShowMethodThrowsExceptionWithInvalidId(): void
@@ -61,7 +62,7 @@ class PlanetApiControllerTest extends TestCase
     {
         $repo = $this->planetRepositoryMock;
 
-        $planet = $this->createPlanets()->first();
+        $planet = $this->createPlanet();
 
         $repo->shouldReceive('getById')
             ->with($planet->id)
@@ -69,13 +70,19 @@ class PlanetApiControllerTest extends TestCase
             ->andReturn($planet);
 
         $response = $this->get(route('api.planet.show', [$planet->id]));
+        $expectedJson = new PlanetTransformer($planet);
 
-        $response->assertStatus(200);
-        $response->assertExactJson(PlanetTransformer::transformToArray($planet));
+        $response->assertStatus(201);
+        $response->assertExactJson(['data' => $expectedJson->jsonSerialize()]);
     }
 
     private function createPlanets(array $args = [], int $amount = 1): Collection
     {
         return factory(Planet::class)->times($amount)->create($args);
+    }
+
+    private function createPlanet(array $args = []): Planet
+    {
+        return $this->createPlanets($args, 1)->first();
     }
 }

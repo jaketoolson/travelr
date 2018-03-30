@@ -1,11 +1,10 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Orion\Travelr\Repositories\GalaxyRepository;
 use Orion\Travelr\Http\Controllers\Controller;
 use Orion\Travelr\Transformers\GalaxyTransformer;
@@ -22,17 +21,17 @@ class GalaxyApiController extends Controller
         $this->galaxyRepository = $galaxyRepository;
     }
 
-    public function index(): JsonResponse
+    public function index()
     {
         $galaxies = $this->galaxyRepository->getAll();
 
-        return $this->jsonResponse(GalaxyTransformer::transformToArray($galaxies));
+        return GalaxyTransformer::collection($galaxies);
     }
 
-    public function show(int $planetId): JsonResponse
+    public function show(int $planetId)
     {
         $galaxy = $this->galaxyRepository->getById($planetId);
 
-        return $this->jsonResponse(GalaxyTransformer::transformToArray($galaxy));
+        return new GalaxyTransformer($galaxy);
     }
 }

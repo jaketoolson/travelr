@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr;
+namespace Orion\Travelr\Models;
 
 /**
  * @property int id
@@ -12,7 +12,7 @@ namespace Orion\Travelr;
  * @property string description
  * @property bool is_active
  */
-class Facility extends BaseModel
+class Facility extends BaseEloquentModel
 {
     use HasUuid;
 
@@ -24,9 +24,4 @@ class Facility extends BaseModel
         'description',
         'is_active',
     ];
-
-    public function transformModelToEntity()
-    {
-
-    }
 }

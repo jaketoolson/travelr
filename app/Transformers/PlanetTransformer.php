@@ -1,20 +1,19 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Transformers;
 
-use Orion\Travelr\Planet;
+use Orion\Travelr\Models\Planet;
 
-class PlanetTransformer extends BaseTransformer
+class PlanetTransformer extends BaseHttpResource
 {
-    /**
-     * @param Planet $planet
-     * @return array
-     */
-    public function toArray($planet): array
+    public function toArray($request): array
     {
+        /** @var Planet $planet */
+        $planet = $this->getResource();
+
         return [
             'id' => (int) $planet->id,
             'uuid' => $planet->uuid,
@@ -25,11 +24,11 @@ class PlanetTransformer extends BaseTransformer
             'rotation_period_hours' => (int) $planet->rotation_period_hours,
             'population' => (int) $planet->population,
             'price_cents' => (int) $planet->price_cents,
-            'price_dollars' => (float) $planet->price_dollars,
-            'photo' => FileTransformer::transformToArray($planet->photo),
+            'price_dollars' => (int) $planet->price_dollars,
+            'photo' => new FileTransformer($planet->photo),
             'relationships' => [
-                'galaxy' => GalaxyTransformer::transformToArray($planet->galaxy),
-                'terrains' => TerrainTransformer::transformToArray($planet->terrains),
+                'galaxy' => $planet->galaxy ? new GalaxyTransformer($planet->galaxy) : null,
+                'terrains' => $planet->terrains ? TerrainTransformer::collection($planet->terrains) : null,
             ],
             'links' => [
                 'rel' => 'self',

@@ -1,20 +1,19 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Transformers;
 
-use Orion\Travelr\Terrain;
+use Orion\Travelr\Models\Terrain;
 
-class TerrainTransformer extends BaseTransformer
+class TerrainTransformer extends BaseHttpResource
 {
-    /**
-     * @param Terrain $terrain
-     * @return array
-     */
-    public function toArray($terrain): array
+    public function toArray($request): array
     {
+        /** @var Terrain $terrain */
+        $terrain = $this->getResource();
+
         return [
             'id' => (int) $terrain->id,
             'uuid' => $terrain->uuid,

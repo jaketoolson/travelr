@@ -1,25 +1,24 @@
 <?php
 /**
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 namespace Orion\Travelr\Transformers;
 
-use Orion\Travelr\Galaxy;
+use Orion\Travelr\Models\Galaxy;
 
-class GalaxyTransformer extends BaseTransformer
+class GalaxyTransformer extends BaseHttpResource
 {
-    /**
-     * @param Galaxy $galaxy
-     * @return array
-     */
-    public function toArray($galaxy): array
+    public function toArray($request): array
     {
+        /** @var Galaxy $galaxy */
+        $galaxy = $this->getResource();
+
         return [
             'id' => (int) $galaxy->id,
             'uuid' => $galaxy->uuid,
             'name' => $galaxy->name,
-            'planets_count' => $galaxy->planets->count(),
+            'planets_count' => (int) $galaxy->planets->count(),
             'links' => [
                 'rel' => 'self',
                 'uri' => route('api.galaxy.show', [$galaxy->id]),

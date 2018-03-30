@@ -4,7 +4,7 @@
  */
 
 use Faker\Generator as Faker;
-use Orion\Travelr\Terrain;
+use Orion\Travelr\Models\Terrain;
 
 $factory->define(Terrain::class, function (Faker $faker) {
     return [
