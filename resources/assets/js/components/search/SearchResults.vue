@@ -4,12 +4,34 @@
 
 <template>
     <div>
-
+        <div :class="`items grid-xl-${display_per_row}-items grid-lg-${display_per_row-1}-items grid-md-2-items ${active_display_type}`">
+            <div v-for="item in items" :key="item.id">
+                <planet-listing :item="item"></planet-listing>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import PlanetListing from './../planet/PlanetListing';
+    import listing_mixin from './../planet/listing-mixin';
     export default {
-
+        mixins: [
+            listing_mixin
+        ],
+        props: {
+            items : {
+                type: Array,
+                required: true
+            },
+        },
+        data() {
+            return {
+                ready : false,
+            }
+        },
+        components: {
+            'planet-listing' : PlanetListing
+        },
     }
 </script>

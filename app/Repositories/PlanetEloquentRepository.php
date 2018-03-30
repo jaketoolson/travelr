@@ -29,4 +29,21 @@ class PlanetEloquentRepository extends BaseEloquentRepository implements PlanetR
     {
         return $this->model->featured()->inRandomOrder()->limit($limit)->get();
     }
+
+    public function search(
+        string $name = null,
+        int $galaxyId = null
+    ): Collection {
+        $query = $this->model->whereRaw('1 = 1');
+
+        if ($name) {
+            $query->where('name', 'like', "%{$name}%");
+        }
+
+        if ($galaxyId) {
+            $query->where('galaxy_id', '=', $galaxyId);
+        }
+
+        return $query->get();
+    }
 }
