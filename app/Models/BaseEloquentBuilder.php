@@ -5,7 +5,6 @@
 
 namespace Orion\Travelr\Models;
 
-use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
 
 class BaseEloquentBuilder extends Builder
@@ -15,12 +14,10 @@ class BaseEloquentBuilder extends Builder
      */
     protected $criteria = [];
 
-    public function applyCriteria(Collection $criteria): Builder
+    public function applyCriteria(CriteriaInterface $criteria): Builder
     {
-        $criteria->each(function (CriteriaInterface $criterion) {
-            $this->criteria[] = $criterion;
-            $criterion->apply($this);
-        });
+        $this->criteria[] = $criteria;
+        $criteria->apply($this);
 
         return $this;
     }

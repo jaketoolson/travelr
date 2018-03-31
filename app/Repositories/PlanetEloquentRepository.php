@@ -37,7 +37,7 @@ class PlanetEloquentRepository extends BaseEloquentRepository implements PlanetR
     public function search(PlanetSearchCriteria $criteria): Collection
     {
         // FIXME: applyCriteria wants a collection of criteria.  This is implemented gross.
-        $query = $this->model->applyCriteria(collect([$criteria]));
+        $query = $this->model->applyCriteria($criteria);
 
         return $query->get();
     }

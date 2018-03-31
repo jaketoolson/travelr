@@ -18,9 +18,7 @@ class BaseEloquentBuilderTest extends TestCase
         $builder = $this->getBuilder();
         $builder->getQuery()->shouldReceive('where')->once()->with('foo', '=', 'bar');
 
-        $criteria = collect([new SearchCriteriaOneWhere]);
-
-        $result = $builder->applyCriteria($criteria);
+        $result = $builder->applyCriteria(new SearchCriteriaOneWhere);
 
         $this->assertEquals($result, $builder);
     }
@@ -28,13 +26,11 @@ class BaseEloquentBuilderTest extends TestCase
     public function testApplyCriteriaMultipleCriteria(): void
     {
         $builder = $this->getBuilder();
-        $builder->getQuery()->shouldReceive('where')->once()->with('foo', '=', 'bar');
+        $builder->getQuery()->shouldReceive('where')->once()->with('foo', '>', 'bar');
         $builder->getQuery()->shouldReceive('where')->once()->with('bar', '=', 'baz');
         $builder->getQuery()->shouldReceive('where')->once()->with('fiz', '=', 'pop');
 
-        $criteria = collect([new SearchCriteriaMulitpleWhere]);
-
-        $result = $builder->applyCriteria($criteria)->where('fiz', '=', 'pop');
+        $result = $builder->applyCriteria(new SearchCriteriaMultipleWhere)->where('fiz', '=', 'pop');
 
         $this->assertEquals($result, $builder);
     }
@@ -44,9 +40,7 @@ class BaseEloquentBuilderTest extends TestCase
         $builder = $this->getBuilder();
         $builder->getQuery()->shouldReceive('where')->once()->with('foo', '=', 'bar');
 
-        $criteria = collect([new SearchCriteriaOneWhere]);
-
-        $builder->applyCriteria($criteria);
+        $builder->applyCriteria(new SearchCriteriaOneWhere);
 
         $storedCriteria = $builder->getCriteria();
 
@@ -76,10 +70,10 @@ class SearchCriteriaOneWhere implements CriteriaInterface
     }
 }
 
-class SearchCriteriaMulitpleWhere implements CriteriaInterface
+class SearchCriteriaMultipleWhere implements CriteriaInterface
 {
     public function apply(Builder $query): Builder
     {
-        return $query->where('foo', '=', 'bar')->where('bar', '=', 'baz');
+        return $query->where('foo', '>', 'bar')->where('bar', '=', 'baz');
     }
 }
