@@ -12,7 +12,7 @@ use Orion\Travelr\Models\PlanetSearchCriteria;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Transformers\PlanetTransformer;
 
-class SearchPlanetApiController extends Controller
+class PlanetSearchApiController extends Controller
 {
     /**
      * @var PlanetRepository
@@ -26,7 +26,11 @@ class SearchPlanetApiController extends Controller
 
     public function filter(Request $request): JsonResource
     {
-        $searchCriteria = new PlanetSearchCriteria($request->get('galaxy_id'), $request->get('planet_name'));
+        $searchCriteria = new PlanetSearchCriteria;
+        $searchCriteria
+            ->setPlanetName($request->get('planet_name'))
+            ->setGalaxyId($request->get('galaxy_id'));
+
         $results = $this->planetRepository->search($searchCriteria);
 
         return PlanetTransformer::collection($results);

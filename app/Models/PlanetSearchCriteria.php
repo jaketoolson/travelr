@@ -5,7 +5,7 @@
 
 namespace Orion\Travelr\Models;
 
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 
 class PlanetSearchCriteria implements CriteriaInterface
 {
@@ -19,14 +19,14 @@ class PlanetSearchCriteria implements CriteriaInterface
      */
     private $planetName;
 
-    public function setGalaxyId(int $galaxyId): PlanetSearchCriteria
+    public function setGalaxyId(int $galaxyId = null): PlanetSearchCriteria
     {
         $this->galaxyId = $galaxyId;
 
         return $this;
     }
 
-    public function setPlanetName(string $planetName): PlanetSearchCriteria
+    public function setPlanetName(string $planetName = null): PlanetSearchCriteria
     {
         $this->planetName = $planetName;
 

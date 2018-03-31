@@ -3,9 +3,9 @@
  * Copyright (c) Jake Toolson 2018.
  */
 
-use Orion\Travelr\Galaxy;
-use Orion\Travelr\Planet;
-use Orion\Travelr\Terrain;
+use Orion\Travelr\Models\Galaxy;
+use Orion\Travelr\Models\Planet;
+use Orion\Travelr\Models\Terrain;
 use Illuminate\Database\Seeder;
 
 class PlanetPrices extends Seeder

@@ -56,7 +56,7 @@
         methods: {
             fetchPlanets() {
                 http.get(this.planets_endpoint).then(response => {
-                    this.items = response.data;
+                    this.items = response.data.data;
                     this.$nextTick(function () {
                         this.$emit('request.completed');
                         this.ready = true;

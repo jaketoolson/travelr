@@ -4,7 +4,7 @@
  */
 
 use Illuminate\Database\Seeder;
-use Orion\Travelr\Planet;
+use Orion\Travelr\Models\Planet;
 
 class PlanetPhotos extends Seeder
 {
@@ -28,7 +28,7 @@ class PlanetPhotos extends Seeder
                 continue;
             }
 
-            $file = new \Orion\Travelr\File([
+            $file = new \Orion\Travelr\Models\File([
                'file_name' => $photoData['basename'],
                'file_path' => $photoData['dirname'] . DIRECTORY_SEPARATOR . $photoData['basename']
             ]);

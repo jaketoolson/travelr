@@ -77,6 +77,7 @@ class PlanetRepositoryTest extends TestCase
         $result = $this->repo->search($searchCriteria);
 
         $this->assertSame(2, $result->count());
+        $this->assertInstanceOf(Planet::class, $result->first());
         $this->assertFalse($result->containsStrict('name', 'bar'));
         $this->assertTrue($result->containsStrict('name', 'foo'));
         $this->assertTrue($result->containsStrict('name', 'foobar'));

@@ -9,6 +9,9 @@ use Illuminate\Support\Collection;
 use Orion\Travelr\Models\Planet;
 use Orion\Travelr\Models\PlanetSearchCriteria;
 
+/**
+ * @property Planet $model
+ */
 class PlanetEloquentRepository extends BaseEloquentRepository implements PlanetRepository
 {
     public function model(): string

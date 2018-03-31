@@ -11,7 +11,7 @@ class FeaturedPlanets extends Seeder
      */
     public function run()
     {
-        $planets = \Orion\Travelr\Planet::all()->random(8);
+        $planets = \Orion\Travelr\Models\Planet::all()->random(8);
 
         foreach ($planets as $planet) {
             $planet->featured = \Carbon\Carbon::now();

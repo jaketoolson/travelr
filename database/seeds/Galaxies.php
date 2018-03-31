@@ -3,7 +3,7 @@
  * Copyright (c) Jake Toolson 2018.
  */
 
-use Orion\Travelr\Galaxy;
+use Orion\Travelr\Models\Galaxy;
 use Illuminate\Database\Seeder;
 
 class Galaxies extends Seeder

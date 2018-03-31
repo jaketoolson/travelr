@@ -30,6 +30,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @property Collection|Facility[] facilities
  * @property Galaxy galaxy
  * @property Collection|Terrain[] terrains
+ *
+ * @method Builder featured
  */
 class Planet extends BaseEloquentModel
 {

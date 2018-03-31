@@ -67,7 +67,7 @@
         methods: {
             fetchGalaxies() {
                 http.get(this.galaxies_endpoint).then(response => {
-                    this.fields.galaxies = response.data;
+                    this.fields.galaxies = response.data.data;
                     this.$nextTick(function () {
                         this.$emit('request.completed');
                         this.ready = true;
