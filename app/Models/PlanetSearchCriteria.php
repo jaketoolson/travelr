@@ -19,10 +19,18 @@ class PlanetSearchCriteria implements CriteriaInterface
      */
     private $planetName;
 
-    public function __construct(int $galaxyId = null, string $planetName = null)
+    public function setGalaxyId(int $galaxyId): PlanetSearchCriteria
     {
         $this->galaxyId = $galaxyId;
+
+        return $this;
+    }
+
+    public function setPlanetName(string $planetName): PlanetSearchCriteria
+    {
         $this->planetName = $planetName;
+
+        return $this;
     }
 
     public function apply(Builder $query): Builder
@@ -32,7 +40,7 @@ class PlanetSearchCriteria implements CriteriaInterface
         }
 
         if ($this->planetName) {
-            $query->where('name', 'like', '');
+            $query->where('name', 'like', "%{$this->planetName}%");
         }
 
         return $query;

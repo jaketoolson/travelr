@@ -8,6 +8,7 @@ namespace Orion\Travelr\Tests\Unit\Repositories;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Orion\Travelr\Models\Planet;
+use Orion\Travelr\Models\PlanetSearchCriteria;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Tests\TestCase;
 
@@ -46,12 +47,39 @@ class PlanetRepositoryTest extends TestCase
 
     public function testGetFeaturedReturnsCollection(): void
     {
-        $expectedCount = 8;
+        $expectedCount = 4;
         $this->createPlanets(['featured' => Carbon::now()], $expectedCount);
 
         $result = $this->repo->getFeatured($expectedCount);
-
         $this->assertEquals($expectedCount, $result->count());
+
+        $result = $this->repo->getFeatured();
+        $this->assertEquals(4, $result->count());
+    }
+
+    public function testFilterWithNullReturnsEmpty(): void
+    {
+        $searchCriteria = new PlanetSearchCriteria;
+        $result = $this->repo->search($searchCriteria);
+
+        $this->assertSame(0, $result->count());
+    }
+
+    public function testFilterWithNullReturnsResults(): void
+    {
+        $planetA = $this->createPlanets(['name' => 'foo'], 1);
+        $planetB = $this->createPlanets(['name' => 'bar'], 1)->merge($planetA);
+        $this->createPlanets(['name' => 'foobar'], 1)->merge($planetB);
+
+        $searchCriteria = new PlanetSearchCriteria;
+        $searchCriteria->setPlanetName('fo');
+
+        $result = $this->repo->search($searchCriteria);
+
+        $this->assertSame(2, $result->count());
+        $this->assertFalse($result->containsStrict('name', 'bar'));
+        $this->assertTrue($result->containsStrict('name', 'foo'));
+        $this->assertTrue($result->containsStrict('name', 'foobar'));
     }
 
     private function createPlanets(array $args = [], int $amount = 1): Collection
