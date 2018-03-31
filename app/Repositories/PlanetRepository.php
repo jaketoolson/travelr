@@ -5,8 +5,9 @@
 
 namespace Orion\Travelr\Repositories;
 
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Orion\Travelr\Models\Planet;
+use Orion\Travelr\Models\PlanetSearchCriteria;
 
 interface PlanetRepository
 {
@@ -24,9 +25,8 @@ interface PlanetRepository
     public function getFeatured(int $limit = 4): Collection;
 
     /**
-     * @param string|null $name
-     * @param int|null $galaxyId
+     * @param PlanetSearchCriteria $criteria
      * @return Collection|Planet[]
      */
-    public function search(string $name = null, int $galaxyId = null): Collection;
+    public function search(PlanetSearchCriteria $criteria): Collection;
 }

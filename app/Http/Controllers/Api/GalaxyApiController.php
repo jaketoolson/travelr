@@ -5,6 +5,7 @@
 
 namespace Orion\Travelr\Http\Controllers\Api;
 
+use Illuminate\Http\Resources\Json\JsonResource;
 use Orion\Travelr\Repositories\GalaxyRepository;
 use Orion\Travelr\Http\Controllers\Controller;
 use Orion\Travelr\Transformers\GalaxyTransformer;
@@ -21,14 +22,14 @@ class GalaxyApiController extends Controller
         $this->galaxyRepository = $galaxyRepository;
     }
 
-    public function index()
+    public function index(): JsonResource
     {
         $galaxies = $this->galaxyRepository->getAll();
 
         return GalaxyTransformer::collection($galaxies);
     }
 
-    public function show(int $planetId)
+    public function show(int $planetId): JsonResource
     {
         $galaxy = $this->galaxyRepository->getById($planetId);
 
