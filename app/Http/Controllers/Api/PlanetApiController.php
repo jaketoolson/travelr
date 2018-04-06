@@ -25,15 +25,11 @@ class PlanetApiController extends Controller
 
     public function index(): JsonResource
     {
-        $planets = $this->planetRepository->getAll();
-
-        return new PlanetResourceCollection($planets);
+        return new PlanetResourceCollection($this->planetRepository->getAll());
     }
 
     public function show(int $planetId): JsonResource
     {
-        $planet = $this->planetRepository->getById($planetId);
-
-        return new PlanetResource($planet);
+        return new PlanetResource($this->planetRepository->getById($planetId));
     }
 }

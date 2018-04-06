@@ -1,16 +1,8 @@
-# Create Base MVP
-- [ ] Create base Models
-- [ ] Create base API controllers
-- [ ] Create base VUE components
-- [ ] Setup basic MVC structure
-- [ ] Write basic unit tests
-- [ ] Define basic frontend SPA setup
+# Plans
 
-# Next
-- [ ] Define common json api schemas : accept and response
-- [ ] Scale planet pricing module to account for historical price changes
-- [ ] Implement Single Table Inheritance for file types.
+See Github Projects, https://github.com/jaketoolson/travelr/projects, to view details projects and plans.
 
+# Notes
 ****Models:****
 Since Eloquent uses magic getters, I have added @property docblocks to all models. This is because I prefer a complete API be defined for all classes.
 
@@ -27,3 +19,5 @@ I created entities with aggregates because I prefer to keep the Eloquent ORM mod
 - Photo by Sergei Akulich
 - Photo by Pablo García Saldaña
 - Photo by David Marcu
+
+Copyright (c) 2018 Jake Toolson, All rights reserved

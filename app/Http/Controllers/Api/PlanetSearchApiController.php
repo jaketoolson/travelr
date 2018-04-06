@@ -10,7 +10,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Orion\Travelr\Http\Controllers\Controller;
 use Orion\Travelr\Models\PlanetSearchCriteria;
 use Orion\Travelr\Repositories\PlanetRepository;
-use Orion\Travelr\Resources\PlanetResource;
+use Orion\Travelr\Resources\Planet\PlanetResourceCollection;
 
 class PlanetSearchApiController extends Controller
 {
@@ -31,8 +31,6 @@ class PlanetSearchApiController extends Controller
             ->setPlanetName($request->get('planet_name'))
             ->setGalaxyId($request->get('galaxy_id'));
 
-        $results = $this->planetRepository->search($searchCriteria);
-
-        return PlanetResource::collection($results);
+        return new PlanetResourceCollection($this->planetRepository->search($searchCriteria));
     }
 }

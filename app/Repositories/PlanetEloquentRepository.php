@@ -29,9 +29,9 @@ class PlanetEloquentRepository extends BaseEloquentRepository implements PlanetR
         return $this->model->orderBy('created_at', 'asc')->get();
     }
 
-    public function getFeatured(int $limit = 4): Collection
+    public function getFeatured(int $limit = null): Collection
     {
-        return $this->model->featured()->inRandomOrder()->limit($limit)->get();
+        return $this->model->featured()->inRandomOrder()->limit($limit ?? 4)->get();
     }
 
     public function search(PlanetSearchCriteria $criteria): Collection

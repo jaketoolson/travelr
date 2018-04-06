@@ -25,15 +25,11 @@ class GalaxyApiController extends Controller
 
     public function index(): JsonResource
     {
-        $galaxies = $this->galaxyRepository->getAll();
-
-        return new GalaxyResourceCollection($galaxies);
+        return new GalaxyResourceCollection($this->galaxyRepository->getAll());
     }
 
     public function show(int $planetId): JsonResource
     {
-        $galaxy = $this->galaxyRepository->getById($planetId);
-
-        return new GalaxyResource($galaxy);
+        return new GalaxyResource($this->galaxyRepository->getById($planetId));
     }
 }

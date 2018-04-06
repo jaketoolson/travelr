@@ -24,8 +24,6 @@ class FeaturedPlanetApiController extends Controller
 
     public function index(Request $request)
     {
-        $planets = $this->planetRepository->getFeatured($request->get('limit', 4));
-
-        return new PlanetFeaturedResourceCollection($planets);
+        return new PlanetFeaturedResourceCollection($this->planetRepository->getFeatured($request->get('limit')));
     }
 }

@@ -10,6 +10,8 @@ use Orion\Travelr\Repositories\GalaxyEloquentRepository;
 use Orion\Travelr\Repositories\GalaxyRepository;
 use Orion\Travelr\Repositories\PlanetEloquentRepository;
 use Orion\Travelr\Repositories\PlanetRepository;
+use Orion\Travelr\Repositories\TerrainEloquentRepository;
+use Orion\Travelr\Repositories\TerrainRepository;
 
 class DataRepositoryServiceProvider extends ServiceProvider
 {
@@ -17,5 +19,6 @@ class DataRepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(PlanetRepository::class, PlanetEloquentRepository::class);
         $this->app->bind(GalaxyRepository::class, GalaxyEloquentRepository::class);
+        $this->app->bind(TerrainRepository::class, TerrainEloquentRepository::class);
     }
 }
