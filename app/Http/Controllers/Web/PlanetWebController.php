@@ -3,15 +3,14 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr\Http\Controllers\Api;
+namespace Orion\Travelr\Http\Controllers\Web;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Http\Controllers\Controller;
-use Orion\Travelr\Resources\Planet\PlanetResource;
-use Orion\Travelr\Resources\Planet\PlanetResourceCollection;
+use Orion\Travelr\Resources\PlanetResource;
 
-class PlanetApiController extends Controller
+class PlanetWebController extends Controller
 {
     /**
      * @var PlanetRepository
@@ -27,7 +26,7 @@ class PlanetApiController extends Controller
     {
         $planets = $this->planetRepository->getAll();
 
-        return new PlanetResourceCollection($planets);
+        return PlanetResource::collection($planets);
     }
 
     public function show(int $planetId): JsonResource

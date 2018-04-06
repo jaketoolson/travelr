@@ -5,13 +5,13 @@
 <template>
     <div class="main-search-form">
         <div class="form-row">
-            <div class="col-md-3 col-sm-3">
+            <div class="col-md-4 col-sm-4">
                 <div class="form-group">
-                    <label for="what" class="col-form-label">What?</label>
-                    <input name="keyword" type="text" class="form-control" id="what" placeholder="What are you looking for?">
+                    <label for="what" class="col-form-label" >Name?</label>
+                    <input v-on:keyup.enter="searchPlanets" v-model="fields.planet_name" name="keyword" type="text" class="form-control" id="name" placeholder="What planet are you looking for?">
                 </div>
             </div>
-            <div class="col-md-3 col-sm-3">
+            <div class="col-md-4 col-sm-4">
                 <div class="form-group">
                     <label class="col-form-label">Galaxy?</label>
                     <multiselect
@@ -27,18 +27,20 @@
                     </multiselect>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-3">
+            <div class="col-md-4 col-sm-4">
                 <button
                         type="button"
                         @click.prevent="searchPlanets"
                         class="btn btn-primary width-100">Search</button>
             </div>
         </div>
-        <search-result v-if="foundPlanets.length > 0" :items="foundPlanets"></search-result>
+        <spinner v-if="searching"></spinner>
+        <search-result v-else :items="foundPlanets"></search-result>
     </div>
 </template>
 
 <script>
+    import spinner from "../../common/spinner";
     import SearchResults from './SearchResults';
     import {http} from '../../common/axios';
     import Multiselect from 'vue-multiselect'
@@ -57,8 +59,9 @@
             return {
                 ready : false,
                 searching : false,
-                foundPlanets : {},
+                foundPlanets : [],
                 fields: {
+                    planet_name: null,
                     galaxies : [],
                     galaxy : null,
                 },
@@ -77,11 +80,22 @@
                 })
             },
             searchPlanets() {
-                http.get(this.planets_search_endpoint).then(response => {
-                    this.foundPlanets = response.data;
-                }).catch(e => {
+                this.searching = true;
 
-                })
+                let data = {
+                    params: {
+                        galaxy_id : this.fields.galaxy ? this.fields.galaxy.id : null,
+                        planet_name : this.fields.planet_name
+                    }
+                };
+
+                http.get(this.planets_search_endpoint, data).then(response => {
+                    this.foundPlanets = response.data.data;
+                }).catch(e => {}).then(()=>{
+                    this.$nextTick(function () {
+                        this.searching = false;
+                    });
+                });
             },
         },
         mounted() {
@@ -89,6 +103,7 @@
         },
         components: {
             Multiselect,
+            'spinner' : spinner,
             'search-result' : SearchResults
         },
     }

@@ -5,9 +5,10 @@
 
 namespace Orion\Travelr\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Http\Controllers\Controller;
-use Orion\Travelr\Transformers\PlanetTransformer;
+use Orion\Travelr\Resources\Planet\PlanetFeaturedResourceCollection;
 
 class FeaturedPlanetApiController extends Controller
 {
@@ -21,10 +22,10 @@ class FeaturedPlanetApiController extends Controller
         $this->planetRepository = $planetRepository;
     }
 
-    public function index(int $limit = 4)
+    public function index(Request $request)
     {
-        $planets = $this->planetRepository->getFeatured($limit);
+        $planets = $this->planetRepository->getFeatured($request->get('limit', 4));
 
-        return PlanetTransformer::collection($planets);
+        return new PlanetFeaturedResourceCollection($planets);
     }
 }

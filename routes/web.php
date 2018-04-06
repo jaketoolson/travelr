@@ -12,3 +12,9 @@ Route::group(['prefix' => 'auth'], function(){
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/planet/{id}', 'PlanetWebController@show')->name('planet.show');
+
+Route::get('/galaxy/{id}', 'GalaxyWebController@show')->name('galaxy.show');
+
+Route::get('/terrain/{id}', 'TerrainWebController@show')->name('terrain.show');

@@ -11,7 +11,7 @@ use Mockery\MockInterface;
 use Orion\Travelr\Models\Planet;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Tests\TestCase;
-use Orion\Travelr\Transformers\PlanetTransformer;
+use Orion\Travelr\Resources\PlanetResource;
 
 class PlanetApiControllerTest extends TestCase
 {
@@ -38,7 +38,7 @@ class PlanetApiControllerTest extends TestCase
             ->andReturn($collection = new Collection($planets));
 
         $response = $this->get(route('api.planet.index'));
-        $expectedJson = PlanetTransformer::collection($collection);
+        $expectedJson = PlanetResource::collection($collection);
 
         $response->assertStatus(200);
         $this->assertJsonResponseEqualsArray($response, ['data' => $expectedJson->jsonSerialize()]);
@@ -70,7 +70,7 @@ class PlanetApiControllerTest extends TestCase
             ->andReturn($planet);
 
         $response = $this->get(route('api.planet.show', [$planet->id]));
-        $expectedJson = new PlanetTransformer($planet);
+        $expectedJson = new PlanetResource($planet);
 
         $response->assertStatus(201);
         $this->assertJsonResponseEqualsArray($response, ['data' => $expectedJson->jsonSerialize()]);

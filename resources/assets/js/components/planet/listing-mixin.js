@@ -16,6 +16,7 @@ export default {
             default: '3',
             validator: value => {
                 value = parseInt(value);
+
                 return value > 0 && value < 5;
             },
         },

@@ -3,15 +3,14 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr\Http\Controllers\Api;
+namespace Orion\Travelr\Http\Controllers\Web;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Orion\Travelr\Repositories\GalaxyRepository;
 use Orion\Travelr\Http\Controllers\Controller;
-use Orion\Travelr\Resources\Galaxy\GalaxyResourceCollection;
-use Orion\Travelr\Resources\Galaxy\GalaxyResource;
+use Orion\Travelr\Resources\GalaxyTransformer;
 
-class GalaxyApiController extends Controller
+class GalaxyWebController extends Controller
 {
     /**
      * @var GalaxyRepository
@@ -27,13 +26,13 @@ class GalaxyApiController extends Controller
     {
         $galaxies = $this->galaxyRepository->getAll();
 
-        return new GalaxyResourceCollection($galaxies);
+        return GalaxyTransformer::collection($galaxies);
     }
 
-    public function show(int $planetId): JsonResource
+    public function show(int $planetId)
     {
         $galaxy = $this->galaxyRepository->getById($planetId);
 
-        return new GalaxyResource($galaxy);
+        return new GalaxyTransformer($galaxy);
     }
 }
