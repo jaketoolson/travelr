@@ -7,24 +7,32 @@ namespace Orion\Travelr\Resources\Terrain;
 
 use Illuminate\Http\Resources\Json\Resource;
 use Orion\Travelr\Models\Terrain;
+use Orion\Travelr\Resources\ResourceParameterMappers;
 
 class TerrainResource extends Resource
 {
+    use ResourceParameterMappers;
+
     public static $wrap;
+
+    public const TYPE = 'terrain';
 
     public function toArray($request): array
     {
         /** @var Terrain $planet */
         $terrain = $this->resource;
 
-        return [
-            'type' => 'terrains',
-            'id' => (string) $terrain->id,
-            'attributes' => [
-                'name' => $terrain->name,
-                'description' => $terrain->description,
-            ],
+        return array_merge(self::getIdentifiers($terrain),  [
+            'attributes' => $this->getMappedAttributes(),
             'links' => self::getLinks($terrain),
+        ]);
+    }
+
+    public static function getIdentifiers(Terrain $terrain): array
+    {
+        return [
+            'type' => self::TYPE,
+            'id' => (string) $terrain->id,
         ];
     }
 
@@ -32,6 +40,14 @@ class TerrainResource extends Resource
     {
         return  [
             'self' => route('api.terrains.show', [$terrain->id]),
+        ];
+    }
+
+    protected function getMappedAttributes(): array
+    {
+        return [
+            'name' => $this->resource->name,
+            'description' => $this->resource->description,
         ];
     }
 }

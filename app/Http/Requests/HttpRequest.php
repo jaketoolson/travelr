@@ -29,6 +29,7 @@ class HttpRequest extends FormRequest
         foreach ($fieldset as $resourceType => $fields) {
 
             $fields = explode(',', $fields);
+            $fields = array_filter(array_map('trim', $fields));
 
             // the key must represent a resource type and be string format.
             // This skips anything that looks like the following:
