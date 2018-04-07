@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Orion\Travelr\User::class,
+            'model' => Orion\Travelr\Models\User::class,
         ],
     ],
 

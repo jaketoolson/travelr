@@ -9,8 +9,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/planets/featured', 'FeaturedPlanetApiController@index')->name('api.planets.featured.index');
-
 Route::get('/files/{id}', 'FileApiController@show')->name('api.files.show');
 
 Route::get('/planets', 'PlanetApiController@index')->name('api.planets.index');
