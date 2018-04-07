@@ -3,7 +3,7 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr\Http\Controllers\Requests;
+namespace Orion\Travelr\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

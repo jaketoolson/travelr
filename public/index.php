@@ -9,7 +9,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 /** @var Orion\Travelr\Http\Kernel $kernel */
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 $response = $kernel->handle(
-    $request = Orion\Travelr\Http\Controllers\Requests\HttpRequest::capture()
+    $request = Orion\Travelr\Http\Requests\HttpRequest::capture()
 );
 $response->send();
 $kernel->terminate($request, $response);

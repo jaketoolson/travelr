@@ -1,6 +1,6 @@
 <?php
 
-namespace Orion\Travelr\Http\Controllers\Requests;
+namespace Orion\Travelr\Http\Requests;
 
 class FieldsetsParameter
 {
