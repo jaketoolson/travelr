@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property Collection|Terrain[] terrains
  *
  * @method Builder featured
+ * @method Builder notFeatured
  */
 class Planet extends BaseEloquentModel
 {
@@ -71,6 +72,11 @@ class Planet extends BaseEloquentModel
     public function scopeFeatured(Builder $builder): Builder
     {
         return $builder->whereNotNull('featured');
+    }
+
+    public function scopeNotFeatured(Builder $builder): Builder
+    {
+        return $builder->whereNull('featured');
     }
 
     public function photo()

@@ -23,6 +23,15 @@ class PlanetFilter extends BaseFilter implements CriteriaInterface
             $builder->where('galaxy_id', '=', $filters['galaxy_id']);
         }
 
+        if (array_key_exists('featured', $filters)) {
+            $value = (string) $filters['featured'];
+            if (in_array($value, ['true', '1', 'null'], true)) {
+                $builder->featured();
+            } elseif (in_array($value, ['false', '0'], true)) {
+                $builder->notFeatured();
+            }
+        }
+
         return $builder;
     }
 }
