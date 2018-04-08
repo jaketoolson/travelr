@@ -39,7 +39,7 @@ class PlanetApiController extends Controller
 
         $schema = new PlanetQuerySchema(
             new PlanetFilter($query->getFilters()),
-            new PlanetFieldset($query->getFiltersByResourceType(PlanetQuerySchema::RESOURCE_TYPE))
+            new PlanetFieldset($query->getFieldsetsByResourceType(PlanetQuerySchema::RESOURCE_TYPE))
         );
 
         return new PlanetResourceCollection($this->planetRepository->query($schema));

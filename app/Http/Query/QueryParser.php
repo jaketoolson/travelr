@@ -29,7 +29,7 @@ class QueryParser implements QueryParserInterface
         return $this->parseFieldSets($this->getParameters())->get();
     }
 
-    public function getFiltersByResourceType(string $resourceType): array
+    public function getFieldsetsByResourceType(string $resourceType): array
     {
         return $this->parseFieldSets($this->getParameters())->getForResourceType($resourceType);
     }
