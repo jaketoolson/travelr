@@ -15,7 +15,7 @@ class BaseEloquentBuilder extends Builder
      */
     protected $criteria = [];
 
-    public function applyCriteria(CriteriaInterface $criteria): Builder
+    public function applyCriteria(CriteriaInterface $criteria): BaseEloquentBuilder
     {
         $this->criteria[] = $criteria;
         $criteria->apply($this);
@@ -30,11 +30,8 @@ class BaseEloquentBuilder extends Builder
 
     public function applyQuerySchemas(QuerySchemaInterface $querySchema): BaseEloquentBuilder
     {
-        // Apply fieldset to query
-        $this->applyCriteria($querySchema->getFieldset());
-
-        // Apply filters to query
-        $this->applyCriteria($querySchema->getFilter());
+        $this->applyCriteria($querySchema->getFieldset())
+            ->applyCriteria($querySchema->getFilter());
 
         return $this;
     }
