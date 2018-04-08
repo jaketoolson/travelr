@@ -19,16 +19,13 @@
             </div>
             <h4 class="location">
                 <i class="fas fa-globe"></i>
-                <a :href="item.relationships.galaxy.links.self">{{ item.relationships.galaxy.name }}</a>
+                <a :href="item.relationships.galaxy.links.self">{{ item.relationships.galaxy.meta.name }}</a>
             </h4>
             <div class="price">${{ item.attributes.price_dollars }}</div>
             <div class="meta">
                 <figure>
-                    <i class="far fa-calendar"></i> 28.04.2017
-                </figure>
-                <figure>
                     <a href="#">
-                        <i class="fas fa-user"></i> Peter Browner
+                        <i class="fas fa-user"></i> Jake Toolson
                     </a>
                 </figure>
             </div>

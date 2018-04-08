@@ -2,7 +2,7 @@
 <planet-listings
         display_per_row="4"
         display_type="grid"
-        planets_endpoint="{{ route('api.planets.index') }}?filter[planet]=true"
+        planets_endpoint="{{ route('api.planets.index') }}?filter[featured]=null"
 >
     <template slot="section_title">
         <h2>Featured Listings</h2>

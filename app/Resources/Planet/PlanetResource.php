@@ -5,7 +5,7 @@
 
 namespace Orion\Travelr\Resources\Planet;
 
-use Orion\Travelr\Http\Requests\HttpRequest;
+use Orion\Travelr\Http\Query\QueryParser;
 use Orion\Travelr\Models\Planet;
 use Illuminate\Http\Resources\Json\Resource;
 use Orion\Travelr\Resources\ResourceParameterMappers;
@@ -27,16 +27,13 @@ class PlanetResource extends Resource
     public const TYPE = 'planet';
 
     /**
-     * @param HttpRequest $request
+     * @param QueryParser $request
      * @return array
      */
     public function toArray($request): array
     {
         return array_merge(self::getIdentifiers($this->resource),  [
-            'attributes' => $this->getFilteredAttributes(
-                $this->getMappedAttributes(),
-                $request->getFieldSets()->getForResourceType(self::TYPE)
-            ),
+            'attributes' => $this->getMappedAttributes(),
             'relationships' => new PlanetRelationshipResource($this),
             'links' => self::getLinks($this->resource),
         ]);

@@ -9,40 +9,52 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PlanetSearchCriteria implements CriteriaInterface
 {
-    /**
-     * @var int|null
-     */
-    private $galaxyId;
+    private $filters = [];
 
-    /**
-     * @var string|null
-     */
-    private $planetName;
-
-    public function setGalaxyId(int $galaxyId = null): PlanetSearchCriteria
+    public function getFilterables(): array
     {
-        $this->galaxyId = $galaxyId;
-
-        return $this;
+        return [
+            'galaxy_id' => '=',
+            'name' => 'like',
+            'featured' => '<>',
+        ];
     }
 
-    public function setPlanetName(string $planetName = null): PlanetSearchCriteria
+    public function getFilters(): array
     {
-        $this->planetName = $planetName;
+        return $this->filters;
+    }
+
+    public function addFilterable(string $key, $value): PlanetSearchCriteria
+    {
+        $this->filters[$key] = $value;
 
         return $this;
     }
 
     public function apply(Builder $query): Builder
     {
-        if ($this->galaxyId) {
-            $query->where('galaxy_id', '=', $this->galaxyId);
-        }
+        $filters = $this->getFilters();
+        $filterables = $this->getFilterables();
 
-        if ($this->planetName) {
-            $query->where('name', 'like', "%{$this->planetName}%");
+        if (count($filters) > 0) {
+            foreach ($filters as $filterOn => $value) {
+                if (array_key_exists($filterOn, $filterables)) {
+                    $operator = $filterables[$filterOn];
+                    $query->where($filterOn, $operator, $this->wrapValueBasedOnOperator($operator, $value));
+                }
+            }
         }
 
         return $query;
+    }
+
+    private function wrapValueBasedOnOperator(string $operator, $value)
+    {
+        if ($operator === 'like') {
+            return "%$value%";
+        }
+
+        return $value;
     }
 }

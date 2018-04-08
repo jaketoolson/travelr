@@ -3,7 +3,7 @@
  * Copyright (c) Jake Toolson 2018.
  */
 
-namespace Orion\Travelr\Tests\Unit\Repositories;
+namespace Orion\Travelr\Tests\Repositories;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;

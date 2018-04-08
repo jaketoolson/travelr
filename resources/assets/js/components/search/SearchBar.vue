@@ -84,8 +84,8 @@
 
                 let data = {
                     params: {
-                        galaxy_id : this.fields.galaxy ? this.fields.galaxy.id : null,
-                        planet_name : this.fields.planet_name
+                        'filter[galaxy_id]' : this.fields.galaxy ? this.fields.galaxy.id : null,
+                        'filter[name]' : this.fields.planet_name
                     }
                 };
 

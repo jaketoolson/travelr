@@ -5,11 +5,11 @@
 
 namespace Orion\Travelr\Tests;
 
-use Mockery;
-use Mockery\MockInterface;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\TestResponse;
+use Mockery;
+use Mockery\MockInterface;
 
 abstract class TestCase extends BaseTestCase
 {

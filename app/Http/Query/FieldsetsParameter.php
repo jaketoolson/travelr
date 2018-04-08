@@ -1,12 +1,15 @@
 <?php
+/**
+ * Copyright (c) 2018. Jake Toolson
+ */
 
-namespace Orion\Travelr\Http\Requests;
+namespace Orion\Travelr\Http\Query;
 
 class FieldsetsParameter
 {
     private $fieldsets = [];
 
-    public function addFieldset(string $resourceType, string $fieldName): void
+    public function add(string $resourceType, string $fieldName): void
     {
         $this->fieldsets[$resourceType][] = $fieldName;
     }

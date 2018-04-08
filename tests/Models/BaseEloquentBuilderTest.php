@@ -3,7 +3,7 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr\Tests\Unit\Models;
+namespace Orion\Travelr\Tests\Models;
 
 use Orion\Travelr\Tests\TestCase;
 use Illuminate\Database\Eloquent\Builder;

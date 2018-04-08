@@ -5,7 +5,9 @@
 
 namespace Orion\Travelr\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Orion\Travelr\Http\Query\QueryParser;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Http\Controllers\Controller;
 use Orion\Travelr\Resources\Planet\PlanetResource;
@@ -23,8 +25,14 @@ class PlanetApiController extends Controller
         $this->planetRepository = $planetRepository;
     }
 
-    public function index(): JsonResource
+    /**
+     * @param Request $request
+     * @return JsonResource
+     */
+    public function index(Request $request): JsonResource
     {
+        $query = new QueryParser($request->all());
+
         return new PlanetResourceCollection($this->planetRepository->getAll());
     }
 

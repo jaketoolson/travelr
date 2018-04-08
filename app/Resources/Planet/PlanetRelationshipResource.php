@@ -28,6 +28,9 @@ class PlanetRelationshipResource extends Resource
                     'self' => route('api.galaxies.show', [$planet->galaxy_id]),
                 ],
                 'data' => $planet->galaxy ? new GalaxyIdentifierObject($planet->galaxy) : null,
+                'meta' => [
+                    'name' => $planet->galaxy ? $planet->galaxy->name : null,
+                ]
             ],
             'terrains' => $planet->terrains ? new PlanetTerrainsRelationshipResource($planet->terrains) : null,
         ];

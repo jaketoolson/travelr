@@ -3,7 +3,7 @@
  * Copyright (c) Jake Toolson 2018.
  */
 
-namespace Orion\Travelr\Tests\Feature\Http\Api;
+namespace Orion\Travelr\Tests\Http\Api;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -11,7 +11,7 @@ use Mockery\MockInterface;
 use Orion\Travelr\Models\Planet;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Tests\TestCase;
-use Orion\Travelr\Resources\PlanetResource;
+use Orion\Travelr\Resources\Planet\PlanetResource;
 
 class PlanetApiControllerTest extends TestCase
 {
@@ -37,7 +37,7 @@ class PlanetApiControllerTest extends TestCase
             ->once()
             ->andReturn($collection = new Collection($planets));
 
-        $response = $this->get(route('api.planet.index'));
+        $response = $this->get(route('api.planets.index'));
         $expectedJson = PlanetResource::collection($collection);
 
         $response->assertStatus(200);
@@ -53,7 +53,7 @@ class PlanetApiControllerTest extends TestCase
             ->once()
             ->andThrows(ModelNotFoundException::class);
 
-        $response = $this->get(route('api.planet.show', [999]));
+        $response = $this->get(route('api.planets.show', [999]));
 
         $response->assertStatus(404);
     }
@@ -69,7 +69,7 @@ class PlanetApiControllerTest extends TestCase
             ->once()
             ->andReturn($planet);
 
-        $response = $this->get(route('api.planet.show', [$planet->id]));
+        $response = $this->get(route('api.planets.show', [$planet->id]));
         $expectedJson = new PlanetResource($planet);
 
         $response->assertStatus(201);
