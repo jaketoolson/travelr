@@ -8,6 +8,9 @@ namespace Orion\Travelr\Tests\Repositories;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Orion\Travelr\Models\Planet;
+use Orion\Travelr\Models\PlanetQuery\PlanetFieldset;
+use Orion\Travelr\Models\PlanetQuery\PlanetFilter;
+use Orion\Travelr\Models\PlanetQuery\PlanetQuerySchema;
 use Orion\Travelr\Models\PlanetSearchCriteria;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Tests\TestCase;
@@ -45,46 +48,63 @@ class PlanetRepositoryTest extends TestCase
         $this->assertInstanceOf(Planet::class, $result);
     }
 
-    public function testGetFeaturedReturnsCollection(): void
+    public function testQueryFilter(): void
     {
-        $expectedCount = 4;
-        $this->createPlanets(['featured' => Carbon::now()], $expectedCount);
+        $this->createPlanets([
+            'name' => str_random(6)
+        ]);
 
-        $result = $this->repo->getFeatured($expectedCount);
-        $this->assertEquals($expectedCount, $result->count());
+        $schema = $this->createPlanetQuerySchema(['name' => random_int(0, 2)]);
 
-        $result = $this->repo->getFeatured();
-        $this->assertEquals(4, $result->count());
+        $result = $this->repo->query($schema);
+        $this->assertEquals(0, $result->count());
     }
 
-    public function testFilterWithNullReturnsEmpty(): void
+    public function testQueryFieldset(): void
     {
-        $searchCriteria = new PlanetSearchCriteria;
-        $result = $this->repo->search($searchCriteria);
+        $this->createPlanets([], 2);
 
-        $this->assertSame(0, $result->count());
+        $schema = $this->createPlanetQuerySchema([], ['name', 'foo', 'bar']);
+
+        $results = $this->repo->query($schema);
+
+        $this->assertEquals(2, $results->count());
+
+        foreach ($results as $result) {
+            $attributes = $result->getAttributes();
+
+            $this->assertTrue(array_key_exists('name', $attributes));
+            $this->assertFalse(array_key_exists('foo', $attributes));
+            $this->assertFalse(array_key_exists('bar', $attributes));
+        }
     }
 
-    public function testFilterWithNullReturnsResults(): void
+    public function testQueryAll(): void
     {
-        $planetA = $this->createPlanets(['name' => 'foo'], 1);
-        $planetB = $this->createPlanets(['name' => 'bar'], 1)->merge($planetA);
-        $this->createPlanets(['name' => 'foobar'], 1)->merge($planetB);
+        for ($i = 0; $i < 3; $i++) {
+            $name = $i === 1 ? str_random(4) : 'foo' . str_random(4);
+            $this->createPlanets([
+                'name' => $name
+            ], 1);
+        }
 
-        $searchCriteria = new PlanetSearchCriteria;
-        $searchCriteria->setPlanetName('fo');
+        $schema = $this->createPlanetQuerySchema(['name' => 'foo'], ['name', 'foo', 'bar']);
 
-        $result = $this->repo->search($searchCriteria);
+        $results = $this->repo->query($schema);
 
-        $this->assertSame(2, $result->count());
-        $this->assertInstanceOf(Planet::class, $result->first());
-        $this->assertFalse($result->containsStrict('name', 'bar'));
-        $this->assertTrue($result->containsStrict('name', 'foo'));
-        $this->assertTrue($result->containsStrict('name', 'foobar'));
+        $this->assertEquals(2, $results->count());
     }
 
     private function createPlanets(array $args = [], int $amount = 1): Collection
     {
         return factory(Planet::class)->times($amount)->create($args);
+    }
+
+    private function createPlanetQuerySchema(array $filters = [], array $fields = []): PlanetQuerySchema
+    {
+        return new PlanetQuerySchema(
+            new PlanetFilter($filters),
+            new PlanetFieldset($fields)
+        );
     }
 }

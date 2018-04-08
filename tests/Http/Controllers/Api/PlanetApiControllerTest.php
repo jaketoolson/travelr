@@ -3,15 +3,15 @@
  * Copyright (c) Jake Toolson 2018.
  */
 
-namespace Orion\Travelr\Tests\Http\Api;
+namespace Orion\Travelr\Tests\Http\Controllers\Api;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Mockery\MockInterface;
+use Orion\Travelr\Models\File;
 use Orion\Travelr\Models\Planet;
 use Orion\Travelr\Repositories\PlanetRepository;
 use Orion\Travelr\Tests\TestCase;
-use Orion\Travelr\Resources\Planet\PlanetResource;
 
 class PlanetApiControllerTest extends TestCase
 {
@@ -27,21 +27,22 @@ class PlanetApiControllerTest extends TestCase
         $this->planetRepositoryMock = $this->mockAndBind(PlanetRepository::class);
     }
 
+    // TODO: Add with(schema)
+    // TODO: Validate JSON response
+    // TODO: Validate query schema
     public function testIndexMethodReturnsExpectedData(): void
     {
         $repo = $this->planetRepositoryMock;
 
         $planets = $this->createPlanets([], 4);
 
-        $repo->shouldReceive('getAll')
+        $repo->shouldReceive('query')
             ->once()
             ->andReturn($collection = new Collection($planets));
 
         $response = $this->get(route('api.planets.index'));
-        $expectedJson = PlanetResource::collection($collection);
 
         $response->assertStatus(200);
-        $this->assertJsonResponseEqualsArray($response, ['data' => $expectedJson->jsonSerialize()]);
     }
 
     public function testShowMethodThrowsExceptionWithInvalidId(): void
@@ -58,6 +59,7 @@ class PlanetApiControllerTest extends TestCase
         $response->assertStatus(404);
     }
 
+    // TODO: Validate JSON response
     public function testShowMethodReturnsExpectedData(): void
     {
         $repo = $this->planetRepositoryMock;
@@ -70,15 +72,15 @@ class PlanetApiControllerTest extends TestCase
             ->andReturn($planet);
 
         $response = $this->get(route('api.planets.show', [$planet->id]));
-        $expectedJson = new PlanetResource($planet);
 
         $response->assertStatus(201);
-        $this->assertJsonResponseEqualsArray($response, ['data' => $expectedJson->jsonSerialize()]);
     }
 
     private function createPlanets(array $args = [], int $amount = 1): Collection
     {
-        return factory(Planet::class)->times($amount)->create($args);
+        return factory(Planet::class)->times($amount)->create($args)->each(function (Planet $p) {
+            $p->photo()->save(factory(File::class)->make());
+        });
     }
 
     private function createPlanet(array $args = []): Planet
