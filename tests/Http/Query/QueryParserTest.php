@@ -21,8 +21,8 @@ class QueryParserTest extends TestCase
     {
         $query = $this->createQueryParser([]);
 
-        $this->assertEquals([], $query->getFields()->get());
-        $this->assertEquals([], $query->getFilters()->get());
+        $this->assertEquals([], $query->getFields());
+        $this->assertEquals([], $query->getFilters());
     }
 
     public function testGetMissingQueryParams(): void
@@ -33,8 +33,8 @@ class QueryParserTest extends TestCase
             'baz' => 'biz'
         ]);
 
-        $this->assertEquals([], $query->getFields()->get());
-        $this->assertEquals([], $query->getFilters()->get());
+        $this->assertEquals([], $query->getFields());
+        $this->assertEquals([], $query->getFilters());
     }
 
     public function testGetFields(): void
@@ -49,7 +49,7 @@ class QueryParserTest extends TestCase
         $this->assertEquals([
             'name' => ['jake'],
             'email' => ['jaketoolson@gmail.com']
-        ], $query->getFields()->get());
+        ], $query->getFields());
     }
 
     public function testGetFilters(): void
@@ -64,7 +64,7 @@ class QueryParserTest extends TestCase
         $this->assertEquals([
             'name' => 'jake',
             'email' => 'jaketoolson@gmail.com'
-        ], $query->getFilters()->get());
+        ], $query->getFilters());
     }
 
     private function createQueryParser(array $parameters = null): QueryParser

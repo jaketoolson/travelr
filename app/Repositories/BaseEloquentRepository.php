@@ -7,6 +7,7 @@ namespace Orion\Travelr\Repositories;
 
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Orion\Travelr\Models\BaseEloquentBuilder;
 use Orion\Travelr\Models\BaseEloquentModel;
 
 abstract class BaseEloquentRepository
@@ -37,7 +38,7 @@ abstract class BaseEloquentRepository
      */
     public function findById(int $id, array $columns = ['*']): ?BaseEloquentModel
     {
-        $result = $this->model->findOrFail($id, $columns);
+        $result = $this->newQuery()->findOrFail($id, $columns);
         $this->reset();
 
         return $result;
@@ -58,5 +59,10 @@ abstract class BaseEloquentRepository
     protected function reset(): void
     {
         $this->resetModel();
+    }
+
+    protected function newQuery(): BaseEloquentBuilder
+    {
+        return $this->model->newQuery();
     }
 }

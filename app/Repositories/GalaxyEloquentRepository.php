@@ -17,11 +17,11 @@ class GalaxyEloquentRepository extends BaseEloquentRepository implements GalaxyR
 
     public function getById(int $id): Galaxy
     {
-        return $this->model->findOrFail($id);
+        return $this->newQuery()->findOrFail($id);
     }
 
     public function getAll(): Collection
     {
-        return $this->model->orderBy('name', 'asc')->get();
+        return $this->newQuery()->orderBy('name', 'asc')->get();
     }
 }

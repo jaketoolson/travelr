@@ -7,7 +7,7 @@ namespace Orion\Travelr\Repositories;
 
 use Illuminate\Support\Collection;
 use Orion\Travelr\Models\Planet;
-use Orion\Travelr\Models\PlanetSearchCriteria;
+use Orion\Travelr\Models\PlanetQuerySchema;
 
 /**
  * @property Planet $model
@@ -21,24 +21,28 @@ class PlanetEloquentRepository extends BaseEloquentRepository implements PlanetR
 
     public function getById(int $id): Planet
     {
-        return $this->model->findOrFail($id);
+        return $this->newQuery()->findOrFail($id);
+    }
+
+    public function query(PlanetQuerySchema $querySchema): Collection
+    {
+        $query = $this->newQuery();
+
+        $filters = $querySchema->getPlanetFilter()->getFilters();
+        if ($filters) {
+            $query->applyCriteria($querySchema->getPlanetFilter());
+        }
+
+        $fieldsets = $querySchema->getPlanetFieldset();
+        if ($fieldsets) {
+            $query->applyCriteria($querySchema->getPlanetFieldset());
+        }
+
+        return $query->get();
     }
 
     public function getAll(): Collection
     {
-        return $this->model->orderBy('created_at', 'asc')->get();
-    }
-
-    public function getFeatured(int $limit = null): Collection
-    {
-        return $this->model->featured()->inRandomOrder()->limit($limit ?? 4)->get();
-    }
-
-    public function search(PlanetSearchCriteria $criteria): Collection
-    {
-        // FIXME: applyCriteria wants a collection of criteria.  This is implemented gross.
-        $query = $this->model->applyCriteria($criteria);
-
-        return $query->get();
+        return $this->newQuery()->orderBy('created_at', 'asc')->get();
     }
 }

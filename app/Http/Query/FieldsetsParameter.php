@@ -24,8 +24,8 @@ class FieldsetsParameter
         return array_keys($this->fieldsets);
     }
 
-    public function getForResourceType(string $resourceType): ?array
+    public function getForResourceType(string $resourceType): array
     {
-        return $this->fieldsets[$resourceType] ?? null;
+        return $this->fieldsets[$resourceType] ?? [];
     }
 }

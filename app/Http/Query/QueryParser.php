@@ -5,7 +5,7 @@
 
 namespace Orion\Travelr\Http\Query;
 
-class QueryParser
+class QueryParser implements QueryParserInterface
 {
     use QueryParserTrait;
 
@@ -24,13 +24,18 @@ class QueryParser
         return $this->parameters;
     }
 
-    public function getFields(): FieldsetsParameter
+    public function getFields(): array
     {
-        return $this->parseFieldSets($this->getParameters());
+        return $this->parseFieldSets($this->getParameters())->get();
     }
 
-    public function getFilters(): FiltersParameter
+    public function getFiltersByResourceType(string $resourceType): array
     {
-        return $this->parseFilters($this->getParameters());
+        return $this->parseFieldSets($this->getParameters())->getForResourceType($resourceType);
+    }
+
+    public function getFilters(): array
+    {
+        return $this->parseFilters($this->getParameters())->get();
     }
 }
