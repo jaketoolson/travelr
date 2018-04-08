@@ -7,7 +7,7 @@ namespace Orion\Travelr\Repositories;
 
 use Illuminate\Support\Collection;
 use Orion\Travelr\Models\Planet;
-use Orion\Travelr\Models\PlanetQuerySchema;
+use Orion\Travelr\Models\Query\QuerySchemaInterface;
 
 /**
  * @property Planet $model
@@ -24,19 +24,9 @@ class PlanetEloquentRepository extends BaseEloquentRepository implements PlanetR
         return $this->newQuery()->findOrFail($id);
     }
 
-    public function query(PlanetQuerySchema $querySchema): Collection
+    public function query(QuerySchemaInterface $querySchema): Collection
     {
-        $query = $this->newQuery();
-
-        $filters = $querySchema->getPlanetFilter()->getFilters();
-        if ($filters) {
-            $query->applyCriteria($querySchema->getPlanetFilter());
-        }
-
-        $fieldsets = $querySchema->getPlanetFieldset();
-        if ($fieldsets) {
-            $query->applyCriteria($querySchema->getPlanetFieldset());
-        }
+        $query = $this->newQuery()->applyQuerySchemas($querySchema);
 
         return $query->get();
     }

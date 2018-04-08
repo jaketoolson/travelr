@@ -3,9 +3,10 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr\Models;
+namespace Orion\Travelr\Models\PlanetQuery;
 
 use Illuminate\Database\Eloquent\Builder;
+use Orion\Travelr\Models\CriteriaInterface;
 
 class PlanetIncludes implements CriteriaInterface
 {

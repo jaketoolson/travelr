@@ -3,27 +3,17 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr\Models;
+namespace Orion\Travelr\Models\PlanetQuery;
 
 use Illuminate\Database\Eloquent\Builder;
+use Orion\Travelr\Models\CriteriaInterface;
+use Orion\Travelr\Models\Query\BaseFilter;
 
-class PlanetFilter implements CriteriaInterface
+class PlanetFilter extends BaseFilter implements CriteriaInterface
 {
-    private $filters = [];
-
-    public function __construct(array $filters)
-    {
-        $this->filters = $filters;
-    }
-
-    public function getFilters(): array
-    {
-        return $this->filters;
-    }
-
     public function apply(Builder $builder): Builder
     {
-        $filters = $this->filters;
+        $filters = $this->getFilters();
 
         if (array_key_exists('name', $filters)) {
             $builder->where('name', 'like', '%' . $filters['name'] . '%');

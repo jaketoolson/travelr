@@ -6,6 +6,7 @@
 namespace Orion\Travelr\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Orion\Travelr\Models\Query\QuerySchemaInterface;
 
 class BaseEloquentBuilder extends Builder
 {
@@ -25,5 +26,16 @@ class BaseEloquentBuilder extends Builder
     public function getCriteria(): array
     {
         return $this->criteria;
+    }
+
+    public function applyQuerySchemas(QuerySchemaInterface $querySchema): BaseEloquentBuilder
+    {
+        // Apply fieldset to query
+        $this->applyCriteria($querySchema->getFieldset());
+
+        // Apply filters to query
+        $this->applyCriteria($querySchema->getFilter());
+
+        return $this;
     }
 }

@@ -24,8 +24,8 @@ class FiltersParameter
         return array_keys($this->filters);
     }
 
-    public function getForAttribute(string $resourceType): ?string
+    public function getForAttribute(string $attribute): ?string
     {
-        return $this->filters[$resourceType] ?? null;
+        return $this->filters[$attribute] ?? null;
     }
 }

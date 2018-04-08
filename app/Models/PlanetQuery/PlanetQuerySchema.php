@@ -3,9 +3,12 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr\Models;
+namespace Orion\Travelr\Models\PlanetQuery;
 
-class PlanetQuerySchema
+use Orion\Travelr\Models\CriteriaInterface;
+use Orion\Travelr\Models\Query\QuerySchemaInterface;
+
+class PlanetQuerySchema implements QuerySchemaInterface
 {
     /**
      * @var PlanetFilter
@@ -27,12 +30,12 @@ class PlanetQuerySchema
         $this->planetFieldset = $planetFieldset;
     }
 
-    public function getPlanetFilter(): PlanetFilter
+    public function getFilter(): CriteriaInterface
     {
         return $this->planetFilter;
     }
 
-    public function getPlanetFieldset(): PlanetFieldset
+    public function getFieldset(): CriteriaInterface
     {
         return $this->planetFieldset;
     }

@@ -7,17 +7,17 @@ namespace Orion\Travelr\Repositories;
 
 use Illuminate\Support\Collection;
 use Orion\Travelr\Models\Planet;
-use Orion\Travelr\Models\PlanetQuerySchema;
+use Orion\Travelr\Models\Query\QuerySchemaInterface;
 
 interface PlanetRepository
 {
     public function getById(int $id): Planet;
 
     /**
-     * @param PlanetQuerySchema $querySchema
+     * @param QuerySchemaInterface $querySchema
      * @return Collection|Planet[]
      */
-    public function query(PlanetQuerySchema $querySchema): Collection;
+    public function query(QuerySchemaInterface $querySchema): Collection;
 
     /**
      * @return Collection|Planet[]

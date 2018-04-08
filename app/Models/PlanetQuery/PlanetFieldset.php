@@ -3,27 +3,22 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-namespace Orion\Travelr\Models;
+namespace Orion\Travelr\Models\PlanetQuery;
 
 use Illuminate\Database\Eloquent\Builder;
+use Orion\Travelr\Models\CriteriaInterface;
+use Orion\Travelr\Models\Query\BaseFieldset;
 
-class PlanetFieldset implements CriteriaInterface
+class PlanetFieldset extends BaseFieldset implements CriteriaInterface
 {
-    private $fieldsets = [];
-
-    public function __construct(array $fieldsets)
-    {
-        $this->fieldsets = $fieldsets;
-    }
-
-    public function requiredFields(): array
+    public function requiredAttributes(): array
     {
         return [
             'id',
         ];
     }
 
-    public function defaultFields(): array
+    public function defaultAttributes(): array
     {
         return [
             'name',
@@ -39,22 +34,21 @@ class PlanetFieldset implements CriteriaInterface
 
     public function apply(Builder $builder): Builder
     {
-        $fieldsets = $this->fieldsets;
+        $fieldsets = $this->getFieldsets();
 
         if (! $fieldsets) {
-            foreach ($this->defaultFields() as $fieldName) {
+            foreach ($this->defaultAttributes() as $fieldName) {
                 $builder->addSelect($fieldName);
             }
         } else {
-            // Todo, this should be required.
             foreach ($fieldsets as $fieldName) {
-                if (in_array($fieldName, $this->defaultFields(), true)) {
+                if (in_array($fieldName, $this->defaultAttributes(), true)) {
                     $builder->addSelect($fieldName);
                 }
             }
         }
 
-        foreach ($this->requiredFields() as $fieldName) {
+        foreach ($this->requiredAttributes() as $fieldName) {
             $builder->addSelect($fieldName);
         }
 
