@@ -5,16 +5,13 @@
 
 namespace Orion\Travelr\Models\PlanetQuery;
 
-use Illuminate\Database\Eloquent\Builder;
-use Orion\Travelr\Models\CriteriaInterface;
-
-class PlanetIncludes implements CriteriaInterface
+class PlanetIncludes
 {
-    private $fieldsets = [];
+    private $includes = [];
 
-    public function __construct(array $fieldsets)
+    public function __construct(array $includes)
     {
-        $this->fieldsets = $fieldsets;
+        $this->includes = $includes;
     }
 
     public function defaultIncludes(): array
@@ -22,16 +19,5 @@ class PlanetIncludes implements CriteriaInterface
         return [
             'photo',
         ];
-    }
-
-    public function apply(Builder $builder): Builder
-    {
-        $fieldsets = $this->fieldsets;
-
-        foreach ($fieldsets as $fieldName) {
-            $builder->addSelect($fieldName);
-        }
-
-        return $builder;
     }
 }

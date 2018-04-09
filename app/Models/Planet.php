@@ -61,7 +61,17 @@ class Planet extends BaseEloquentModel
         'population',
         'price_cents',
         'photo',
-        'featured'
+        'featured',
+        'price_dollars',
+    ];
+
+    protected $casts = [
+        'featured' => 'bool',
+    ];
+
+    protected $excludeFromMappings = [
+        'id',
+        'galaxy_id',
     ];
 
     public function getPriceDollarsAttribute(): float

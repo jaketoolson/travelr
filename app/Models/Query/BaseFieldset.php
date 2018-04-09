@@ -22,7 +22,7 @@ abstract class BaseFieldset
         return $this->fieldsets;
     }
 
-    abstract public function requiredAttributes(): array;
+    abstract public static function requiredAttributes(): array;
 
-    abstract public function defaultAttributes(): array;
+    abstract public static function defaultAttributes(): array;
 }

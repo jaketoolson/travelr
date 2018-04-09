@@ -54,7 +54,7 @@ class PlanetRepositoryTest extends TestCase
             'name' => str_random(6)
         ]);
 
-        $schema = $this->createPlanetQuerySchema(['name' => random_int(0, 2)]);
+        $schema = $this->createPlanetQuerySchema(['name' => 'foo_bar_baz']);
 
         $result = $this->repo->query($schema);
         $this->assertEquals(0, $result->count());

@@ -11,14 +11,14 @@ use Orion\Travelr\Models\Query\BaseFieldset;
 
 class PlanetFieldset extends BaseFieldset implements CriteriaInterface
 {
-    public function requiredAttributes(): array
+    public static function requiredAttributes(): array
     {
         return [
             'id',
         ];
     }
 
-    public function defaultAttributes(): array
+    public static function defaultAttributes(): array
     {
         return [
             'name',
@@ -29,6 +29,7 @@ class PlanetFieldset extends BaseFieldset implements CriteriaInterface
             'population',
             'price_cents',
             'featured',
+            'galaxy_id',
         ];
     }
 
@@ -37,18 +38,18 @@ class PlanetFieldset extends BaseFieldset implements CriteriaInterface
         $fieldsets = $this->getFieldsets();
 
         if (! $fieldsets) {
-            foreach ($this->defaultAttributes() as $fieldName) {
+            foreach (self::defaultAttributes() as $fieldName) {
                 $builder->addSelect($fieldName);
             }
         } else {
             foreach ($fieldsets as $fieldName) {
-                if (in_array($fieldName, $this->defaultAttributes(), true)) {
+                if (in_array($fieldName, self::defaultAttributes(), true)) {
                     $builder->addSelect($fieldName);
                 }
             }
         }
 
-        foreach ($this->requiredAttributes() as $fieldName) {
+        foreach (self::requiredAttributes() as $fieldName) {
             $builder->addSelect($fieldName);
         }
 

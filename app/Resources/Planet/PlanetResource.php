@@ -30,25 +30,10 @@ class PlanetResource extends Resource
     public function toArray($request): array
     {
         return array_merge(self::getIdentifiers($this->resource),  [
-            'attributes' => $this->getMappedAttributes(),
-            'relationships' => new PlanetRelationshipResource($this),
+            'attributes' => $this->resource->getMappedAttributesToArray(),
+            'relationships' => new PlanetRelationshipResource($this->resource),
             'links' => self::getLinks($this->resource),
         ]);
-    }
-
-    public function getMappedAttributes(): array
-    {
-        return [
-            'name' => $this->resource->name,
-            'description' => $this->resource->description,
-            'diameter' => (int) $this->resource->diameter,
-            'climate' => (int) $this->resource->climate,
-            'rotation_period_hours' => (int) $this->resource->rotation_period_hours,
-            'population' => (int) $this->resource->population,
-            'price_cents' => (int) $this->resource->price_cents,
-            'price_dollars' => (int) $this->resource->price_dollars,
-            'featured' => (bool) $this->resource->featured,
-        ];
     }
 
     public static function getIdentifiers(Planet $planet): array
