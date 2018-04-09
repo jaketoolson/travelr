@@ -21,7 +21,7 @@ class PlanetEloquentRepository extends BaseEloquentRepository implements PlanetR
 
     public function getById(int $id): Planet
     {
-        return $this->newQuery()->findOrFail($id);
+        return $this->findById($id);
     }
 
     public function query(QuerySchemaInterface $querySchema): Collection
