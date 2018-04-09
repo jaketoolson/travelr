@@ -7,12 +7,9 @@ namespace Orion\Travelr\Resources\Terrain;
 
 use Illuminate\Http\Resources\Json\Resource;
 use Orion\Travelr\Models\Terrain;
-use Orion\Travelr\Resources\ResourceParameterMappers;
 
 class TerrainResource extends Resource
 {
-    use ResourceParameterMappers;
-
     public static $wrap;
 
     public const TYPE = 'terrain';

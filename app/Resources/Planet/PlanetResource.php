@@ -8,15 +8,12 @@ namespace Orion\Travelr\Resources\Planet;
 use Orion\Travelr\Http\Query\QueryParser;
 use Orion\Travelr\Models\Planet;
 use Illuminate\Http\Resources\Json\Resource;
-use Orion\Travelr\Resources\ResourceParameterMappers;
 
 /**
  * FIXME: WIP, need to refactor to use a strategy pattern or decorate perhaps.
  */
 class PlanetResource extends Resource
 {
-    use ResourceParameterMappers;
-
     public static $wrap;
 
     /**

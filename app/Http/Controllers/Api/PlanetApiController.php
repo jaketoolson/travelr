@@ -34,7 +34,7 @@ class PlanetApiController extends Controller
      */
     public function index(Request $request): JsonResource
     {
-        // FIXME: This is a bit confusing but still heading in the right direction.
+        // FIXME: This is a bit confusing/verbose but still heading in the right direction.
         $query = new QueryParser($request->all());
 
         $schema = new PlanetQuerySchema(
@@ -42,6 +42,7 @@ class PlanetApiController extends Controller
             new PlanetFieldset($query->getFieldsetsByResourceType(PlanetQuerySchema::RESOURCE_TYPE))
         );
 
+        // TODO: Identify better manner to present the api as laravel's baked-in resource is a bit... frustrating.
         return new PlanetResourceCollection($this->planetRepository->query($schema));
     }
 
