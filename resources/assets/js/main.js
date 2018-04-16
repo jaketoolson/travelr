@@ -10,12 +10,27 @@ import Vue from 'vue';
 import App from './App'
 import router from './router'
 import ApiService from './common/api.service';
+import store from './store';
+import {SET_WAITING} from './store/mutation.types';
 
 ApiService.init();
+
+
+// FIXME: Is this the right place to set loading?
+router.beforeEach((to, from, next) => {
+    store.commit(SET_WAITING);
+    next();
+});
+// router.afterEach((to, from) =>{
+//     // store.commit('toggleLoading', false);
+// });
+
+
 
 new Vue({
     el: '#app',
     router,
+    store,
     template: '<App/>',
     components: {
         App

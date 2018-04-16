@@ -34,10 +34,6 @@ module.exports = {
             {
                 test: /\.(js|es6)$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/,
-                options: {
-                    presets: [["es2015", { modules: false }]],
-                }
             },
             {
                 test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,

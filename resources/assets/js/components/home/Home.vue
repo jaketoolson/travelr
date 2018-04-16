@@ -5,13 +5,14 @@
     <section class="home-search">
         <div class="inner">
             <div class="container">
-                <h1 class="mb-5 text-white">
+                <h1 class="mb-5 slideInLeft text-white animated">
                     <span class="text-primary mr-2">
                         <i class="fas fa-rocket"></i>
                     </span>
                     Vacation anywhere in the universe.
                 </h1>
-                <div class="main-search-form form">
+                <transition name="fade">
+                <div v-if="ready" class="main-search-form form">
                     <div class="form-row">
                         <div class="col-md-4 col-sm-4">
                             <div class="form-group">
@@ -58,6 +59,7 @@
                         </div>
                     </div>
                 </div>
+                </transition>
             </div>
 
         </div>
@@ -65,9 +67,9 @@
 </template>
 <script>
     import { getAmenities, getGalaxies, mapJsonToMultiselect } from '../../common/api/request';
-    import spinner from "../../common/spinner";
     import SearchResults from '../search/SearchResults';
     import Multiselect from '../Multiselect'
+    import {NOT_WAITING} from '../../store/mutation.types';
     export default {
         data() {
             return {
@@ -96,20 +98,31 @@
                 };
                 this.$router.push({name: 'planets', query: data});
             },
-
         },
         mounted() {
             getAmenities().then(response => {
                 this.amenities = mapJsonToMultiselect(response.data.data);
-            });
-            getGalaxies().then(response => {
-                this.galaxies = mapJsonToMultiselect(response.data.data);
+                return getGalaxies().then(response => {
+                    this.galaxies = mapJsonToMultiselect(response.data.data);
+                });
+            }).then(response => {
+                this.ready = true;
+                this.$store.commit(NOT_WAITING);
             });
         },
         components: {
             Multiselect,
-            'spinner' : spinner,
             'search-result' : SearchResults
         },
     }
 </script>
+<style>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 0.8s ease-out;
+    }
+
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+        transition: opacity 0.8s ease-out;
+    }
+</style>
