@@ -127,7 +127,6 @@ class ComposerStaticInitd44bd552f72181a171a0c451d1dec977
         'C' => 
         array (
             'Cron\\' => 5,
-            'Carbon\\' => 7,
         ),
         'B' => 
         array (
@@ -366,14 +365,14 @@ class ComposerStaticInitd44bd552f72181a171a0c451d1dec977
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
-        'Carbon\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
-        ),
         'Barryvdh\\LaravelIdeHelper\\' => 
         array (
             0 => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src',
         ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
     public static $prefixesPsr0 = array (
@@ -2053,6 +2052,7 @@ class ComposerStaticInitd44bd552f72181a171a0c451d1dec977
         'JsonSchema\\Uri\\UriResolver' => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema/Uri/UriResolver.php',
         'JsonSchema\\Uri\\UriRetriever' => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema/Uri/UriRetriever.php',
         'JsonSchema\\Validator' => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema/Validator.php',
+        'JsonSerializable' => __DIR__ . '/..' . '/nesbot/carbon/src/JsonSerializable.php',
         'Laravel\\Cashier\\Billable' => __DIR__ . '/..' . '/laravel/cashier/src/Billable.php',
         'Laravel\\Cashier\\Card' => __DIR__ . '/..' . '/laravel/cashier/src/Card.php',
         'Laravel\\Cashier\\Cashier' => __DIR__ . '/..' . '/laravel/cashier/src/Cashier.php',
@@ -2393,6 +2393,7 @@ class ComposerStaticInitd44bd552f72181a171a0c451d1dec977
         'Orion\\Travelr\\Foundation\\Providers\\DataRepositoryServiceProvider' => __DIR__ . '/../..' . '/app/Foundation/Providers/DataRepositoryServiceProvider.php',
         'Orion\\Travelr\\Foundation\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Foundation/Providers/EventServiceProvider.php',
         'Orion\\Travelr\\Foundation\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Foundation/Providers/RouteServiceProvider.php',
+        'Orion\\Travelr\\Http\\Controllers\\Api\\AmenityApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AmenityApiController.php',
         'Orion\\Travelr\\Http\\Controllers\\Api\\FileApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/FileApiController.php',
         'Orion\\Travelr\\Http\\Controllers\\Api\\GalaxyApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/GalaxyApiController.php',
         'Orion\\Travelr\\Http\\Controllers\\Api\\PlanetApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/PlanetApiController.php',
@@ -2440,11 +2441,15 @@ class ComposerStaticInitd44bd552f72181a171a0c451d1dec977
         'Orion\\Travelr\\Repositories\\PlanetRepository' => __DIR__ . '/../..' . '/app/Repositories/PlanetRepository.php',
         'Orion\\Travelr\\Repositories\\TerrainEloquentRepository' => __DIR__ . '/../..' . '/app/Repositories/TerrainEloquentRepository.php',
         'Orion\\Travelr\\Repositories\\TerrainRepository' => __DIR__ . '/../..' . '/app/Repositories/TerrainRepository.php',
+        'Orion\\Travelr\\Resources\\Amenity\\AmenityIdentifierObject' => __DIR__ . '/../..' . '/app/Resources/Amenity/AmenityIdentifierObject.php',
+        'Orion\\Travelr\\Resources\\Amenity\\AmenityResource' => __DIR__ . '/../..' . '/app/Resources/Amenity/AmenityResource.php',
+        'Orion\\Travelr\\Resources\\Amenity\\AmenityResourceCollection' => __DIR__ . '/../..' . '/app/Resources/Amenity/AmenityResourceCollection.php',
         'Orion\\Travelr\\Resources\\File\\FileIdentifierObject' => __DIR__ . '/../..' . '/app/Resources/File/FileIdentifierObject.php',
         'Orion\\Travelr\\Resources\\File\\FileTransformer' => __DIR__ . '/../..' . '/app/Resources/File/FileTransformer.php',
         'Orion\\Travelr\\Resources\\Galaxy\\GalaxyIdentifierObject' => __DIR__ . '/../..' . '/app/Resources/Galaxy/GalaxyIdentifierObject.php',
         'Orion\\Travelr\\Resources\\Galaxy\\GalaxyResource' => __DIR__ . '/../..' . '/app/Resources/Galaxy/GalaxyResource.php',
         'Orion\\Travelr\\Resources\\Galaxy\\GalaxyResourceCollection' => __DIR__ . '/../..' . '/app/Resources/Galaxy/GalaxyResourceCollection.php',
+        'Orion\\Travelr\\Resources\\Planet\\PlanetAmenitiesRelationshipResource' => __DIR__ . '/../..' . '/app/Resources/Planet/PlanetAmenitiesRelationshipResource.php',
         'Orion\\Travelr\\Resources\\Planet\\PlanetRelationshipResource' => __DIR__ . '/../..' . '/app/Resources/Planet/PlanetRelationshipResource.php',
         'Orion\\Travelr\\Resources\\Planet\\PlanetResource' => __DIR__ . '/../..' . '/app/Resources/Planet/PlanetResource.php',
         'Orion\\Travelr\\Resources\\Planet\\PlanetResourceCollection' => __DIR__ . '/../..' . '/app/Resources/Planet/PlanetResourceCollection.php',
@@ -4410,6 +4415,7 @@ class ComposerStaticInitd44bd552f72181a171a0c451d1dec977
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitd44bd552f72181a171a0c451d1dec977::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitd44bd552f72181a171a0c451d1dec977::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitd44bd552f72181a171a0c451d1dec977::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitd44bd552f72181a171a0c451d1dec977::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitd44bd552f72181a171a0c451d1dec977::$classMap;
 
