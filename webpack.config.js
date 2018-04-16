@@ -19,9 +19,7 @@ module.exports = {
             __dirname + '/node_modules/vue-multiselect/dist/vue-multiselect.min.css'
         ],
         'css/app' : [
-            assetsDir + 'css/owl.carousel.min.css',
             assetsDir + 'scss/app.scss',
-            assetsDir + 'css/custom.css'
         ]
     },
     output: {
