@@ -12,11 +12,11 @@
                     Vacation anywhere in the universe.
                 </h1>
                 <transition name="fade">
-                <div v-if="ready" class="main-search-form form">
+                <div v-if="!waiting" class="main-search-form form">
                     <div class="form-row">
                         <div class="col-md-4 col-sm-4">
                             <div class="form-group">
-                                <input id="planet_name" v-on:keyup.enter="searchPlanets" v-model="fields.planet_name" name="planet_name" type="text" class="form-control form-control-lg" placeholder="Search by planet name">
+                                <input id="planet_name" v-on:keyup.enter="searchPlanets" v-model="fields.planet_name" name="planet_name" type="text" class="form-control form-control-xl" placeholder="Search by planet name">
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-3">
@@ -55,7 +55,7 @@
                             <button
                                     type="button"
                                     @click.prevent="searchPlanets"
-                                    class="btn btn-primary btn-block">Search</button>
+                                    class="btn btn-xl btn-primary btn-block">Search</button>
                         </div>
                     </div>
                 </div>
@@ -66,18 +66,15 @@
     </section>
 </template>
 <script>
-    import { getAmenities, getGalaxies, mapJsonToMultiselect } from '../../common/api/request';
-    import SearchResults from '../search/SearchResults';
+    import store from '../../store';
     import Multiselect from '../Multiselect'
-    import {NOT_WAITING} from '../../store/mutation.types';
+    import {SET_WAITING, NOT_WAITING } from '../../store/mutation.types';
+    import { GET_GALAXIES, GET_AMENITIES } from "../../store/action.types";
+
     export default {
         data() {
             return {
-                ready : false,
-                searching : false,
                 foundPlanets : [],
-                amenities : [],
-                galaxies : [],
                 fields: {
                     planet_name: null,
                     galaxy : null,
@@ -85,10 +82,20 @@
                 },
             }
         },
+        computed: {
+            waiting() {
+                return this.$store.getters.waiting;
+            },
+            galaxies() {
+                return this.mapJsonToMultiselect(this.$store.getters.galaxies.data);
+            },
+            amenities() {
+                return this.mapJsonToMultiselect(this.$store.getters.amenities.data);
+            }
+        },
         methods: {
+            // TODO: Make this work ;)
             searchPlanets() {
-                this.searching = true;
-
                 let data = {
                     'filter[galaxy_id]': this.fields.galaxy ? this.fields.galaxy.id : null,
                     'filter[name]': this.fields.planet_name,
@@ -96,23 +103,33 @@
                         return amenity.id;
                     }).join(',') : null
                 };
-                this.$router.push({name: 'planets', query: data});
+
+                this.$store.commit(SET_WAITING);
+
+                // this.$router.push({name: 'planets', query: data});
             },
+            mapJsonToMultiselect(data) {
+                let attributes = [];
+                _.each(data, function (k){
+                    attributes.push({
+                        id : k.id,
+                        name : k.attributes.name
+                    });
+                });
+
+                return attributes;
+            }
         },
         mounted() {
-            getAmenities().then(response => {
-                this.amenities = mapJsonToMultiselect(response.data.data);
-                return getGalaxies().then(response => {
-                    this.galaxies = mapJsonToMultiselect(response.data.data);
-                });
-            }).then(response => {
-                this.ready = true;
+            Promise.all([
+                store.dispatch(GET_GALAXIES),
+                store.dispatch(GET_AMENITIES)
+            ]).then((data) => {
                 this.$store.commit(NOT_WAITING);
             });
         },
         components: {
             Multiselect,
-            'search-result' : SearchResults
         },
     }
 </script>

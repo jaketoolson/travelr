@@ -17,9 +17,7 @@ input, textarea, select, button {
   background-color: transparent;
 }
 
-.form-control {
-  border: none;
-}
+
 
 .footer {
   color: #989898 !important;
@@ -57,4 +55,24 @@ input, textarea, select, button {
     height: 100px !important;
     top: 45% !important;
   }
+}
+
+
+.form-control-xl,
+.input-group-xl > .form-control,
+.input-group-xl > .input-group-prepend > .input-group-text,
+.input-group-xl > .input-group-append > .input-group-text,
+.input-group-xl > .input-group-prepend > .btn,
+.input-group-xl > .input-group-append > .btn,
+.btn-xl,
+.btn-group-xl > .btn{
+  padding: 0.75rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+}
+
+.form-control,
+.btn {
+  border: none !important;
 }
