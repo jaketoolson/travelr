@@ -12,7 +12,7 @@
                     Vacation anywhere in the universe.
                 </h1>
                 <transition name="fade">
-                <div v-if="!waiting" class="main-search-form form">
+                <div v-if="loaded" class="main-search-form form">
                     <div class="form-row">
                         <div class="col-md-4 col-sm-4">
                             <div class="form-group">
@@ -66,9 +66,10 @@
     </section>
 </template>
 <script>
+    import { mapGetters } from 'vuex';
     import store from '../../store';
     import Multiselect from '../Multiselect'
-    import {SET_WAITING, NOT_WAITING } from '../../store/mutation.types';
+    import { SET_WAITING, NOT_WAITING, SET_LOADED } from '../../store/mutation.types';
     import { GET_GALAXIES, GET_AMENITIES } from "../../store/action.types";
 
     export default {
@@ -83,9 +84,9 @@
             }
         },
         computed: {
-            waiting() {
-                return this.$store.getters.waiting;
-            },
+            ...mapGetters([
+                'loaded'
+            ]),
             galaxies() {
                 return this.mapJsonToMultiselect(this.$store.getters.galaxies.data);
             },
@@ -125,6 +126,7 @@
                 store.dispatch(GET_GALAXIES),
                 store.dispatch(GET_AMENITIES)
             ]).then((data) => {
+                this.$store.commit(SET_LOADED);
                 this.$store.commit(NOT_WAITING);
             });
         },
