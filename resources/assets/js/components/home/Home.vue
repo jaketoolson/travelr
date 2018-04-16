@@ -75,7 +75,6 @@
     export default {
         data() {
             return {
-                foundPlanets : [],
                 fields: {
                     planet_name: null,
                     galaxy : null,

@@ -3,12 +3,10 @@
  */
 
 import http from '../router/axios'
-import {getRouteByName} from '../router';
+import { getRouteByName } from '../router';
 
 const ApiService = {
-    init () {
-
-    },
+    init () {},
     get (resource, params) {
         return http.get(resource, params)
             .catch((error) => {
@@ -19,12 +17,7 @@ const ApiService = {
 
 export default ApiService;
 
-export const PlanetsService = {
-    all () {
-        return ApiService.get(getRouteByName('api.planets'));
-    },
-};
-
+// FIXME: Break these out.
 export const GalaxiesService = {
     all () {
         return ApiService.get(getRouteByName('api.galaxies'));
