@@ -22,3 +22,6 @@ Route::get('/galaxies/{id}', 'GalaxyApiController@show')->name('api.galaxies.sho
 
 Route::get('/terrains', 'TerrainApiController@index')->name('api.terrains.index');
 Route::get('/terrains/{id}', 'TerrainApiController@show')->name('api.terrains.show');
+
+Route::get('/amenities', 'AmenityApiController@index')->name('api.amenities.index');
+Route::get('/amenities/{id}', 'AmenityApiController@show')->name('api.amenities.show');

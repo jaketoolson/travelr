@@ -32,6 +32,7 @@ class PlanetRelationshipResource extends Resource
                     'name' => $planet->galaxy ? $planet->galaxy->name : null,
                 ]
             ],
+            'amenities' => new PlanetAmenitiesRelationshipResource($planet->amenities),
             'terrains' => $planet->terrains ? new PlanetTerrainsRelationshipResource($planet->terrains) : null,
         ];
     }

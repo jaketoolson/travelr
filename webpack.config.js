@@ -12,10 +12,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
     entry: {
         'js/app' : [
-            assetsDir + 'js/app.js'
-        ],
-        'js/theme' : [
-            assetsDir + 'js/theme.js'
+            assetsDir + 'js/main.js',
         ],
         'css/vendor' : [
             assetsDir + 'scss/vendor.scss',
@@ -23,7 +20,7 @@ module.exports = {
         ],
         'css/app' : [
             assetsDir + 'css/owl.carousel.min.css',
-            assetsDir + 'css/style.css',
+            assetsDir + 'scss/app.scss',
             assetsDir + 'css/custom.css'
         ]
     },
@@ -39,7 +36,7 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 options: {
-                    presets: ["es2015"]
+                    presets: [["es2015", { modules: false }]],
                 }
             },
             {
@@ -105,8 +102,11 @@ module.exports = {
         fs: 'empty'
     },
     watchOptions: {
+        aggregateTimeout: 300,
+        poll: 300,
         ignored: [
             '/node_modules/',
         ]
-    }
+    },
+    stats: 'minimal',
 };

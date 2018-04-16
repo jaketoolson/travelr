@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property Carbon|null featured
  *
  * @property File photo
- * @property Collection|Facility[] facilities
+ * @property Collection|Amenity[] amenities
  * @property Galaxy galaxy
  * @property Collection|Terrain[] terrains
  *
@@ -47,7 +47,8 @@ class Planet extends BaseEloquentModel
     protected $with = [
         'galaxy',
         'terrains',
-        'photo'
+        'photo',
+        'amenities'
     ];
 
     protected $fillable = [
@@ -94,9 +95,9 @@ class Planet extends BaseEloquentModel
         return $this->morphOne(File::class, 'fileable');
     }
 
-    public function facilities(): BelongsToMany
+    public function amenities(): BelongsToMany
     {
-        return $this->belongsToMany(Facility::class, 'facility_planet', 'planet_id', 'facility_id');
+        return $this->belongsToMany(Amenity::class, 'amenity_planet', 'planet_id', 'amenity_id');
     }
 
     public function galaxy(): BelongsTo

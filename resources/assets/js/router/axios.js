@@ -1,12 +1,12 @@
 /*
- * Copyright (c) Jake Toolson 2018.
+ * Copyright (c) 2018. Jake Toolson
  */
 
 import axios from 'axios';
 
 let token = document.head.querySelector('meta[name="csrf-token"]');
 
-export const http = axios.create({
+export default axios.create({
     headers: {
         'X-Requested-With' : 'XMLHttpRequest',
         'X-CSRF-TOKEN' : token ? token.content : null

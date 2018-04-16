@@ -2803,8 +2803,6 @@ label.required:after {
 }
 .form .alternative-search-form {
     padding-top: 1rem;
-    z-index: 1;
-    position: relative;
 }
 .form .alternative-search-form .collapse.show .wrapper {
     opacity: 1;
@@ -2821,7 +2819,6 @@ label.required:after {
     padding-bottom: 2rem;
     border-radius: 3px;
     background-color: #fff;
-    position: relative;
 }
 .form .alternative-search-form .wrapper:before {
     border-style: solid;
@@ -2942,6 +2939,7 @@ label.required:after {
     border-radius: .4rem;
     z-index: 1;
 }
+
 .form-slides .form-slide {
     display: none;
     transition: .3s ease;

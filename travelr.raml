@@ -1,0 +1,40 @@
+#%RAML 1.0
+---
+title: Travelr API
+baseUri: http://oriontravelr.com/api
+version: v1
+mediaType: application/json
+types:
+  Planet:
+    type: object
+/planets:
+  /{planetId}
+    get:
+      description: Retrieve a specific book title
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                    "id": "SbBGk",
+                    "type" : "planet",
+                    "attributes" : {
+                      uuid: "a5ef65bdb3d8b08922ad15123ab46c8bf4232a7a",
+                      name: "Tatooine",
+                      description: "Rerum est eos in. Blanditiis modi aperiam et nulla ut aliquid qui. Totam impedit blanditiis dicta.,Necessitatibus voluptas velit saepe voluptates qui dolore totam non. Et quod assumenda tempora non sit tempore tempore. Molestiae ea ut repellendus.,In harum aperiam et sunt ullam vel mollitia. Nostrum omnis molestiae esse aperiam. Quis fugiat labore expedita.",
+                      diameter: 10465,
+                      climate: "arid",
+                      rotation_period_hours: 23,
+                      population: 200000,
+                      price_cents: 33000,
+                      created_at: "2018-04-09 07:24:59",
+                      updated_at: "2018-04-09 07:25:19",
+                      deleted_at: null,
+                      featured: null,
+                      price_dollars: 330
+                    },
+                    "links" : {
+                      "self" : "http://oriontravelr.com/api/planets/1"
+                    }
+                  }

@@ -82,9 +82,8 @@ class PlanetRepositoryTest extends TestCase
     public function testQueryAll(): void
     {
         for ($i = 0; $i < 3; $i++) {
-            $name = $i === 1 ? str_random(4) : 'foo' . str_random(4);
             $this->createPlanets([
-                'name' => $name
+                'name' =>  $i === 1 ? str_random(4) : 'foo' . str_random(4)
             ], 1);
         }
 

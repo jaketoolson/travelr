@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Laravel\Cashier\Billable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
@@ -28,7 +29,7 @@ class User extends BaseEloquentModel implements
     CanResetPasswordContract,
     JWTSubject
 {
-    use HasUuid, Notifiable, Authenticatable, CanResetPassword, Authorizable;
+    use Billable, HasUuid, Notifiable, Authenticatable, CanResetPassword, Authorizable;
 
     protected $fillable = [
         'uuid',
