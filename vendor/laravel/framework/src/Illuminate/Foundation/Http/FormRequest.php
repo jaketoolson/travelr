@@ -16,16 +16,6 @@ class FormRequest extends Request implements ValidatesWhenResolved
 {
     use ValidatesWhenResolvedTrait;
 
-    public function rules()
-    {
-        return [];
-    }
-
-    public function authorize()
-    {
-        return true;
-    }
-
     /**
      * The container instance.
      *
