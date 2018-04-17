@@ -2,7 +2,7 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-import Home from '../components/home/Home';
+import Home from '../views/Home';
 import SearchResults from '../components/search/SearchResults';
 
 export default [

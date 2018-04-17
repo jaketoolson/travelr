@@ -6,6 +6,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import planet from './planet.module';
 import home from './home.module';
+import searchplanets from './searchplanets.module';
 import { SET_WAITING, NOT_WAITING, NOT_LOADED, SET_LOADED } from './mutation.types';
 
 Vue.use(Vuex);
@@ -20,7 +21,8 @@ export const state = Object.assign({}, initialState);
 export default new Vuex.Store({
     modules: {
         home,
-        planet
+        planet,
+        searchplanets
     },
     state: initialState,
     mutations: {

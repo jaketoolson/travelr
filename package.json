@@ -1,7 +1,7 @@
 {
   "name": "orion_travelr",
   "version": "1.0.0",
-  "author": "Eder Gonzalez <ederyirnglz@gmail.com>",
+  "author": "Jake Toolson (jaketoolson@gmail.com)",
   "private": true,
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js --config webpack.config.js",
@@ -23,7 +23,8 @@
     "vue-multiselect": "^2.1.0",
     "vue-router": "3.0.1",
     "vue-spinner": "^1.0.3",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
     "ajv": "6.1.1",

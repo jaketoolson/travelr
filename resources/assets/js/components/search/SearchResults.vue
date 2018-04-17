@@ -11,7 +11,6 @@
         </div>
     </div>
 </template>
-
 <script>
     import PlanetListing from './../planet/PlanetListing';
     import listing_mixin from './../planet/listing-mixin';
@@ -24,11 +23,6 @@
                 type: Array,
                 required: true
             },
-        },
-        data() {
-            return {
-                ready : false,
-            }
         },
         components: {
             'planet-listing' : PlanetListing

@@ -7,8 +7,14 @@ import { getRouteByName } from '../router';
 
 const ApiService = {
     init () {},
-    get (resource, params) {
-        return http.get(resource, params)
+    query (resource, params) {
+        return http.get(resource, {params: params})
+            .catch((error) => {
+                throw new Error(`ApiService ${error}`)
+            })
+    },
+    get (resource) {
+        return http.get(resource)
             .catch((error) => {
                 throw new Error(`ApiService ${error}`)
             })
@@ -27,5 +33,11 @@ export const GalaxiesService = {
 export const AmenitiesService = {
     all () {
         return ApiService.get(getRouteByName('api.amenities'));
+    },
+};
+
+export const PlanetsService = {
+    query (params) {
+        return ApiService.query(getRouteByName('api.planets'), params);
     },
 };
