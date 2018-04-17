@@ -10,11 +10,11 @@
     </div>
 </template>
 <script>
-    import spinner from './common/spinner';
+    import spinner from '../common/spinner';
     import { mapGetters } from 'vuex'
 
     export default {
-        name: 'App',
+        name: 'default',
         computed: {
             ...mapGetters([
                 'waiting'

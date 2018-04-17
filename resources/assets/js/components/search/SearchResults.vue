@@ -3,9 +3,9 @@
   -->
 
 <template>
-    <div class="mt-5">
-        <div :class="`items grid-xl-${display_per_row}-items grid-lg-${display_per_row-1}-items grid-md-2-items ${active_display_type}`">
-            <div v-for="item in items" :key="item.id">
+    <div class="mt-5 container">
+        <div class="items row">
+            <div v-for="item in items" :key="item.id" class="col-sm-3">
                 <planet-listing :item="item"></planet-listing>
             </div>
         </div>

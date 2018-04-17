@@ -4,49 +4,21 @@
 
 <template>
     <div v-if="item" class="item">
-        <div class="wrapper">
-            <div class="image">
-                <h3>
+        <div class="card mb-4">
+            <img :src="item.relationships.photo.links.thumb_src" alt="" class="card-img">
+            <!--<div class="card-img-overlay">-->
+                <!--<span class="text-white text-right">-->
+                    <!--<i class="far fa-heart"></i>-->
+                <!--</span>-->
+            <!--</div>-->
+            <div class="card-body">
+                <small class="text-muted text-xs text-uppercase">{{ item.relationships.galaxy.meta.name }}</small>
+                <h5 class="card-title">
                     <a :href="item.links.self" class="title">{{ item.attributes.name }}</a>
-                </h3>
-                <a :href="item.links.self"
-                   class="image-wrapper background-image"
-                   :style="`background-image: url('${item.relationships.photo.links.thumb_src}');`">
-                    <img :src="item.relationships.photo.links.thumb_src" alt="">
-                </a>
+                </h5>
+                <p class="card-text text-muted">${{ item.attributes.price_dollars }} per night</p>
+                <!--<p class="card-text">{{ item.attributes.description | truncate(60) }}</p>-->
             </div>
-            <h4 class="location">
-                <i class="fas fa-globe"></i>
-                <a :href="item.relationships.galaxy.links.self">{{ item.relationships.galaxy.meta.name }}</a>
-            </h4>
-            <div class="price">${{ item.attributes.price_dollars }}</div>
-            <div class="meta">
-                <figure>
-                    <a href="#">
-                        <i class="fas fa-user"></i> Jake Toolson
-                    </a>
-                </figure>
-            </div>
-            <div class="description">
-                <p>{{ item.attributes.description | truncate(60) }}</p>
-            </div>
-            <div class="additional-info">
-                <ul>
-                    <li>
-                        <figure>Start Date</figure>
-                        <aside>25.06.2017 09:00</aside>
-                    </li>
-                    <li>
-                        <figure>Length</figure>
-                        <aside>2 months</aside>
-                    </li>
-                    <li>
-                        <figure>Bedrooms</figure>
-                        <aside>3</aside>
-                    </li>
-                </ul>
-            </div>
-            <a :href="item.links.self" class="detail text-caps underline">Detail</a>
         </div>
     </div>
 </template>

@@ -19,6 +19,7 @@
     "qs": "^6.5.1",
     "ssri": "^5.3.0",
     "vue": "2.5.16",
+    "vue-extend-layout": "^1.0.1",
     "vue-infinite-loading": "^2.3.1",
     "vue-multiselect": "^2.1.0",
     "vue-router": "3.0.1",
