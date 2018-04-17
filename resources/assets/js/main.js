@@ -11,10 +11,10 @@ import App from './App'
 import router from './router'
 import ApiService from './common/api.service';
 import store from './store';
-import {SET_WAITING} from './store/mutation.types';
+import {SET_WAITING, NOT_WAITING } from './store/mutation.types';
 import { sync } from 'vuex-router-sync'
 
-const unsync = sync(store, router);
+sync(store, router);
 
 ApiService.init();
 
@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
     next();
 });
 // router.afterEach((to, from) =>{
-//     // store.commit('toggleLoading', false);
+//     store.commit(NOT_WAITING);
 // });
 
 

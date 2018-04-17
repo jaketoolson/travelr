@@ -53,7 +53,6 @@
 </template>
 <script>
     import Multiselect from '../Multiselect';
-    import { QUERY_PLANETS } from "../../store/action.types";
 
     export default {
         name: 'SearchPlanets',
@@ -94,11 +93,7 @@
                     }).join(',') : null
                 };
 
-                this.searching = true;
-                this.$store.dispatch(QUERY_PLANETS, data).then((response)=>{
-                    alert(`Found ${response.data.length} results.`);
-                    this.searching = false;
-                });
+                this.$router.push({ name: 'planets', query: data});
             },
         }
     }

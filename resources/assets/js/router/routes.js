@@ -4,6 +4,7 @@
 
 import Home from '../views/Home';
 import SearchResults from '../components/search/SearchResults';
+import Planets from '../views/Planets';
 
 export default [
     {
@@ -31,7 +32,7 @@ export default [
     {
         path: '/planets',
         name: 'planets',
-        component: SearchResults,
+        component: Planets,
     },
     {
         path: '/planets/:id',
