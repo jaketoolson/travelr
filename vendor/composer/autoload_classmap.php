@@ -3853,7 +3853,6 @@ return array(
     'Tymon\\JWTAuth\\Exceptions\\UserNotDefinedException' => $vendorDir . '/tymon/jwt-auth/src/Exceptions/UserNotDefinedException.php',
     'Tymon\\JWTAuth\\Facades\\JWTAuth' => $vendorDir . '/tymon/jwt-auth/src/Facades/JWTAuth.php',
     'Tymon\\JWTAuth\\Facades\\JWTFactory' => $vendorDir . '/tymon/jwt-auth/src/Facades/JWTFactory.php',
-    'Tymon\\JWTAuth\\Facades\\JWTProvider' => $vendorDir . '/tymon/jwt-auth/src/Facades/JWTProvider.php',
     'Tymon\\JWTAuth\\Factory' => $vendorDir . '/tymon/jwt-auth/src/Factory.php',
     'Tymon\\JWTAuth\\Http\\Middleware\\Authenticate' => $vendorDir . '/tymon/jwt-auth/src/Http/Middleware/Authenticate.php',
     'Tymon\\JWTAuth\\Http\\Middleware\\AuthenticateAndRenew' => $vendorDir . '/tymon/jwt-auth/src/Http/Middleware/AuthenticateAndRenew.php',

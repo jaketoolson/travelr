@@ -2,20 +2,26 @@
   - Copyright (c) 2018. Jake Toolson
   -->
 <template>
-    <pre>{{ planets }}</pre>
+    <div>
+        <SearchResults v-if="planets.data" :items="planets.data"></SearchResults>
+    </div>
 </template>
 <script>
     import { mapGetters } from 'vuex';
     import { QUERY_PLANETS } from "../store/action.types";
     import { NOT_WAITING } from "../store/mutation.types";
+    import SearchResults from '../components/search/SearchResults';
 
     export default {
         name: 'Planets',
         data() {
             return {
                 query: {},
-                planets: [],
+                planets: {},
             }
+        },
+        components: {
+            SearchResults,
         },
         mounted () {
             this.query = this.$route.query;

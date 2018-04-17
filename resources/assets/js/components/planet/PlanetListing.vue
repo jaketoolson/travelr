@@ -7,9 +7,9 @@
         <div class="wrapper">
             <div class="image">
                 <h3>
-                    <a :href="item.links.web" class="title">{{ item.attributes.name }}</a>
+                    <a :href="item.links.self" class="title">{{ item.attributes.name }}</a>
                 </h3>
-                <a :href="item.links.web"
+                <a :href="item.links.self"
                    class="image-wrapper background-image"
                    :style="`background-image: url('${item.relationships.photo.links.thumb_src}');`">
                     <img :src="item.relationships.photo.links.thumb_src" alt="">
@@ -17,7 +17,7 @@
             </div>
             <h4 class="location">
                 <i class="fas fa-globe"></i>
-                <a :href="item.relationships.galaxy.links.web">{{ item.relationships.galaxy.meta.name }}</a>
+                <a :href="item.relationships.galaxy.links.self">{{ item.relationships.galaxy.meta.name }}</a>
             </h4>
             <div class="price">${{ item.attributes.price_dollars }}</div>
             <div class="meta">
@@ -46,7 +46,7 @@
                     </li>
                 </ul>
             </div>
-            <a :href="item.links.web" class="detail text-caps underline">Detail</a>
+            <a :href="item.links.self" class="detail text-caps underline">Detail</a>
         </div>
     </div>
 </template>

@@ -15,6 +15,7 @@
     import PlanetListing from './../planet/PlanetListing';
     import listing_mixin from './../planet/listing-mixin';
     export default {
+        name: 'SearchResults',
         mixins: [
             listing_mixin
         ],

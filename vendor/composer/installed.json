@@ -5227,17 +5227,17 @@
     },
     {
         "name": "tymon/jwt-auth",
-        "version": "dev-develop",
-        "version_normalized": "dev-develop",
+        "version": "1.0.0-rc.2",
+        "version_normalized": "1.0.0.0-RC2",
         "source": {
             "type": "git",
             "url": "https://github.com/tymondesigns/jwt-auth.git",
-            "reference": "2b79229235d83523a05069ccb9c97cd5ec0b8123"
+            "reference": "d5220f6a84cbb8300f6f2f0f20aa908d072b4e4b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/2b79229235d83523a05069ccb9c97cd5ec0b8123",
-            "reference": "2b79229235d83523a05069ccb9c97cd5ec0b8123",
+            "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/d5220f6a84cbb8300f6f2f0f20aa908d072b4e4b",
+            "reference": "d5220f6a84cbb8300f6f2f0f20aa908d072b4e4b",
             "shasum": ""
         },
         "require": {
@@ -5258,7 +5258,7 @@
             "mockery/mockery": ">=0.9.9",
             "phpunit/phpunit": "~4.8 || ~6.0"
         },
-        "time": "2018-03-10T22:14:03+00:00",
+        "time": "2018-02-07T20:55:14+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

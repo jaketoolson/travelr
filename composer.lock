@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "491eac44537c1193bf46d43b660ed08f",
+    "content-hash": "e69ac4e93a3ef92297c0f05930ce1934",
     "packages": [
         {
             "name": "bkwld/croppa",
@@ -2729,16 +2729,16 @@
         },
         {
             "name": "tymon/jwt-auth",
-            "version": "dev-develop",
+            "version": "1.0.0-rc.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tymondesigns/jwt-auth.git",
-                "reference": "2b79229235d83523a05069ccb9c97cd5ec0b8123"
+                "reference": "d5220f6a84cbb8300f6f2f0f20aa908d072b4e4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/2b79229235d83523a05069ccb9c97cd5ec0b8123",
-                "reference": "2b79229235d83523a05069ccb9c97cd5ec0b8123",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/d5220f6a84cbb8300f6f2f0f20aa908d072b4e4b",
+                "reference": "d5220f6a84cbb8300f6f2f0f20aa908d072b4e4b",
                 "shasum": ""
             },
             "require": {
@@ -2800,7 +2800,7 @@
                 "jwt",
                 "laravel"
             ],
-            "time": "2018-03-10T22:14:03+00:00"
+            "time": "2018-02-07T20:55:14+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -5267,9 +5267,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "tymon/jwt-auth": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
