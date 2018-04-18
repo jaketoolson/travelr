@@ -14,3 +14,5 @@ export const SET_PLANETS_QUERY = 'setPlanetsQuery';
 export const SET_AMENITIES = 'setAmenities';
 
 export const SET_GALAXIES = 'setGalaxies';
+
+export const SET_ERROR = 'setError';

@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -25,11 +26,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int price_cents
  * @property float price_dollars
  * @property Carbon|null featured
+ * @property null|float average_rating
  *
  * @property File photo
  * @property Collection|Amenity[] amenities
  * @property Galaxy galaxy
  * @property Collection|Terrain[] terrains
+ * @property Collection|Review[] reviews
  *
  * @method Builder featured()
  * @method Builder notFeatured()
@@ -42,6 +45,7 @@ class Planet extends BaseEloquentModel
 
     protected $appends = [
         'price_dollars',
+        'average_rating',
     ];
 
     protected $with = [
@@ -108,5 +112,15 @@ class Planet extends BaseEloquentModel
     public function terrains(): BelongsToMany
     {
         return $this->belongsToMany(Terrain::class, 'terrain_planet', 'planet_id', 'terrain_id');
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class, 'planet_id');
+    }
+
+    public function getAverageRatingAttribute(): ?float
+    {
+        return $this->reviews()->selectRaw('AVG(rating) as rating')->first()->rating;
     }
 }

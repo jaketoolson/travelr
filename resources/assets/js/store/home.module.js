@@ -4,12 +4,16 @@
 
 import { AmenitiesService, GalaxiesService } from "@/common/api.service";
 import { GET_AMENITIES, GET_GALAXIES } from '@/store/action.types'
-import { SET_AMENITIES, SET_GALAXIES } from "@/store/mutation.types";
+import { SET_AMENITIES, SET_GALAXIES, SET_ERROR } from "@/store/mutation.types";
 
 const initialState = {
     amenities: [],
     galaxies: [],
     planet_name: null,
+    error: {
+        type: null,
+        message: null,
+    }
 };
 
 export const state = Object.assign({}, initialState);
@@ -38,6 +42,10 @@ export const mutations = {
     [SET_AMENITIES] (state, amenities) {
         state.amenities = amenities;
     },
+    [SET_ERROR] (state, error) {
+        state.error.type = error.type;
+        state.error.message = error.message;
+    }
 };
 
 const getters = {
@@ -47,6 +55,9 @@ const getters = {
     galaxies (state) {
         return state.galaxies;
     },
+    error (state) {
+        return state.error;
+    }
 };
 
 export default {

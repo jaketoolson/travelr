@@ -13,12 +13,8 @@
 </template>
 <script>
     import PlanetListing from '@/components/planet/PlanetListing';
-    import listing_mixin from '@/components/planet/listing-mixin';
     export default {
-        name: 'SearchResults',
-        mixins: [
-            listing_mixin
-        ],
+        name: 'search-results',
         props: {
             items : {
                 type: Array,
@@ -26,7 +22,7 @@
             },
         },
         components: {
-            'planet-listing' : PlanetListing
+            PlanetListing
         },
     }
 </script>

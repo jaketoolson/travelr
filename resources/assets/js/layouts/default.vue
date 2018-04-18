@@ -3,6 +3,7 @@
   -->
 <template>
     <div id="app">
+        <error-message v-if="error.message" :type="error.type" :message="error.message"></error-message>
         <div id="loader" v-if="waiting" class="d-inline">
             <spinner color="#007bff" size="30px"></spinner>
         </div>
@@ -14,15 +15,18 @@
 <script>
     import spinner from '@/common/spinner';
     import { mapGetters } from 'vuex'
+    import ErrorMessage from '@/components/ErrorMessage';
 
     export default {
         name: 'default',
         computed: {
             ...mapGetters([
-                'waiting'
+                'waiting',
+                'error'
             ])
         },
         components: {
+            ErrorMessage,
             'spinner' : spinner,
         },
     }

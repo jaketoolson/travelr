@@ -15,13 +15,13 @@ class RouteServiceProvider extends ServiceProvider
 
     public function map(): void
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
         if ($this->app->environment() === 'local') {
             $this->mapLocalRoutes();
         }
+
+        $this->mapApiRoutes();
+
+        $this->mapWebRoutes();
     }
 
     protected function mapWebRoutes(): void

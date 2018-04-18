@@ -3,7 +3,7 @@
   -->
 <template>
     <div>
-        <SearchResults v-if="!searching && planets.data.length > 0" :items="planets.data"></SearchResults>
+        <search-results v-if="!searching && planets.data.length > 0" :items="planets.data"></search-results>
         <transition v-else>
             <h3 class="center-of-screen text-white text-center">
                 <template v-if="!searching && planets.data.length === 0">
@@ -20,7 +20,7 @@
 <script>
     import { mapGetters } from 'vuex';
     import { QUERY_PLANETS } from "@/store/action.types";
-    import { NOT_WAITING } from "@/store/mutation.types";
+    import { NOT_WAITING, SET_ERROR } from "@/store/mutation.types";
     import SearchResults from '@/components/search/SearchResults';
 
     export default {
@@ -41,6 +41,16 @@
             this.$store.dispatch(QUERY_PLANETS, this.query).then((response)=>{
                 this.planets = this.$store.getters.planets;
                 this.$store.commit(NOT_WAITING);
+
+                // if (this.planets.data.length === 0) {
+                //     this.$store.commit(SET_ERROR, {
+                //         type: 'error',
+                //         message: 'Sorry, we were unable to find planets that meet your needs :('
+                //     });
+                //
+                //     this.$router.push({ name: 'home'});
+                // }
+
             }).finally(()=> this.searching = false );
         },
     }

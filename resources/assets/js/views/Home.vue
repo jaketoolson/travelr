@@ -12,7 +12,7 @@
                     Vacation anywhere in the universe.
                 </h1>
                 <transition name="fade">
-                    <SearchPlanets v-if="loaded" :galaxies="galaxies" :amenities="amenities"></SearchPlanets>
+                    <search-planets v-if="loaded" :galaxies="galaxies" :amenities="amenities"></search-planets>
                 </transition>
             </div>
         </div>
