@@ -33,9 +33,10 @@ export const getRouteObjectByName = (name) => {
     });
 };
 
-export const getRouteByName = (name) => {
+export const getRouteByName = (name, params) => {
     let route = router.resolve({
-        name: name
+        name: name,
+        params: params
     });
 
     return route ? route.href : null;

@@ -33,8 +33,8 @@
 </script>
 <style>
     #loader {
-        position: absolute;
-        top: 15px;
+        position: fixed;
+        bottom: 15px;
         right: 15px;
         width: 30px;
         height: 30px;

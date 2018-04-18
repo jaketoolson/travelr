@@ -40,4 +40,7 @@ export const PlanetsService = {
     query (params) {
         return ApiService.query(getRouteByName('api.planets'), params);
     },
+    get (id) {
+        return ApiService.get(getRouteByName('api.planets.show', {id: id}));
+    }
 };

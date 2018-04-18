@@ -3,8 +3,8 @@
  */
 
 import Home from '@/views/Home';
-import SearchResults from '../components/search/SearchResults';
 import Planets from '@/views/Planets';
+import Planet from '@/views/Planet';
 
 export default [
     {
@@ -18,6 +18,10 @@ export default [
             {
                 path: 'planets',
                 name: 'api.planets'
+            },
+            {
+                path: 'planets/:id',
+                name: 'api.planets.show'
             },
             {
                 path: 'galaxies',
@@ -37,6 +41,7 @@ export default [
     {
         path: '/planets/:id',
         name: 'planets.show',
+        component: Planet
     },
     {
         path: '*',

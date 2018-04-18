@@ -3,7 +3,8 @@
  */
 
 import { GET_PLANET } from '@/store/action.types'
-import { SET_PLANET } from "@/store/mutation.types";
+import {SET_PLANET } from "@/store/mutation.types";
+import {PlanetsService} from "@/common/api.service";
 
 const initialState = {
     planet: {
@@ -16,12 +17,21 @@ const initialState = {
 export const state = Object.assign({}, initialState);
 
 export const actions = {
-    [GET_PLANET] (context, planetId, ) {
-        context.commit(SET_PLANET, planetId);
+    [GET_PLANET] (context, id) {
+        return PlanetsService.get(id)
+            .then(({ data }) => {
+                context.commit(SET_PLANET, data);
+                return data;
+            });
     },
+
 };
 
-export const mutations = {};
+export const mutations = {
+    [SET_PLANET] (state, planet) {
+        state.planet = planet;
+    },
+};
 
 const getters = {
     planet (state) {
