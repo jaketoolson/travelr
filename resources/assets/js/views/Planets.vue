@@ -41,17 +41,7 @@
             this.$store.dispatch(QUERY_PLANETS, this.query).then((response)=>{
                 this.planets = this.$store.getters.planets;
                 this.$store.commit(NOT_WAITING);
-
-                // if (this.planets.data.length === 0) {
-                //     this.$store.commit(SET_ERROR, {
-                //         type: 'error',
-                //         message: 'Sorry, we were unable to find planets that meet your needs :('
-                //     });
-                //
-                //     this.$router.push({ name: 'home'});
-                // }
-
-            }).finally(()=> this.searching = false );
+            }).then(() => this.searching = false );
         },
     }
 </script>

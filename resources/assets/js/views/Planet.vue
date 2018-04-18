@@ -6,7 +6,7 @@
         <div class="card" v-if="planet">
             <div class="card-img-header">
                 <img class="card-img-top" :src="planet.data.relationships.photo.links.src">
-                <button class="btn btn-photos">Photos</button>
+                <button class="btn btn-light btn-photos">Photos</button>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -94,18 +94,22 @@
             }
         },
         methods : {
-            searchThroughIncluded(key) {
+            searchThroughIncluded (key) {
                 return _.filter(this.planet.included, {type: key});
             },
-            population(num, fixed){
-                if (num === null) { return null; }
-                if (num === 0) { return '0'; }
-                fixed = (!fixed || fixed < 0) ? 0 : fixed;
+            population (num) {
+                if (num === null) {
+                    return null;
+                }
+                if (num === 0) {
+                    return 0;
+                }
                 let b = (num).toPrecision(2).split("e"),
                     k = b.length === 1 ? 0 : Math.floor(Math.min(b[1].slice(1), 14) / 3),
-                    c = k < 1 ? num.toFixed(0 + fixed) : (num / Math.pow(10, k * 3) ).toFixed(1 + fixed),
+                    c = k < 1 ? num.toFixed(0) : (num / Math.pow(10, k * 3) ).toFixed(1),
                     d = c < 0 ? c : Math.abs(c),
                     e = d + ['', 'K', 'M', 'B', 'T'][k];
+
                 return e;
             }
         },
