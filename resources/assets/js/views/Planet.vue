@@ -124,7 +124,7 @@
     }
     .card-img-top{
         width: 100%;
-        height: 30vw;
+        height: 50vw;
         object-fit: cover;
     }
     .btn-photos {
