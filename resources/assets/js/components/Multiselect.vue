@@ -1,7 +1,6 @@
 <!--
   - Copyright (c) 2018. Jake Toolson
   -->
-
 <script>
     import Multiselect from 'vue-multiselect'
 

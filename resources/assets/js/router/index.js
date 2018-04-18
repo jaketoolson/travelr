@@ -3,7 +3,7 @@
  */
 
 import Vue from 'vue';
-import routes from './routes';
+import routes from '@/router/routes';
 import VueRouter from 'vue-router';
 
 import qs from 'qs';

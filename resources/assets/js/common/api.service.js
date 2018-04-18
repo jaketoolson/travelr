@@ -2,8 +2,8 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-import http from '../router/axios'
-import { getRouteByName } from '../router';
+import http from '@/router/axios'
+import { getRouteByName } from '@/router';
 
 const ApiService = {
     init () {},

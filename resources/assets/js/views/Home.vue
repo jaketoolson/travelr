@@ -20,10 +20,10 @@
 </template>
 <script>
     import { mapGetters } from 'vuex';
-    import store from '../store';
-    import { NOT_WAITING, SET_LOADED } from '../store/mutation.types';
-    import { GET_GALAXIES, GET_AMENITIES } from "../store/action.types";
-    import SearchPlanets from '../components/search/SearchPlanets';
+    import store from '@/store';
+    import { NOT_WAITING, SET_LOADED } from '@/store/mutation.types';
+    import { GET_GALAXIES, GET_AMENITIES } from "@/store/action.types";
+    import SearchPlanets from '@/components/search/SearchPlanets';
     export default {
         computed: {
             ...mapGetters([

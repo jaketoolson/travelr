@@ -2,8 +2,8 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-import { GET_PLANET } from './action.types'
-import { SET_PLANET } from "./mutation.types";
+import { GET_PLANET } from '@/store/action.types'
+import { SET_PLANET } from "@/store/mutation.types";
 
 const initialState = {
     planet: {

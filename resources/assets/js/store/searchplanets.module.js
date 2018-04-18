@@ -2,9 +2,9 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-import { PlanetsService } from "../common/api.service";
-import { QUERY_PLANETS } from './action.types'
-import { SET_PLANETS_QUERY, SET_PLANETS } from "./mutation.types";
+import { PlanetsService } from "@/common/api.service";
+import { QUERY_PLANETS } from '@/store/action.types'
+import { SET_PLANETS_QUERY, SET_PLANETS } from "@/store/mutation.types";
 
 const initialState = {
     query: {},

@@ -2,9 +2,9 @@
  * Copyright (c) Jake Toolson 2018.
  */
 
-import spinner from "../../common/spinner";
-import PlanetListing from "./PlanetListing";
-import {filters} from '../../common/mixins';
+import spinner from "@/common/spinner";
+import PlanetListing from "@/components/planet/PlanetListing";
+import {filters} from '@/common/mixins';
 
 export default {
     mixins: [

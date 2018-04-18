@@ -2,9 +2,9 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-import { AmenitiesService, GalaxiesService } from "../common/api.service";
-import { GET_AMENITIES, GET_GALAXIES } from './action.types'
-import { SET_AMENITIES, SET_GALAXIES } from "./mutation.types";
+import { AmenitiesService, GalaxiesService } from "@/common/api.service";
+import { GET_AMENITIES, GET_GALAXIES } from '@/store/action.types'
+import { SET_AMENITIES, SET_GALAXIES } from "@/store/mutation.types";
 
 const initialState = {
     amenities: [],

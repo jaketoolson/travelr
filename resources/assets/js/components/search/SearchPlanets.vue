@@ -52,7 +52,7 @@
     </div>
 </template>
 <script>
-    import Multiselect from '../Multiselect';
+    import Multiselect from '@/components/Multiselect';
 
     export default {
         name: 'SearchPlanets',

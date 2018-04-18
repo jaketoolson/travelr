@@ -4,10 +4,10 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
-import planet from './planet.module';
-import home from './home.module';
-import searchplanets from './searchplanets.module';
-import { SET_WAITING, NOT_WAITING, NOT_LOADED, SET_LOADED } from './mutation.types';
+import planet from '@/store/planet.module';
+import home from '@/store/home.module';
+import searchplanets from '@/store/searchplanets.module';
+import { SET_WAITING, NOT_WAITING, NOT_LOADED, SET_LOADED } from '@/store/mutation.types';
 
 Vue.use(Vuex);
 

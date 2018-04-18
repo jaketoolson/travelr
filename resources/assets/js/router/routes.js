@@ -2,9 +2,9 @@
  * Copyright (c) 2018. Jake Toolson
  */
 
-import Home from '../views/Home';
+import Home from '@/views/Home';
 import SearchResults from '../components/search/SearchResults';
-import Planets from '../views/Planets';
+import Planets from '@/views/Planets';
 
 export default [
     {

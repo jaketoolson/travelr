@@ -12,8 +12,8 @@
     </div>
 </template>
 <script>
-    import PlanetListing from './../planet/PlanetListing';
-    import listing_mixin from './../planet/listing-mixin';
+    import PlanetListing from '@/components/planet/PlanetListing';
+    import listing_mixin from '@/components/planet/listing-mixin';
     export default {
         name: 'SearchResults',
         mixins: [
