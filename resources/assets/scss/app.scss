@@ -13,6 +13,14 @@ input, textarea, select, button {
   }
 }
 
+body {
+  background: url('/images/bg/pexels-photo-14676.png') no-repeat 50% 50% fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+}
+
 .navbar-transparent {
   background-color: transparent;
 }
@@ -32,12 +40,6 @@ input, textarea, select, button {
   position: relative !important;
   z-index: 1 !important;
   overflow: hidden;
-
-  background: url('/images/bg/pexels-photo-14676.png') no-repeat 50% 50% fixed;
-  background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -webkit-background-size: cover;
 
   .inner {
     z-index: 1 !important;
@@ -60,6 +62,16 @@ input, textarea, select, button {
 }
 
 
+  .center-of-screen {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+
+
+
+
 .form-control-xl,
 .input-group-xl > .form-control,
 .input-group-xl > .input-group-prepend > .input-group-text,
@@ -74,6 +86,7 @@ input, textarea, select, button {
   border-radius: 0.3rem;
 }
 
+.card,
 .form-control,
 .btn {
   border: none !important;

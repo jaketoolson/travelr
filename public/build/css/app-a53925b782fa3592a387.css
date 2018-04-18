@@ -7,6 +7,13 @@ input:focus, textarea:focus, select:focus, button:focus {
   -webkit-box-shadow: none !important;
   transition: none !important; }
 
+body {
+  background: url("/images/bg/pexels-photo-14676.png") no-repeat 50% 50% fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover; }
+
 .navbar-transparent {
   background-color: transparent; }
 
@@ -21,12 +28,7 @@ input:focus, textarea:focus, select:focus, button:focus {
   min-height: 400px !important;
   position: relative !important;
   z-index: 1 !important;
-  overflow: hidden;
-  background: url("/images/bg/pexels-photo-14676.png") no-repeat 50% 50% fixed;
-  background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -webkit-background-size: cover; }
+  overflow: hidden; }
   .home-search .inner {
     z-index: 1 !important;
     position: absolute !important;
@@ -43,6 +45,12 @@ input:focus, textarea:focus, select:focus, button:focus {
     height: 100px !important;
     top: 45% !important; }
 
+.center-of-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
 .form-control-xl,
 .input-group-xl > .form-control,
 .input-group-xl > .input-group-prepend > .input-group-text,
@@ -56,6 +64,7 @@ input:focus, textarea:focus, select:focus, button:focus {
   line-height: 1.5;
   border-radius: 0.3rem; }
 
+.card,
 .form-control,
 .btn {
   border: none !important; }

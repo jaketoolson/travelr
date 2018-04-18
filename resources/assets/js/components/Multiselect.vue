@@ -61,6 +61,6 @@
         box-shadow: none !important;
     }
     .multiselect__content-wrapper {
-        border: 1px solid transparent;
+        border: none !important;
     }
 </style>

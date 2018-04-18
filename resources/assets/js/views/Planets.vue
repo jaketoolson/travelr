@@ -3,7 +3,18 @@
   -->
 <template>
     <div>
-        <SearchResults v-if="planets.data" :items="planets.data"></SearchResults>
+        <SearchResults v-if="!searching && planets.data.length > 0" :items="planets.data"></SearchResults>
+        <transition v-else>
+            <h3 class="center-of-screen text-white text-center">
+                <template v-if="!searching && planets.data.length === 0">
+                    Sorry, we were unable to find planets that meet your needs :(
+                    <router-link to="/" class="d-block mt-3"><i class="fas fa-home"></i></router-link>
+                </template>
+                <template v-else>
+                    Fueling up the tanks, and reviewing ignition plans...
+                </template>
+            </h3>
+        </transition>
     </div>
 </template>
 <script>
@@ -16,6 +27,7 @@
         name: 'Planets',
         data() {
             return {
+                searching: true,
                 query: {},
                 planets: {},
             }
@@ -25,10 +37,10 @@
         },
         mounted () {
             this.query = this.$route.query;
-
             this.$store.dispatch(QUERY_PLANETS, this.query).then((response)=>{
                 this.planets = this.$store.getters.planets;
                 this.$store.commit(NOT_WAITING);
+                this.searching = false;
             });
         },
     }
