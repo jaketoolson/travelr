@@ -6,8 +6,12 @@
 namespace Orion\Travelr\Resources\Planet;
 
 use Orion\Travelr\Http\Query\QueryParser;
+use Orion\Travelr\Models\Amenity;
 use Orion\Travelr\Models\Planet;
 use Illuminate\Http\Resources\Json\Resource;
+use Orion\Travelr\Models\Terrain;
+use Orion\Travelr\Resources\Amenity\AmenityResource;
+use Orion\Travelr\Resources\Terrain\TerrainResource;
 
 /**
  * FIXME: WIP, need to refactor to use a strategy pattern or decorate perhaps.
@@ -48,6 +52,21 @@ class PlanetResource extends Resource
     {
         return [
             'self' => route('api.planets.show', [$planet->id]),
+        ];
+    }
+
+    public function with($request)
+    {
+        $amenities = $this->resource->amenities->map(function(Amenity $a){
+            return new AmenityResource($a);
+        });
+
+        $terrains = $this->resource->terrains->map(function(Terrain $t){
+           return new TerrainResource($t);
+        });
+
+        return [
+            'included' => $amenities->merge($terrains)
         ];
     }
 }
