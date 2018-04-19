@@ -11,6 +11,17 @@ export default [
         path: '/',
         component: Home,
         name: 'home',
+        meta: {
+            analytics: {
+                pageviewTemplate(route) {
+                    return {
+                        title: 'Travelr Home',
+                        path: route.path,
+                        location: '/'
+                    }
+                }
+            }
+        }
     },
     {
         path: '/api',
@@ -37,11 +48,33 @@ export default [
         path: '/planets',
         name: 'planets',
         component: Planets,
+        meta: {
+            analytics: {
+                pageviewTemplate(route) {
+                    return {
+                        title: 'Travelr Planets Search',
+                        path: route.path,
+                        location: '/planets'
+                    }
+                }
+            }
+        }
     },
     {
         path: '/planets/:id',
         name: 'planets.show',
-        component: Planet
+        component: Planet,
+        meta: {
+            analytics: {
+                pageviewTemplate(route) {
+                    return {
+                        title: 'Travelr Home',
+                        path: route.path,
+                        location: route.path
+                    }
+                }
+            }
+        }
     },
     {
         path: '*',

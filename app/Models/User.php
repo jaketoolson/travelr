@@ -6,6 +6,7 @@
 namespace Orion\Travelr\Models;
 
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -13,6 +14,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Collection;
 use Laravel\Cashier\Billable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -24,7 +26,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @property string password
  * @property string remember_token
  *
- * @property Planet[]|null likedPlanets
+ * @property Planet[]|Collection likedPlanets
+ * @property Like[]|Collection likes
  */
 class User extends BaseEloquentModel implements
     AuthenticatableContract,
@@ -62,5 +65,10 @@ class User extends BaseEloquentModel implements
     public function likedPlanets(): MorphToMany
     {
         return $this->morphedByMany(Planet::class, 'likable', 'likes', 'user_id');
+    }
+
+    public function likes(): HasMany
+    {
+        return $this->hasMany(Like::class, 'user_id');
     }
 }

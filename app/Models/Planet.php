@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -27,12 +28,14 @@ use Illuminate\Database\Eloquent\Builder;
  * @property float price_dollars
  * @property Carbon|null featured
  * @property null|float average_rating
+ * @property int total_reviews
  *
  * @property File photo
- * @property Collection|Amenity[] amenities
  * @property Galaxy galaxy
+ * @property Collection|Amenity[] amenities
  * @property Collection|Terrain[] terrains
  * @property Collection|Review[] reviews
+ * @property Collection|Like[] likes
  *
  * @method Builder featured()
  * @method Builder notFeatured()
@@ -46,6 +49,8 @@ class Planet extends BaseEloquentModel
     protected $appends = [
         'price_dollars',
         'average_rating',
+        'total_reviews',
+        'total_likes',
     ];
 
     protected $with = [
@@ -84,6 +89,21 @@ class Planet extends BaseEloquentModel
         return round($this->price_cents/100, 2);
     }
 
+    public function getAverageRatingAttribute(): ?float
+    {
+        return $this->reviews()->selectRaw('AVG(rating) as rating')->first()->rating;
+    }
+
+    public function getTotalReviewsAttribute(): ?int
+    {
+        return $this->reviews->count();
+    }
+
+    public function getTotalLikesAttribute(): ?int
+    {
+        return $this->likes->count();
+    }
+
     public function scopeFeatured(Builder $builder): Builder
     {
         return $builder->whereNotNull('featured');
@@ -94,7 +114,7 @@ class Planet extends BaseEloquentModel
         return $builder->whereNull('featured');
     }
 
-    public function photo()
+    public function photo(): MorphOne
     {
         return $this->morphOne(File::class, 'fileable');
     }
@@ -119,8 +139,20 @@ class Planet extends BaseEloquentModel
         return $this->hasMany(Review::class, 'planet_id');
     }
 
-    public function getAverageRatingAttribute(): ?float
+    public function likes(): HasMany
     {
-        return $this->reviews()->selectRaw('AVG(rating) as rating')->first()->rating;
+        return $this->hasMany(Like::class, 'likable_id')->where('likable_type', '=', get_class($this));
+    }
+
+    public function like(int $userId): Planet
+    {
+        // TODO: Factory
+        Like::firstOrCreate([
+            'user_id' => $userId,
+            'likable_id' => $this->id,
+            'likable_type' => get_class($this)
+        ]);
+
+        return $this;
     }
 }

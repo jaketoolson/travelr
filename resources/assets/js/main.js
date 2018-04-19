@@ -13,8 +13,16 @@ import store from '@/store';
 import { SET_WAITING } from '@/store/mutation.types';
 import { sync } from 'vuex-router-sync';
 import { VueExtendLayout, layout } from 'vue-extend-layout';
+import VueAnalytics from 'vue-analytics'
+
 
 Vue.use(VueExtendLayout);
+Vue.use(VueAnalytics, {
+    id: 'UA-117831697-1',
+    linkers: ['oriontravelr.com', 'travelr.local'],
+    router,
+});
+
 sync(store, router);
 
 ApiService.init();
