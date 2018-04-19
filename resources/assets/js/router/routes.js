@@ -68,9 +68,9 @@ export default [
             analytics: {
                 pageviewTemplate(route) {
                     return {
-                        title: 'Travelr Home',
+                        title: `Travelr Planet ID ${route.params.id}`,
                         path: route.path,
-                        location: route.path
+                        location: route.fullPath
                     }
                 }
             }
