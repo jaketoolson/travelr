@@ -69,7 +69,7 @@ export default [
                 pageviewTemplate(route) {
                     return {
                         title: `Travelr Planet ID ${route.params.id}`,
-                        path: route.path,
+                        path: route.fullPath,
                         location: route.fullPath
                     }
                 }
