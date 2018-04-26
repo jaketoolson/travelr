@@ -1,3 +1,16 @@
+This is project 1 of 3 - porting a SaaS to 3 different stacks.
+
+This is the LAMP port and includes:
+- Linux
+- Apache2
+- MariaDB
+- PHP 7.1
+- JSON Web Token (JWT) - API security
+- Vue/x - Frontend javascript components
+- Stripe - payment gateway
+
+View Javascript (Mullet stack) here: https://github.com/jaketoolson/travelr-js
+
 # Plans
 - See Github Projects, https://github.com/jaketoolson/travelr/projects, to view details projects and plans.
 - After MVP, I will integrate various design patterns, with scalability focus.  This will be done using git branches to compare before and after.
