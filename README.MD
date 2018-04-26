@@ -10,6 +10,7 @@ This is the LAMP port and includes:
 - Stripe - payment gateway
 
 View Javascript (Mullet stack) here: https://github.com/jaketoolson/travelr-js
+View Python stack hhere: (coming soon)
 
 # Plans
 - See Github Projects, https://github.com/jaketoolson/travelr/projects, to view details projects and plans.
