@@ -24,11 +24,19 @@ class PlanetFilter extends BaseFilter implements CriteriaInterface
         }
 
         if (array_key_exists('amenities', $filters) && $filters['amenities'] !== '') {
-            $builder->whereHas('amenities', function ($query) use ($filters) {
-                $amenities = explode(',', $filters['amenities']);
-                foreach ($amenities as $amenityId) {
-                    $query->where('amenities.id', '=', $amenityId);
-                }
+            $builder->whereHas('amenities', function (Builder $query) use ($filters) {
+                $amenities = array_filter(explode(',', $filters['amenities']));
+                $query->whereIn('amenities.id', $amenities);
+
+                // In order to ensure the whereIn() is respected and only results that contain at least _all_ of the
+                // selected amenities, the select, selectRaw, groupBy and having are required.
+                // selectRaw with max() is erroneous but needed for a valid sql query with groupBY
+
+                $query->select('amenity_planet.planet_id');
+                $query->selectRaw('MAX(amenity_planet.planet_id)');
+
+                $query->groupBy(['amenity_planet.planet_id']);
+                $query->havingRaw('count(DISTINCT amenity_planet.amenity_id) >= '.count($amenities));
             });
         }
 
