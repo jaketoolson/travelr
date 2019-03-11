@@ -1,3 +1,4 @@
+/vendor
 /node_modules
 /public/hot
 /public/storage
@@ -10,6 +11,7 @@ yarn-error.log
 
 .phpstorm.meta.php
 _ide_helper.php
+
 
 routes/local.php
 
