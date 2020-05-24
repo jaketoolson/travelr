@@ -16,7 +16,6 @@ require File.expand_path(confDir + '/scripts/homestead.rb')
 
 Vagrant.require_version '>= 1.9.0'
 
-Vagrant::DEFAULT_SERVER_URL.replace('https://vagrantcloud.com')
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     if File.exist? aliasesPath then

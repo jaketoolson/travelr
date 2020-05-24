@@ -8,7 +8,7 @@ keys:
     - ~/.ssh/id_rsa
 folders:
     -
-        map: ~/www/orion/travelr
+        map: ~/www/travelr/php
         to: /var/www/
 sites:
     -

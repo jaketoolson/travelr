@@ -41,8 +41,10 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapLocalRoutes(): void
     {
-        Route::middleware('web')
-            ->namespace($this->webNamespace)
-            ->group(base_path('routes/local.php'));
+        if (file_exists(base_path('routes/local.php'))) {
+            Route::middleware('web')
+                ->namespace($this->webNamespace)
+                ->group(base_path('routes/local.php'));
+        }
     }
 }

@@ -8,10 +8,10 @@ npm-debug.log
 yarn-error.log
 .DS_STORE
 .vagrant
+php.iml
 
 .phpstorm.meta.php
 _ide_helper.php
-
 
 routes/local.php
 
