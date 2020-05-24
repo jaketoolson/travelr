@@ -6,7 +6,6 @@
 namespace Orion\Travelr\Foundation\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
