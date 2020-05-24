@@ -9,13 +9,13 @@
     "watch": "npm run build -- --watch --watch-poll --progress"
   },
   "dependencies": {
-    "@popperjs/core": "2.4.0",
     "axios": "0.19.2",
     "bootstrap": "4.5.0",
     "jquery": "^3.2",
     "lodash": "^4.17.15",
     "moment": "2.26.0",
     "moment-timezone": "0.5.31",
+    "popper.js": "^1.16.1",
     "qs": "6.9.4",
     "ssri": "^8.0.0",
     "vue": "2.5.16",
