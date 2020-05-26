@@ -91,7 +91,7 @@ class Planet extends BaseEloquentModel
 
     public function getAverageRatingAttribute(): ?float
     {
-        return $this->reviews()->selectRaw('AVG(rating) as rating')->first()->rating;
+        return $this->reviews()->selectRaw('ROUND(AVG(rating), 1) as rating')->first()->rating;
     }
 
     public function getTotalReviewsAttribute(): ?int

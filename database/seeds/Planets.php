@@ -6,6 +6,7 @@
 use Orion\Travelr\Models\Galaxy;
 use Orion\Travelr\Models\Planet;
 use Orion\Travelr\Models\Terrain;
+use Orion\Travelr\Models\Review;
 use Illuminate\Database\Seeder;
 
 class Planets extends Seeder
@@ -47,6 +48,12 @@ class Planets extends Seeder
                     $t = $this->makeTerrain($terrain);
                     $p->terrains()->attach($t->id);
                 }
+
+                factory(Review::class)
+                    ->times(random_int(1, 100))
+                    ->create([
+                        'planet_id' => $p->id,
+                    ]);
             }
         });
     }
