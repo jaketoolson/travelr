@@ -36,8 +36,8 @@ class Planets extends Seeder
 
                 $p = $this->makePlanet(
                     $fields['name'],
-                    $diameter,
                     $fields['climate'],
+                    $diameter,
                     $rotation,
                     $population
                 );
@@ -53,8 +53,8 @@ class Planets extends Seeder
 
     private function makePlanet(
         string $name,
-        int $diameter = 0,
         string $climate,
+        int $diameter = 0,
         int $rotation = 0,
         int $pop = 0
     ): Planet {
@@ -86,7 +86,7 @@ class Planets extends Seeder
 
     private function getPlanetsData(): array
     {
-        $planets = file_get_contents('https://raw.githubusercontent.com/phalt/swapi/master/resources/fixtures/planets.json');
+        $planets = file_get_contents(base_path('database/seeds/planets.json'));
 
         return json_decode($planets, true);
     }

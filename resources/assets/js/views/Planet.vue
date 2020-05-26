@@ -98,6 +98,7 @@
                 return _.filter(this.planet.included, {type: key});
             },
             population (num) {
+                num = Number(num);
                 if (num === null) {
                     return null;
                 }
