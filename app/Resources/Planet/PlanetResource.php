@@ -55,13 +55,13 @@ class PlanetResource extends Resource
         ];
     }
 
-    public function with($request)
+    public function with($request): array
     {
-        $amenities = $this->resource->amenities->map(function(Amenity $a){
+        $amenities = $this->resource->amenities->map(static function(Amenity $a){
             return new AmenityResource($a);
         });
 
-        $terrains = $this->resource->terrains->map(function(Terrain $t){
+        $terrains = $this->resource->terrains->map(static function(Terrain $t){
            return new TerrainResource($t);
         });
 

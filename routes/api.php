@@ -14,6 +14,7 @@ Route::get('/files/{id}', 'FileApiController@show')->name('api.files.show');
 Route::get('/planets', 'PlanetApiController@index')->name('api.planets.index');
 Route::get('/planets/{id}', 'PlanetApiController@show')->name('api.planets.show');
 Route::get('/planets/{id}/likes', 'PlanetLikesApiController@store')->name('api.planets.likes.store');
+Route::get('/planets/{id}/reviews', 'PlanetReviewsApiController@show')->name('api.planets.reviews.show');
 Route::get('/planets/{id}/relationships', 'PlanetApiController@show')->name('api.planets.relationships');
 
 Route::get('/planets/filter', 'PlanetSearchApiController@filter')->name('api.planets.filter');
