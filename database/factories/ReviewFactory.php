@@ -12,7 +12,8 @@ $factory->define(Review::class, static function (Faker $faker) {
         'planet_id' => 1,
         'rating' => random_int(Review::MIN_RATING, Review::MAX_RATING),
         'title' => implode(' ', $faker->words(random_int(3,6))),
-        'description' => $faker->paragraph(random_int(1,2))
+        'description' => $faker->paragraph(random_int(1,2)),
+        'created_at' => $faker->unique()->dateTime,
     ];
 });
 

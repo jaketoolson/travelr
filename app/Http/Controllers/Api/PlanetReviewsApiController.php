@@ -14,6 +14,6 @@ class PlanetReviewsApiController extends Controller
 {
     public function show(int $planetId): JsonResource
     {
-        return new PlanetReviewsResource(Review::where('planet_id', '=', $planetId)->get());
+        return new PlanetReviewsResource(Review::where('planet_id', '=', $planetId)->orderByDesc('created_at')->paginate(5));
     }
 }

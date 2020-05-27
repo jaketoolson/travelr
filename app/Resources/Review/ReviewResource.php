@@ -39,6 +39,7 @@ class ReviewResource extends Resource
     protected function getMappedAttributes(): array
     {
         return [
+            'created_at' => $this->resource->created_at,
             'title' => $this->resource->title,
             'description' => $this->resource->description,
             'rating' => (int) $this->resource->rating,

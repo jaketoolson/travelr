@@ -5,6 +5,7 @@
 
 namespace Orion\Travelr\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -16,6 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string title
  * @property string description
  * @property int rating
+ * @property Carbon created_at
  *
  * @property User author
  * @property Planet planet
