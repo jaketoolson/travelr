@@ -43,6 +43,7 @@ class ReviewResource extends Resource
             'title' => $this->resource->title,
             'description' => $this->resource->description,
             'rating' => (int) $this->resource->rating,
+            'author' => $this->resource->author,
         ];
     }
 }

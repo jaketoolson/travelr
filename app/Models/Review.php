@@ -30,6 +30,9 @@ class Review extends BaseEloquentModel
     use HasUuid, SoftDeletes;
 
     protected $table = 'reviews';
+    protected $with = [
+        'author',
+    ];
 
     protected $fillable = [
         'uuid',
