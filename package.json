@@ -17,7 +17,7 @@
     "moment-timezone": "0.5.31",
     "popper.js": "^1.16.1",
     "qs": "6.9.4",
-    "ssri": "^8.0.0",
+    "ssri": "^8.0.1",
     "vue": "2.5.16",
     "vue-analytics": "^5.10.2",
     "vue-extend-layout": "^1.0.1",
