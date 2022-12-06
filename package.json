@@ -16,7 +16,7 @@
     "moment": "2.26.0",
     "moment-timezone": "0.5.31",
     "popper.js": "^1.16.1",
-    "qs": "6.9.4",
+    "qs": "6.9.7",
     "ssri": "^8.0.0",
     "vue": "2.5.16",
     "vue-analytics": "^5.10.2",
